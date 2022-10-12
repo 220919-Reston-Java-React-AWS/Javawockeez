@@ -1,0 +1,51 @@
+Brandin Randolph
+
+What did they do yesterday?
+	- reviewed the lecture from yesterday
+	- redid Pablo's demo
+What will they do today?
+	- go over today's lecture
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	- N/A
+Are they running into any challenges/issues?
+	- N/A
+
+
+Chris Mcmilen
+
+What did they do yesterday?
+	-  review the the lecture
+	- redid the coding challenges/issues
+What will they do today?
+	- maybe pratice HTML and CSS
+	- review today's lecture and possible earlier in the week
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	- N/A
+Are they running into any challenges/issues?
+	- N/A
+
+
+Aidan Shafer
+
+What did they do yesterday?
+	- experiment with JS
+What will they do today?
+	- experiment more with JS
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	- N/A
+Are they running into any challenges/issues?
+	- N/A
+
+
+Daniel Rivera
+
+What did they do yesterday?
+	- review lecture
+	- look at HackerRank
+What will they do today?
+	- review lecture
+	- maybe some experiment coding
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	- N/A
+Are they running into any challenges/issues?
+	- N/A
