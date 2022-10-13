@@ -1,0 +1,17 @@
+Commerse Site
+
+
+Scrumlord: Daniel
+Backend: Chris, Aidan
+Frontend: Brandin
+
+
+
+
+Ideas:
+	Theme: 	Baked goods?, general products?
+
+	Design: 
+			Top: Search bar, Cart, Categories, Sign In/Register/User Profile
+			Middle: Hot products, you may also like -, more from -, ...
+			Bottom: About us, help, sell on our site
