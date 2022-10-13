@@ -15,3 +15,12 @@ Ideas:
 			Top: Search bar, Cart, Categories, Sign In/Register/User Profile
 			Middle: Hot products, you may also like -, more from -, ...
 			Bottom: About us, help, sell on our site
+			
+
+MVP:
+	Login
+	Cart
+	Buying
+
+Stretch Goals:
+	Register product
