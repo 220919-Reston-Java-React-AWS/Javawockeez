@@ -1,0 +1,46 @@
+Brandin Randolph
+
+What did they do yesterday?
+	- Reviewed notes, did hackerrank challenges.
+What will they do today?
+	- Practice coding and review notes.
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	- N/A
+Are they running into any challenges/issues?
+	- 
+
+
+Chris McMilen
+
+What did they do yesterday?
+	-  Looked over notes and practiced JS on codewars
+What will they do today?
+	- Make some more notes for code commands and practice more JS, CSS, and HTML
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-  N/A
+Are they running into any challenges/issues?
+	-
+
+
+Aidan Shafer
+
+What did they do yesterday?
+	- Worked on JS to practice
+What will they do today?
+	- Practice new coding
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	- N/A
+Are they running into any challenges/issues?
+	-
+
+
+Daniel Rivera
+
+What did they do yesterday?
+	- Reviewed notes from yesterday
+What will they do today?
+	- Review notes.
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	- N/A
+Are they running into any challenges/issues?
+	- 
