@@ -1,17 +1,89 @@
-Commerse Site
+###########################################################################################
+
+Commerse Site - Javawockeez
 
 
 Scrumlord: Daniel
 Backend: Chris, Aidan
 Frontend: Brandin
 
+###########################################################################################
 
+MVP:
+	Login
+	Cart
+	Buying
+	Search for Products
 
+Stretch Goals:
+	Register product - Sellers
+	
+###########################################################################################
 
-Ideas:
+Design:
+	Company Name: ??
+
 	Theme: 	Baked goods?, general products?
 
-	Design: 
-			Top: Search bar, Cart, Categories, Sign In/Register/User Profile
-			Middle: Hot products, you may also like -, more from -, ...
-			Bottom: About us, help, sell on our site
+	Main Page: 
+		Top: Search bar, Cart, Categories, Sign In/Register/User Profile
+		Middle: Hot products, you may also like -, more from -, ...
+		Bottom: About us, help, sell on our site
+		
+	Product Page:
+		Images and Description
+		Avg. Rating
+		Reviews
+		Add to Cart
+		Save for later
+		Similar Products?
+			
+
+
+Databases:
+	Products:
+		(ID)
+		Name: varchar
+		Cost: money
+		Seller/Brand: int(id)
+		Description: varchar (long)
+		Images: blob
+		Keywords?
+		Weight?
+		Dimensions?
+		
+	Users:
+		(ID)
+		First name: varchar (no special chars except -,  , and . )
+		Last name: varchar (no special chars except -,  , and . )
+		Username: varchar (no whitespace)
+		Password: varchar (no whitespace, require special chars and numbers?)
+		Seller/Buyer: boolean
+		Age/DoB?
+		Payment Info? (card#, ccv, expir) (allow multiple? - separate database?) (probably should not actually be real/functional for project?)
+		
+	Wishlist?:
+		user id
+		product id
+		
+	Cart:
+		user id
+		product id
+		
+	History:
+		user id
+		product id
+		date?
+		
+	Reviews:
+		Product id
+		user id (of poster)
+		review: varchar (long - 150?)
+		rating: int( 0 <= x <= 5 )
+		
+
+
+API's: Amazon?, Walmart?, Ebay?
+		
+		
+
