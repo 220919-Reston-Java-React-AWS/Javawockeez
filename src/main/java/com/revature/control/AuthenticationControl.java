@@ -1,11 +1,14 @@
 package com.revature.control;
 
+import com.revature.exceptions.InvalidInputException;
+import com.revature.exceptions.QueryException;
 import com.revature.model.User;
 import com.revature.service.AuthenticationService;
 
 import io.javalin.Javalin;
 
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 
 
 // This is the control layer for authentication (logging in and out). It's where all input from 'online' is received and
@@ -30,38 +33,35 @@ public class AuthenticationControl {
 
         //Log in
         app.post("/login", (ctx)->{
-            String email = ctx.formParam("email");
-            String password = ctx.formParam("password");
 
-            // get status: Success, if not, what went wrong and where.
-            int status = AuthService.login(email, password, ctx);
+            try{
 
-            // Get the user in case login was successful
-            HttpSession httpSession = ctx.req.getSession();
-            User user = (User) httpSession.getAttribute("user");
+                String email = ctx.formParam("email");
+                String password = ctx.formParam("password");
 
-            // Determine the output based on status
-            switch (status){
-                case 0:
-                    //ctx.result("Ye have successfully logged in. Welcome onboard " + user + "!");
-                    ctx.result("Login Successful");
-                    ctx.status(200);
-                    break;
-                case 2:
-                    ctx.result("Your email is not in our system.");
-                    ctx.status(400);
-                    break;
-                case 1:
-                    ctx.result("Your password is incorrect.");
-                    ctx.status(400);
-                    break;
-                case 500:
-                    ctx.result("Server Error");
-                    ctx.status(500);
-                    break;
-                default:
-                    ctx.result("Something has gone terribly wrong"); // Really should never happen unless changes are made to the service layer without updating here
-                    ctx.status(500);
+                User newUser = AuthService.login(email, password);
+
+                HttpSession session = ctx.req.getSession();
+                session.setAttribute("user", newUser);
+
+                ctx.result( String.format( "Login Successful, welcome %s!", newUser.toString() ) );
+                ctx.status(200);
+
+            } catch (SQLException e) {
+
+                ctx.result("Server Error");
+                ctx.status(500);
+
+            } catch (QueryException e) {
+
+                ctx.result(e.getMessage());
+                ctx.status(400);
+
+            } catch (InvalidInputException e) {
+
+                ctx.result(e.getMessage());
+                ctx.status(400);
+
             }
         });
 

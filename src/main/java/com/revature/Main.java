@@ -1,6 +1,8 @@
 package com.revature;
 
 import com.revature.control.AuthenticationControl;
+import com.revature.control.RegistrationControl;
+
 import io.javalin.Javalin;
 
 public class Main {
@@ -13,6 +15,9 @@ public class Main {
 
         AuthenticationControl ac = new AuthenticationControl();
         ac.mapEndpoints(app);
+
+        RegistrationControl rc = new RegistrationControl();
+        rc.mapEndpoints(app);
 
         //Start the app
         app.start(3125);

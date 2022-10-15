@@ -9,9 +9,9 @@ public class User {
 
     private String email;
     private String password;
-    private String firstName;
-    private String lastName;
-    private int role;
+    private String firstName = "";// Default to empty
+    private String lastName = ""; // Default to empty
+    private int role = 1;// Default to Customer
 
     public User(){
 
@@ -27,7 +27,6 @@ public class User {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.role = 1; // Default to customer
     }
 
     public User(String email, String password, String firstName, String lastName, int role){
@@ -40,6 +39,18 @@ public class User {
 
     public boolean isCustomer(){
         return this.role == CUSTOMER;
+    }
+
+    public boolean allFieldsFilled() {
+        if (this==null){
+            return false;
+        } else if (this.email==null || this.email.isEmpty() ) {
+            return false;
+        } else if ( this.password==null || this.password.isEmpty() ) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 

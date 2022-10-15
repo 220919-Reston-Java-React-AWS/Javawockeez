@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import com.revature.exceptions.InvalidInputException;
 import com.revature.exceptions.QueryException;
 import com.revature.model.User;
 import com.revature.repository.UserRepo;
@@ -29,30 +30,16 @@ public class AuthenticationService {
     // -----------------------------------------         LOGIN         ---------------------------------------------- //
 
     // login - Take the strings passed in for username and password, and verify
-    public int login(String email, String password, Context ctx){
+    public User login(String email, String password) throws SQLException, QueryException, InvalidInputException {
 
-        try{
+        if ( ur.checkPassword(email, password) ){  // Method checks for existence of the username (throws exception if not)
 
-            if ( ur.checkPassword(email, password) ){  // Method checks for existence of the username (throws exception if not)
+            return ur.getUserByEmail(email);
 
-                // Create a user object to store in the current session - used for identification.
-                User user = ur.getUserByEmail(email);
+        } else {
 
-                // Store the user in the current session
-                HttpSession session = ctx.req.getSession();
-                session.setAttribute("user", user);
+            throw new InvalidInputException("The password was incorrect"); // Wrong Password
 
-                return 0; // Success
-
-            } else {
-                return 1; // Wrong Password
-            }
-        } catch(SQLException e) {
-            System.out.println(e.getMessage());
-            return 500; // Internal Server Error - Somehow the parsing went wrong. This should not happen.
-
-        } catch(QueryException e) {
-            return 2; // Wrong Username
         }
     }
 

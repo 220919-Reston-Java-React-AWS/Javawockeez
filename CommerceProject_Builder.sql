@@ -41,3 +41,8 @@ values
 
 select * from roles;
 select * from users;
+
+
+delete from users where users.id=7;
+
+

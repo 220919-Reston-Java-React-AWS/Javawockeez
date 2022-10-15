@@ -76,21 +76,43 @@ public class UserRepo {
         }
     }
 
+    // Add an employee to the system, aka register. Defaults the role to employee
+    public void addUser(User user) throws SQLException {
+        try (Connection conn = ConnectionFactory.createConnection()){
+            String sql = "INSERT INTO users(first_name, last_name, email, pwd, role_id) VALUES (?,?,?,?,?);";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString( 1, user.getFirstName() );
+            pstmt.setString( 2, user.getLastName() );
+            pstmt.setString( 3, user.getEmail() );
+            pstmt.setString( 4, user.getPassword() );
+            pstmt.setInt( 5, user.getRole() );
+
+            pstmt.executeUpdate();
+        }
+    }
+
+
+
     public static void main(String[] args) {
 
         try {
             UserRepo ur = new UserRepo();
 
-            System.out.println(ur.getUserByEmail("shaferai210@gmail.com")); // Aidan Shafer
-            System.out.println(ur.userExists("shaferai210@gmail.com")); // true
-            System.out.println(ur.userExists("shafe@gmail.com")); // false
-            System.out.println(ur.checkPassword("shaferai210@gmail.com", "Password")); // false
-            System.out.println(ur.checkPassword("shaferai210@gmail.com", "A1dan$hafer")); // true
-            System.out.println(ur.checkPassword("shafe@gmail.com", "A1dan$hafer")); // exception
+            User newUser = new User("test@gmail.com","password123","testy","mcTestface");
 
-        } catch (SQLException e){
-            System.out.println( e.getMessage() );
-        } catch (QueryException e){
+            //System.out.println(ur.getUserByEmail("shaferai210@gmail.com")); // Aidan Shafer
+            //System.out.println(ur.userExists("shaferai210@gmail.com")); // true
+            //System.out.println(ur.userExists("shafe@gmail.com")); // false
+            //System.out.println(ur.checkPassword("shaferai210@gmail.com", "Password")); // false
+            //System.out.println(ur.checkPassword("shaferai210@gmail.com", "A1dan$hafer")); // true
+            //System.out.println(ur.checkPassword("shafe@gmail.com", "A1dan$hafer")); // exception
+            //ur.addUser(newUser);
+
+
+
+        } catch (Exception e){
             System.out.println( e.getMessage() );
         }
     }
