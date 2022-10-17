@@ -1,0 +1,52 @@
+Brandin Randolph
+
+What did they do yesterday?
+	- worked on HTML layout for the login/registration window
+What will they do today?
+	- make connection with login window to the backend application
+	- 
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-no update to trello cards
+Are they running into any challenges/issues?
+	- no issues
+
+Aidan Shafer
+
+What did they do yesterday?
+	-  Worked on Registration/login features
+What will they do today?
+	- Product Database, inorder to do a search
+	- 
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-  no updates made to Trello cards
+Are they running into any challenges/issues?
+	- none
+
+
+Daniel Rivera
+
+What did they do yesterday?
+	- Completed the two HW java challenges
+	- Studied for QC
+	- Designed main page for project
+	-Created Team Miro Board 
+What will they do today?
+	- continue work on main page
+	- 
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	- no updates
+Are they running into any challenges/issues?
+	- no issues
+
+
+Chris McMillen
+
+What did they do yesterday?
+	- Worked on the Homework assignments Java challenges
+What will they do today?
+	- figure out how to make a shopping cart database
+	- 
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	- no update
+Are they running into any challenges/issues?
+	- shopping cart table/database
