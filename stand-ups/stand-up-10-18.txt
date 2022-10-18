@@ -1,0 +1,50 @@
+Brandin Randolph
+
+What did they do yesterday?
+	- continued to work on the login/registeration project
+	- worked on the coding challenge homework
+What will they do today?
+	- plan on adding the JS to project
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	- look at above
+Are they running into any challenges/issues?
+	- no issue
+
+
+Chris McMilen
+
+What did they do yesterday?
+	-  started working on the product and cart pages
+	-  looked at the coding challenges
+What will they do today?
+	-  will continue working on the pages
+	-  figuring out the layout
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-  look at above
+Are they running into any challenges/issues?
+	-  nothing specific for now
+
+
+Aidan Shafer
+
+What did they do yesterday?
+	-  create a product database
+What will they do today?
+	-  plan to add some more info
+	-  create a way to search
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-  look at above
+Are they running into any challenges/issues?
+	- no problem 
+
+
+Daniel Rivera
+
+What did they do yesterday?
+	- worked on the main page
+What will they do today?
+	- going to display products on main page
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	- look above
+Are they running into any challenges/issues?
+	- nothing so far, but designing is time comsuming
