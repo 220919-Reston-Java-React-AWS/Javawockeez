@@ -3,6 +3,9 @@
 drop table if exists users;
 drop table if exists roles;
 drop table if exists products cascade;
+drop table if exists product_categories;
+
+
 
 
 --Roles
@@ -77,6 +80,7 @@ values
 ('Muffin'),
 ('Cupcake');
 
+
 --Product category pairs
 create table product_categories(
 	product_id int not null,
@@ -99,14 +103,35 @@ values
 (10, 2); --Chocolate cake - Cake
 
 
-create
+-- Ratings
+create table ratings(
+	product_id int, 
+	customer_id int, 
+	rating int check(0<=rating and rating<=5),
+	constraint fk_product_id foreign key(product_id) references products(id) on delete cascade,
+	constraint fk_customer_id foreign key(customer_id) references users(id) on delete cascade
+);
+insert into ratings(product_id, customer_id, rating)
+values 
+(1, 1, 4), --Kings Hawaiian, Aidan, 4 star
+(2, 1, 3), --SL butterbread, Aidan, 3 star
+(2, 2, 5), --SL butterbread, Brandin, 5 star
+(3, 1, 1), --SL wheat, Aidan, 1 star
+(3, 1, 0), --SL wheat, Brandin, 0 star
+(4, 1, 2), --no wheat, Aidan, 2 star
+(5, 1, 4), --Seattle sourdough, Aidan, 4 star
+(5, 3, 3), --Seattle sourdough, Chris, 3 star
+(6, 1, 5), --BelVita, Aidan, 5 star
+(6, 2, 5), --BelVita, Brandin, 5 star
+(6, 3, 4), --BelVita, Chris, 4 star
+(7, 1, 3), --7up cake, Aidan, 3 star
+(8, 1, 4), --Variety Cake, Aidan, 4 star
+(9, 1, 2), --Cotton-candy cake, Aidan, 2 star
+(10, 1, 5), --Chocolate cake, Aidan, 5 star
+(10, 2, 3), --Chocolate cake, Brandin, 3 star
+(10, 3, 4), --Chocolate cake, Chris, 4 star
+(10, 4, 0); --Chocolate cake, Daniel, 0 star
 
-select * from roles;
-select * from users;
-select * from products;
-select * from categories;
 
-
-delete from users where users.id=9;
 
 

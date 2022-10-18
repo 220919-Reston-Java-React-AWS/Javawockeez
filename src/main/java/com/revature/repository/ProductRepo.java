@@ -1,5 +1,6 @@
 package com.revature.repository;
 
+import com.revature.exceptions.QueryException;
 import com.revature.model.Product;
 
 import java.sql.Connection;
@@ -21,7 +22,7 @@ public class ProductRepo {
 
 
     // Creates a table of information about every ticket in the system.
-    public ArrayList getAllTickets() throws SQLException {
+    public ArrayList getAllProducts() throws SQLException, QueryException {
         try (Connection conn = ConnectionFactory.createConnection()){
             String sql = "SELECT * FROM products;";
 
@@ -30,18 +31,89 @@ public class ProductRepo {
             ResultSet rs = pstmt.executeQuery();
 
             ArrayList<Product> productList = new ArrayList();
+            int productID;
             while(rs.next()) {
+                productID = rs.getInt(ID_COLUMN);
                 productList.add( new Product(
-                        rs.getInt(ID_COLUMN),
+                        productID,
                         rs.getString(PRODUCT_NAME_COLUMN),
                         rs.getString(BRAND_COLUMN),
                         rs.getDouble(PRICE_COLUMN),
                         rs.getString(IMAGE_COLUMN),
                         rs.getDouble(WEIGHT_COLUMN),
-                        rs.getString(DESCRIPTION_COLUMN)
+                        rs.getString(DESCRIPTION_COLUMN),
+                        getAverageRating(productID)
                 ) );
             }
             return productList;
+        }
+    }
+
+    public ArrayList getProductsInCategory(int category_id) throws SQLException, QueryException { // A non-existent key will return an empty list
+        try (Connection conn = ConnectionFactory.createConnection()){
+            String sql = "SELECT products.id, product_name, brand, price, image_path, weight, description FROM products " +
+                    "INNER JOIN product_categories " +
+                    "ON products.id=product_categories.product_id " +
+                    "WHERE category_id=?;";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setInt(1, category_id);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            ArrayList<Product> productList = new ArrayList();
+            int productID;
+            while(rs.next()) {
+                productID = rs.getInt(ID_COLUMN);
+                productList.add( new Product(
+                        productID,
+                        rs.getString(PRODUCT_NAME_COLUMN),
+                        rs.getString(BRAND_COLUMN),
+                        rs.getDouble(PRICE_COLUMN),
+                        rs.getString(IMAGE_COLUMN),
+                        rs.getDouble(WEIGHT_COLUMN),
+                        rs.getString(DESCRIPTION_COLUMN),
+                        getAverageRating(productID)
+                ) );
+            }
+            return productList;
+        }
+    }
+
+    public double getAverageRating(int product_id) throws SQLException, QueryException {
+        try (Connection conn = ConnectionFactory.createConnection()){
+            String sql = "SELECT avg(rating) FROM ratings WHERE product_id = ? GROUP BY product_id;";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setInt(1, product_id);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getDouble(1);
+
+            } else {
+                throw new QueryException("That product ID is not in the database");
+            }
+        }
+    }
+
+    public int getCategoryID(String key) throws SQLException, QueryException { // key must be capitalized first, i.e. Bread, not bread, BREAD, etc.
+        try (Connection conn = ConnectionFactory.createConnection()){
+            String sql = "SELECT id FROM categories WHERE category=?;";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, key);
+
+            ResultSet rs = pstmt.executeQuery();
+            if ( rs.next() ){
+                return rs.getInt(1); // Only one column, ID
+
+            } else { //No results -> not a category
+                throw new QueryException("There are no results for " + key);
+            }
         }
     }
 
@@ -49,12 +121,17 @@ public class ProductRepo {
         ProductRepo pr = new ProductRepo();
 
         try{
-            ArrayList allProducts = pr.getAllTickets();
+
+            ArrayList allProducts = pr.getAllProducts();
+            //ArrayList allProducts = pr.getProductsInCategory(1);
             for (Object p: allProducts){
                 System.out.println(p);
             }
 
-        } catch (SQLException e) {
+            //System.out.println( pr.getCategoryID("Cake") );
+            //System.out.println( pr.getAverageRating(2) );
+
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

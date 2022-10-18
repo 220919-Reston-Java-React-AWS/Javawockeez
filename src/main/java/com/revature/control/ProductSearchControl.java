@@ -20,11 +20,25 @@ public class ProductSearchControl {
         app.get("/allProducts", (ctx)->{
 
             try{
-                ArrayList productList = pss.getAllTickets();
+                ArrayList productList = pss.getAllProducts();
 
                 ctx.jsonStream(productList);
                 ctx.status(200);
-            } catch (SQLException e) {
+            } catch (Exception e) {
+                ctx.result("An unexpected error has occurred.");
+            }
+
+        });
+
+        app.get("/allProducts/{category}", (ctx)->{
+
+            try{
+                String category = ctx.pathParam("category");
+                ArrayList productList = pss.getProductsInCategory(category);
+
+                ctx.jsonStream(productList);
+                ctx.status(200);
+            } catch (Exception e) {
                 ctx.result("An unexpected error has occurred.");
             }
 
