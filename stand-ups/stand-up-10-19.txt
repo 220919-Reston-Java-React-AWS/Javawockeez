@@ -1,0 +1,38 @@
+Chris McMilen
+
+What did they do yesterday?
+	-  Worked on linking front end backend, and frontend pages for project
+What will they do today?
+	- Continue working on html pages
+	- Working on practicing frontend and backend
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	-  Product page and cart
+Are they running into any challenges/issues?
+	- Connecting to backend
+
+
+Aidan Shafer
+
+What did they do yesterday?
+	- Worked on linking frontend and backend
+	- 
+What will they do today?
+	- Practicing frontend and backend
+	- 
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	-
+Are they running into any challenges/issues?
+	- Getting everything to work together in a short amount of time
+
+
+Daniel Rivera
+
+What did they do yesterday?
+	- Worked on linking frontend and backend
+What will they do today?
+	- Working on how to delete method in HTTP
+	- 
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	-
+Are they running into any challenges/issues?
+	- Not sure how to delete with fetch
