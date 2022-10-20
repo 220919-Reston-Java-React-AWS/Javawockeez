@@ -2,6 +2,7 @@ package com.revature.control;
 
 import com.revature.exceptions.InvalidInputException;
 import com.revature.exceptions.QueryException;
+import com.revature.model.Response;
 import com.revature.model.User;
 import com.revature.service.AuthenticationService;
 
@@ -44,78 +45,26 @@ public class AuthenticationControl {
                 HttpSession session = ctx.req.getSession();
                 session.setAttribute("user", newUser);
 
-                ctx.result( String.format( "Login Successful, welcome %s!", newUser.toString() ) );
+                ctx.json( new Response( String.format( "Login Successful, welcome %s!", newUser.toString() ) ) );
                 ctx.status(200);
 
             } catch (SQLException e) {
 
-                ctx.result("Server Error");
+                ctx.json( new Response("Server Error") );
                 ctx.status(500);
 
             } catch (QueryException e) {
 
-                ctx.result(e.getMessage());
+                ctx.json( new Response( e.getMessage() ) );
                 ctx.status(400);
 
             } catch (InvalidInputException e) {
 
-                ctx.result(e.getMessage());
+                ctx.json( new Response( e.getMessage() ) );
                 ctx.status(400);
 
             }
         });
 
-        /*
-        // This should all be done in front end.
-
-        // Log in help response.
-        app.get("/login", (ctx)->{
-            ctx.html("<p>Enter yer username and password to login.<br> " +
-                    //"<form method=\"post\" action=\"/login\" onsubmit=\"return false;\">" +
-                    "<form method=\"post\" action=\"/login\">" +
-                    "  <label for=\"fname\">Username:</label>" +
-                    "  <input type=\"text\" id=\"usr\" name=\"usr\"<br><br>" +
-                    "  <label for=\"lname\">Password:</label>" +
-                    "  <input type=\"text\" id=\"pwd\" name=\"pwd\"><br><br>" +
-                    "  <input type=\"submit\" value=\"Submit\">" +
-                    "</form>");
-        });
-
-
-
-
-        //  ---------------  LOGOUT  ---------------  //
-
-        // Log out help response
-        app.get("/logout", (ctx)->{
-            ctx.result("Post to this page to log out");
-            ctx.status(200);
-        });
-
-
-         */
-
-        // Logout and terminate session
-        app.post("/logout", (ctx)->{
-            ctx.req.getSession().invalidate(); // No point going to auth.service or beyond for this.
-            ctx.result("You have successfully logged out.");
-            ctx.status(200);
-        });
-
-
-        //  ------------  SEE CURRENT USER  ------------  //
-
-        // See who's currently logged in
-        app.get("/currentUser", (ctx)->{
-            HttpSession httpSession = ctx.req.getSession();
-
-            User user = (User) httpSession.getAttribute("user");
-
-            if (user==null){
-                ctx.result("You are not logged in");
-            } else {
-                ctx.result( user.toString() );
-            }
-        });
     }
 }

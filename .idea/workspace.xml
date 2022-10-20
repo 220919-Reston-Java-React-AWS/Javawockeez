@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe920fa3-8f1d-4ee1-84d1-5d1d26d3fe22" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/model/Response.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommerceProject_Builder.sql" beforeDir="false" afterPath="$PROJECT_DIR$/CommerceProject_Builder.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/control/AuthenticationControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/control/AuthenticationControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/control/ProductSearchControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/control/ProductSearchControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/control/RegistrationControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/control/RegistrationControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/repository/ProductRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/repository/ProductRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/service/ProductSearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/service/ProductSearchService.java" afterDir="false" />
     </list>
@@ -31,21 +32,24 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2G8N7phOlOpbJnSJw3sKOeeJWC2" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/shafe/OneDrive/Documents/Revature/commerceProject"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/shafe/OneDrive/Documents/Revature/commerceProject&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.revature.model" />
       <recent name="com.revature.control" />
       <recent name="com.revature.service" />
       <recent name="com.revature.exceptions" />

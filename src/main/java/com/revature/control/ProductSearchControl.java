@@ -1,5 +1,8 @@
 package com.revature.control;
 
+import com.revature.exceptions.QueryException;
+import com.revature.model.Product;
+import com.revature.model.Response;
 import com.revature.service.ProductSearchService;
 
 import io.javalin.Javalin;
@@ -17,7 +20,7 @@ public class ProductSearchControl {
 
     public void mapEndpoints(Javalin app){
 
-        app.get("/allProducts", (ctx)->{
+        app.get("/Products", (ctx)->{
 
             try{
                 ArrayList productList = pss.getAllProducts();
@@ -25,12 +28,30 @@ public class ProductSearchControl {
                 ctx.jsonStream(productList);
                 ctx.status(200);
             } catch (Exception e) {
-                ctx.result("An unexpected error has occurred.");
+                ctx.json( new Response("An unexpected error has occurred.") );
             }
 
         });
 
-        app.get("/allProducts/{category}", (ctx)->{
+        app.get("/Products/id={product_id}", (ctx)->{
+            try{
+                String productID = ctx.pathParam("product_id");
+                Product product = pss.getProduct( Integer.parseInt(productID) );
+
+                ctx.json(product);
+                ctx.status(200);
+
+            } catch (QueryException e){
+                ctx.json( new Response( e.getMessage() ) );
+                ctx.status(400);
+
+            } catch (Exception e){
+                ctx.json( new Response( e.getMessage() ) );
+                ctx.status(500);
+            }
+        });
+
+        app.get("/Products/category={category}", (ctx)->{
 
             try{
                 String category = ctx.pathParam("category");
@@ -39,7 +60,22 @@ public class ProductSearchControl {
                 ctx.jsonStream(productList);
                 ctx.status(200);
             } catch (Exception e) {
-                ctx.result("An unexpected error has occurred.");
+                ctx.json(new Response("An unexpected error has occurred.") );
+            }
+
+        });
+
+        app.get("/Products/search={keyword}", (ctx)->{
+
+            try{
+                String keyword = ctx.pathParam("keyword");
+                ArrayList productList = pss.productSearch(keyword);
+
+                ctx.jsonStream(productList);
+                ctx.status(200);
+
+            } catch (Exception e) {
+                ctx.json(new Response("An unexpected error has occurred.") );
             }
 
         });

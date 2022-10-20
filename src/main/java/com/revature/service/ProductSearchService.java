@@ -1,6 +1,7 @@
 package com.revature.service;
 
 import com.revature.exceptions.QueryException;
+import com.revature.model.Product;
 import com.revature.repository.ProductRepo;
 
 import java.sql.SQLException;
@@ -14,6 +15,10 @@ public class ProductSearchService {
 
     }
 
+    public Product getProduct(int productID) throws SQLException, QueryException {
+        return pr.getProduct(productID);
+    }
+
     public ArrayList getAllProducts() throws SQLException, QueryException {
         return pr.getAllProducts();
     }
@@ -21,6 +26,10 @@ public class ProductSearchService {
     public ArrayList getProductsInCategory(String key) throws SQLException, QueryException {
         int categoryID = getCategoryID(key);
         return pr.getProductsInCategory(categoryID);
+    }
+
+    public ArrayList productSearch(String keyword) throws SQLException, QueryException {
+        return pr.getProductsWithNameContaining(keyword);
     }
 
     public int getCategoryID(String key) throws SQLException, QueryException {

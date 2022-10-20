@@ -13,8 +13,6 @@ public class Main {
             config.enableCorsForAllOrigins();
         });
 
-
-
         //Map the app to all endpoints (send the app to the controller layer to tell Postman what to do in any event)
 
         AuthenticationControl ac = new AuthenticationControl();
