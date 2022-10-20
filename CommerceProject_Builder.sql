@@ -133,5 +133,20 @@ values
 (10, 4, 0); --Chocolate cake, Daniel, 0 star
 
 
+--Cart 
+create table cart(
+	id serial primary key,
+	user_id int,
+	product_id int,
+	constraint fk_user_id foreign key(user_id) references users(id) on delete cascade,
+	constraint fk_product_id foreign key(product_id) references products(id) on delete cascade
+);
+insert into cart(user_id, product_id)
+values 
+(3, 10),
+(3, 6),
+(3, 1);
+
+
 
 

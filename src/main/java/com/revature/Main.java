@@ -1,6 +1,7 @@
 package com.revature;
 
 import com.revature.control.AuthenticationControl;
+import com.revature.control.CartControl;
 import com.revature.control.ProductSearchControl;
 import com.revature.control.RegistrationControl;
 
@@ -23,6 +24,9 @@ public class Main {
 
         ProductSearchControl psc = new ProductSearchControl();
         psc.mapEndpoints(app);
+
+        CartControl cc = new CartControl();
+        cc.mapEndpoints(app);
 
         //Start the app
         app.start(3125);

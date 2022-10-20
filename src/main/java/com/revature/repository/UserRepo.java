@@ -76,6 +76,23 @@ public class UserRepo {
         }
     }
 
+    public int getUserIDByEmail(String email) throws SQLException, QueryException {
+        try (Connection conn = ConnectionFactory.createConnection()) {
+            String sql = "SELECT id FROM users WHERE email=?";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, email);
+
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            } else {
+                throw new QueryException("The user " + email + " could not be found");
+            }
+        }
+    }
+
     // Add an employee to the system, aka register. Defaults the role to employee
     public void addUser(User user) throws SQLException {
         try (Connection conn = ConnectionFactory.createConnection()){
@@ -102,6 +119,7 @@ public class UserRepo {
 
             User newUser = new User("test@gmail.com","password123","testy","mcTestface");
 
+            System.out.println(ur.getUserIDByEmail("shaferai210@gmail.com"));
             //System.out.println(ur.getUserByEmail("shaferai210@gmail.com")); // Aidan Shafer
             //System.out.println(ur.userExists("shaferai210@gmail.com")); // true
             //System.out.println(ur.userExists("shafe@gmail.com")); // false
