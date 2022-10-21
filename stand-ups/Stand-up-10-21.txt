@@ -1,0 +1,39 @@
+
+Chris McMilen
+
+What did they do yesterday? Uploaded the pages to github. Looked over notes (mainly css)
+	-  
+What will they do today? More studying notes and playing with css. try to move over to React.
+	- 
+	- 
+What progress are they making on project-1 and are they updating the Trello cards with their status? None
+	-  
+Are they running into any challenges/issues? Making the css do what I want
+	-
+
+
+Aidan Shafer
+
+What did they do yesterday? Got the cart working
+	- 
+	- 
+What will they do today? Look at profile, and try to get close to MVP.
+	- 
+	- 
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-
+Are they running into any challenges/issues? Styling issues for REST requests.
+	-
+
+
+Daniel Rivera
+
+What did they do yesterday? Refactored the frontend into a single folder, and uploaded to github. Incorperated our fallen comrades work.
+	- 
+What will they do today? Get started on revature profile. Look into react. Review notes.
+	- 
+	- 
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-
+Are they running into any challenges/issues? No.
+	-
