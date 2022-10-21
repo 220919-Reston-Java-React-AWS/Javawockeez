@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javawockeez E-Commerce</title>
+
+    <!-- Bootstrap CSS and Bootstrap JavaScript Bundle with Popper -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    
+    <!-- CSS to customize Bootstrap CSS-->
+    <link rel="stylesheet" type="text/css" href="wp-content/css/custom.css">
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+
+    <!-- The Top Part of the Website-->
+    <header>
+        <!-- The Navigation Bar -->
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid pt-2 pb-2">
+                <!-- Website Icon -->
+                <a class="navbar-brand me-5" href="#">
+                    <img src="./wp-content/images/icon.svg" alt="Logo" width="128" height="48" class="d-inline-block align-text-top">
+                </a>
+                
+                <!-- Dropdown Navbar Toggler for menu-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- The Menu -->
+                <div class="collapse navbar-collapse" id="navbarToggler">
+                    <!-- Menu Options -->
+                    <ul class="navbar-nav me-5 mb-2 mb-lg-0">
+                        <!-- Menu Option - Home -->
+                        <li class="nav-item me-3">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+
+                        <!-- Menu Option - Shop Pages -->
+                        <li class="nav-item dropdown me-3">
+                            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu me-3">
+                                <li><a class="dropdown-item" href="product.html">Products</a></li>
+                                <li><a class="dropdown-item" href="#">Wishlist</a></li>
+                                <li><a class="dropdown-item" href="cart.html">Shopping Cart</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Menu Option - Account Pages -->
+                        <li class="nav-item dropdown me-3">
+                            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="login.html">Login</a></li>
+                                <li><a class="dropdown-item" href="registration.html">Sign Up</a></li>
+                                <li><a class="dropdown-item" href="#">Orders</a></li>
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Menu Option - Website's Other Pages -->
+                        <li class="nav-item dropdown me-3">
+                            <a class="nav-link" aria-current="page" href="about.html">About</a>
+                        </li>
+                    </ul>
+                    <!-- end of Menu Options-->
+
+                    <!-- Search Bar -->
+                    <form class="d-flex w-100 me-3" action="#" role="search">
+                        <div class="input-group">                                    
+                            <!-- the search bar text input -->
+                            <input type="text" class="form-control" type="search" placeholder="Search for products" aria-label="Search">
+                            
+                            <!-- Search bar button -->
+                            <button class="input-group-text bg-transparent" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    <!-- End of Search Bar -->
+
+                    <!-- Icon Bar -->
+                    <div class="col-1 me-4 d-flex align-items-center">
+                        <div class="list-inline ms-auto d-lg-block d-none">
+                            <!-- Icon Bar  - the wishlist button -->
+                            <div class="list-inline-item me-3">
+                                <a href="#" class="text-muted position-relative">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                    </path>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <!-- Icon Bar - the account button -->
+                            <div class="list-inline-item me-3">
+                                <a href="#" class="text-muted position-relative">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <!-- Icon Bar - the cart icon-->
+                            <div class="list-inline-item">
+                                <a href="#" class="text-muted position-relative">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag">
+                                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Icon Bar -->
+
+                </div>
+                <!-- End of Menu -->
+
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Main Body Content -->
+    <main>
+        <!-- Main Body Content - Carousel Hero -->
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Carousel buttons at the bottom showing how many slides -->
+            <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="" aria-current="true"></button>
+            </div>
+
+            <!-- Carousel Slides go here (Should match number of buttons above)-->
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item"> 
+                    <!-- Slide Background Image -->
+                    <img class="d-block w-100 carousel-img" src="./wp-content/images/carousel/pexels-alexander-dummer-132694.jpg" alt="First slide">
+                    
+                    <!-- Slide Caption -->
+                    <div class="container">
+                        <div class="carousel-caption text-dark">
+                            <h1>Example headline.</h1>
+                            <p style="font-weight: bold;">Some representative placeholder content for the first slide of the carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <!-- Slide Background Image -->
+                    <img class="d-block w-100 carousel-img" src="./wp-content/images/carousel/pexels-mariana-kurnyk-1775030.jpg" alt="Second slide">
+                    
+                    <!-- Slide Caption -->
+                    <div class="container">
+                        <div class="carousel-caption text-dark">
+                            <h1>Example headline.</h1>
+                            <p style="font-weight: bold;">Some representative placeholder content for the first slide of the carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-item active">
+                    <!-- Slide Background Image -->
+                    <img class="d-block w-100 carousel-img" src="./wp-content/images/carousel/pexels-sara-santos-1020585.jpg" alt="Third slide">
+                    
+                    <!-- Slide Caption -->
+                    <div class="container">
+                        <div class="carousel-caption text-dark">
+                            <h1>Example headline.</h1>
+                            <p style="font-weight: bold;">Some representative placeholder content for the first slide of the carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel - Previous Slide button -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+
+            <!-- Carousel - Next Slide button -->
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Section - Product Categories -->
+        <section class="border-bottom">
+            <div class="container mb-5">
+                <!-- Row - Name of Section -->
+                <div class="grid">
+                    <div class="g-col-12">
+                        <!-- Heading -->
+                        <h3>Product Categories</h3>
+                    </div>
+                </div>
+                <!-- End of Row - Name of Section -->
+
+                <!-- Row - Category Cards -->
+                <div class="row row-cols-2 row-cols-lg-5 g-5">
+                    <!-- column 1 - bread -->
+                    <div class="col">
+                        <!-- making the entire card a link -->
+                        <a href="" class="text-decoration-none text-dark">
+                            <!-- product card -->
+                            <div class="card ">
+                                <div class="card-body text-center py-8">
+                                    <!-- product img -->
+                                    <img src="./wp-content/images/category/bread.jpg" class="mb-2 img-fluid rounded-circle">
+                                    <!-- text -->
+                                    <div class="text-truncate" style="font-weight: 500;">Bread</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- column 2 - cake -->
+                    <div class="col">
+                        <!-- making the entire card a link -->
+                        <a href="" class="text-decoration-none text-dark">
+                            <!-- product card -->
+                            <div class="card ">
+                                <div class="card-body text-center py-8">
+                                    <!-- product img -->
+                                    <img src="./wp-content/images/category/cake.jpg" class="mb-2 img-fluid rounded-circle">
+                                    <!-- text -->
+                                    <div class="text-truncate" style="font-weight: 500;">Cakes</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- column 3 - pie -->
+                    <div class="col">
+                        <!-- making the entire card a link -->
+                        <a href="" class="text-decoration-none text-dark">
+                            <!-- product card -->
+                            <div class="card ">
+                                <div class="card-body text-center py-8">
+                                    <!-- product img -->
+                                    <img src="./wp-content/images/category/pie.jpg" class="mb-2 img-fluid rounded-circle">
+                                    <!-- text -->
+                                    <div class="text-truncate" style="font-weight: 500;">Pies</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- column 4 - muffin -->
+                    <div class="col">
+                        <!-- making the entire card a link -->
+                        <a href="" class="text-decoration-none text-dark">
+                            <!-- product card -->
+                            <div class="card ">
+                                <div class="card-body text-center py-8">
+                                    <!-- product img -->
+                                    <img src="./wp-content/images/category/muffin.jpg" class="mb-2 img-fluid rounded-circle">
+                                    <!-- text -->
+                                    <div class="text-truncate" style="font-weight: 500;">Muffins</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- column 5 - cookie -->
+                    <div class="col">
+                        <!-- making the entire card a link -->
+                        <a href="" class="text-decoration-none text-dark">
+                            <!-- product card -->
+                            <div class="card ">
+                                <div class="card-body text-center py-8">
+                                    <!-- product img -->
+                                    <img src="./wp-content/images/category/cookie.jpg" class="mb-2 img-fluid rounded-circle">
+                                    <!-- text -->
+                                    <div class="text-truncate" style="font-weight: 500;">Cookies</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- End of Row - Category Cards -->
+            </div>
+        </section>
+        <!-- End of Section - Product Categories -->
+        
+
+        <!-- Section - Bread Product Showcase -->
+        <section class="section-bg-color-1 pb-3 pt-5">
+            <div class="container mb-5">
+                <!-- Row - Name of Section -->
+                <div class="row">
+                    <!-- Heading -->
+                    <div class="col-10 col-md-9">
+                        <h3>Bread Products</h3>
+                        <p>Good bread is the most fundamentally satisfying of all foods</p>
+                    </div>
+                    <!-- Link to page -->
+                    <div class="col-2 col-md-3 ps-5 pt-2 align-content-end">
+                        <a href="" class="text-decoration-none text-dark">
+                            <h5>See more
+                                <img src="./wp-content/images/symbol/arrow-right.png" />
+                            </h5>
+                        </a>
+                        
+                    </div>
+
+                </div>
+                <!-- End of Row - Name of Section -->
+
+                <!-- Row - Category Cards -->
+                <div class="row row-cols-2 row-cols-lg-5 g-5">
+                    <!-- column 1 - bread -->
+                    <div class="col">
+                        <!-- making the entire card a link -->
+                        <a href="" class="text-decoration-none text-dark">
+                            <!-- product card -->
+                            <div class="card ">
+                                <div class="card-body text-center py-8">
+                                    <!-- product img -->
+                                    <img src="./wp-content/images/category/bread.jpg" class="mb-2 img-fluid rounded-circle">
+                                    <!-- text -->
+                                    <div class="text-truncate" style="font-weight: 500;">Bread</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <!-- End of Row - Category Cards -->
+            </div>
+        </section>
+        <!-- End of Section - Bread Product Showcase -->
+
+
+        <!-- Section - Cake Product Showcase -->
+        <section class="section-bg-color-2 pb-3 pt-5">
+            <div class="container mb-5">
+                <!-- Row - Name of Section -->
+                <div class="row">
+                    <!-- Heading -->
+                    <div class="col-10 col-md-9">
+                        <h3>Cake Products</h3>
+                        <p></p>
+                    </div>
+                    <!-- Link to page -->
+                    <div class="col-2 col-md-3 ps-5 pt-2 align-content-end">
+                        <a href="" class="text-decoration-none text-dark">
+                            <h5>See more
+                                <img src="./wp-content/images/symbol/arrow-right.png" />
+                            </h5>
+                        </a>
+                        
+                    </div>
+
+                </div>
+                <!-- End of Row - Name of Section -->
+
+                <!-- Row - Category Cards -->
+                <div class="row row-cols-2 row-cols-lg-5 g-5">
+                    <!-- column 1 - bread -->
+                    <div class="col">
+                        <!-- making the entire card a link -->
+                        <a href="" class="text-decoration-none text-dark">
+                            <!-- product card -->
+                            <div class="card ">
+                                <div class="card-body text-center py-8">
+                                    <!-- product img -->
+                                    <img src="./wp-content/images/category/cake.jpg" class="mb-2 img-fluid rounded-circle">
+                                    <!-- text -->
+                                    <div class="text-truncate" style="font-weight: 500;">Bread</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <!-- End of Row - Category Cards -->
+            </div>
+        </section>
+        <!-- End of Section - Cake Product Showcase -->
+
+
+        <!-- Section - Pie Product Showcase -->
+        <section class="section-bg-color-1 pb-3 pt-5">
+            <div class="container mb-5">
+                <!-- Row - Name of Section -->
+                <div class="row">
+                    <!-- Heading -->
+                    <div class="col-10 col-md-9">
+                        <h3>Pie Products</h3>
+                        <p></p>
+                    </div>
+                    <!-- Link to page -->
+                    <div class="col-2 col-md-3 ps-5 pt-2 align-content-end">
+                        <a href="" class="text-decoration-none text-dark">
+                            <h5>See more
+                                <img src="./wp-content/images/symbol/arrow-right.png" />
+                            </h5>
+                        </a>
+                        
+                    </div>
+
+                </div>
+                <!-- End of Row - Name of Section -->
+
+                <!-- Row - Category Cards -->
+                <div class="row row-cols-2 row-cols-lg-5 g-5">
+                    <!-- column 1 - bread -->
+                    <div class="col">
+                        <!-- making the entire card a link -->
+                        <a href="" class="text-decoration-none text-dark">
+                            <!-- product card -->
+                            <div class="card ">
+                                <div class="card-body text-center py-8">
+                                    <!-- product img -->
+                                    <img src="./wp-content/images/category/pie.jpg" class="mb-2 img-fluid rounded-circle">
+                                    <!-- text -->
+                                    <div class="text-truncate" style="font-weight: 500;">Bread</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <!-- End of Row - Category Cards -->
+            </div>
+        </section>
+        <!-- End of Section - Pie Product Showcase -->
+
+
+        <!-- Section - Muffin Product Showcase -->
+        <section class="section-bg-color-2 pb-3 pt-5">
+            <div class="container mb-5">
+                <!-- Row - Name of Section -->
+                <div class="row">
+                    <!-- Heading -->
+                    <div class="col-10 col-md-9">
+                        <h3>Muffin Products</h3>
+                        <p>It's not a cupcake</p>
+                    </div>
+                    <!-- Link to page -->
+                    <div class="col-2 col-md-3 ps-5 pt-2 align-content-end">
+                        <a href="" class="text-decoration-none text-dark">
+                            <h5>See more
+                                <img src="./wp-content/images/symbol/arrow-right.png" />
+                            </h5>
+                        </a>
+                        
+                    </div>
+
+                </div>
+                <!-- End of Row - Name of Section -->
+
+                <!-- Row - Category Cards -->
+                <div class="row row-cols-2 row-cols-lg-5 g-5">
+                    <!-- column 1 - bread -->
+                    <div class="col">
+                        <!-- making the entire card a link -->
+                        <a href="" class="text-decoration-none text-dark">
+                            <!-- product card -->
+                            <div class="card ">
+                                <div class="card-body text-center py-8">
+                                    <!-- product img -->
+                                    <img src="./wp-content/images/category/muffin.jpg" class="mb-2 img-fluid rounded-circle">
+                                    <!-- text -->
+                                    <div class="text-truncate" style="font-weight: 500;">Bread</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <!-- End of Row - Category Cards -->
+            </div>
+        </section>
+        <!-- End of Section - Muffin Product Showcase -->
+
+
+        <!-- Section - Cookie Product Showcase -->
+        <section class="section-bg-color-1 pb-3 pt-5">
+            <div class="container mb-5">
+                <!-- Row - Name of Section -->
+                <div class="row">
+                    <!-- Heading -->
+                    <div class="col-10 col-md-9 ">
+                        <h3>Cookie Products</h3>
+                        <p>Snack on the go</p>
+                    </div>
+                    <!-- Link to page -->
+                    <div class="col-2 col-md-3  ps-5 pt-2 align-content-end">
+                        <a href="" class="text-decoration-none text-dark">
+                            <h5>See more
+                                <img src="./wp-content/images/symbol/arrow-right.png" />
+                            </h5>
+                        </a>
+                        
+                    </div>
+
+                </div>
+                <!-- End of Row - Name of Section -->
+
+                <!-- Row - Category Cards -->
+                <div class="row row-cols-2 row-cols-lg-5 g-5">
+                    <!-- column 1 - bread -->
+                    <div class="col">
+                        <!-- making the entire card a link -->
+                        <a href="" class="text-decoration-none text-dark">
+                            <!-- product card -->
+                            <div class="card ">
+                                <div class="card-body text-center py-8">
+                                    <!-- product img -->
+                                    <img src="./wp-content/images/category/cookie.jpg" class="mb-2 img-fluid rounded-circle">
+                                    <!-- text -->
+                                    <div class="text-truncate" style="font-weight: 500;">Bread</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <!-- End of Row - Category Cards -->
+            </div>
+        </section>
+        <!-- End of Section - Bread Product Showcase -->
+    </main>
+
+    <!-- Footer  -->
+    <footer>
+        <div class="container-fluid bg-light pt-4 pb-1 mt-auto">
+            <!-- Using Grid to Column Sections -->
+            <div class="row justify-content-center">
+                <!-- Customer Option Section -->
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Customers</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="login.html" class="nav-link p-0 text-muted">Login</a></li>
+                        <li class="nav-item mb-2"><a href="registration.html" class="nav-link p-0 text-muted">Sign Up</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Orders</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Profile</a></li>
+                    </ul>
+                </div>
+
+                <!-- Shopping Option Section -->
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Shop</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                        <li class="nav-item mb-2"><a href="product.html" class="nav-link p-0 text-muted">Products</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Wishlist</a></li>
+                        <li class="nav-item mb-2"><a href="cart.html" class="nav-link p-0 text-muted">Shopping Cart</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company Option Section -->
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Company</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-muted">About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Shopping Disclamers Section -->
+                <div class="col-6 col-md-2 mb-3">
+                    <div class="row">
+                        <h6 class="text-uppercase">Free shipping</h6>
+                        <p class="text-muted fw-light text-sm mb-0">Free Shipping over $50</p>
+                    </div>
+                    <div class="row mt-4">
+                        <h6 class="text-uppercase">Money back guarantee</h6>
+                        <p class="text-muted fw-light text-sm mb-0">7 Days Money Back Guarantee</p>
+                      </div>
+                </div>
+
+            </div>
+        </div>
+    
+        <!-- Website Copyright Section -->
+        <div class="container-fluid bg-dark text-white">
+            <div class="d-flex flex-column flex-sm-row justify-content-center py-3">
+                <div class="p-2 bd-highlight">© 2022 Javawockeez. All rights reserved.</div>    
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

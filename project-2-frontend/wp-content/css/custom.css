@@ -1,0 +1,55 @@
+/* CSS that customizes upon the Bootstrap CSS (overload some aspects) */
+
+.navbar-brand {
+    margin-left: 1vw;
+}
+
+.navbar-toggler{
+    margin-right: 1vw;
+}
+
+
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+    margin-bottom: 4rem;
+}
+
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    bottom: 2rem;
+    z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+    height: 20rem;
+}
+
+/* Applying a blur effect on img elements for caption readability*/
+.carousel-img{
+    filter: blur(10px);
+}
+
+/* input class*/
+.input-group {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+}
+
+
+/* Background Colors to seperate sections in main */
+.section-bg-color-1 {
+    background-color: #FFF6E8;
+}
+
+.section-bg-color-2 {
+    background-color: #FFEEDA;
+}

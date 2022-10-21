@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF - 8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial scale=1.0">
+      <title>Product</title>
+
+      <!-- Bootstrap CSS and Bootstrap JavaScript Bundle with Popper -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+      
+      <!-- CSS to customize Bootstrap CSS-->
+      <link rel="stylesheet" type="text/css" href="wp-content/css/custom.css">
+      
+      
+      <style>
+          .box{
+              border: 2px;
+              
+              padding: 5vh;
+
+              text-align: left;
+          }
+
+          .grid{
+              display: grid;
+
+              grid-template-columns: repeat(8, 1fr);
+              grid-template-rows: repeat(2, .5fr);
+
+              gap: 10;
+          }
+
+          .box-third{
+              padding: 10vh;
+
+              grid-row: span 1;
+
+              grid-column: span 6;
+          }
+
+          .box-fourth{
+              grid-row: span 4;
+          }
+      </style>    
+</head>
+<body class="d-flex flex-column min-vh-100">
+  
+  <!-- The Top Part of the Website-->
+  <header>
+    <!-- The Navigation Bar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid pt-2 pb-2">
+            <!-- Website Icon -->
+            <a class="navbar-brand me-5" href="main.html">
+                <img src="./wp-content/images/icon.svg" alt="Logo" width="128" height="48" class="d-inline-block align-text-top">
+            </a>
+            
+            <!-- Dropdown Navbar Toggler for menu-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- The Menu -->
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <!-- Menu Options -->
+                <ul class="navbar-nav me-5 mb-2 mb-lg-0">
+                    <!-- Menu Option - Home -->
+                    <li class="nav-item me-3">
+                        <a class="nav-link" aria-current="page" href="main.html">Home</a>
+                    </li>
+
+                    <!-- Menu Option - Shop Pages -->
+                    <li class="nav-item dropdown me-3">
+                        <a class="nav-link active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu me-3">
+                            <li><a class="dropdown-item" href="product.html">Products</a></li>
+                            <li><a class="dropdown-item" href="#">Wishlist</a></li>
+                            <li><a class="dropdown-item" href="cart.html">Shopping Cart</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Menu Option - Account Pages -->
+                    <li class="nav-item dropdown me-3">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="registration.html">Sign Up</a></li>
+                            <li><a class="dropdown-item" href="#">Orders</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Menu Option - Website's Other Pages -->
+                    <li class="nav-item me-3">
+                      <a class="nav-link" aria-current="page" href="about.html">About</a>
+                  </li>
+                </ul>
+                <!-- end of Menu Options-->
+
+                <!-- Search Bar -->
+                <form class="d-flex w-100 me-3" action="#" role="search">
+                    <div class="input-group">                                    
+                        <!-- the search bar text input -->
+                        <input type="text" class="form-control" type="search" placeholder="Search for products" aria-label="Search">
+                        
+                        <!-- Search bar button -->
+                        <button class="input-group-text bg-transparent" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+                <!-- End of Search Bar -->
+
+                <!-- Icon Bar -->
+                <div class="col-1 me-4 d-flex align-items-center">
+                    <div class="list-inline ms-auto d-lg-block d-none">
+                        <!-- Icon Bar  - the wishlist button -->
+                        <div class="list-inline-item me-3">
+                            <a href="#" class="text-muted position-relative">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- Icon Bar - the account button -->
+                        <div class="list-inline-item me-3">
+                            <a href="#" class="text-muted position-relative">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- Icon Bar - the cart icon-->
+                        <div class="list-inline-item">
+                            <a href="#" class="text-muted position-relative">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Icon Bar -->
+            </div>
+            <!-- End of Menu -->
+        </div>
+    </nav>
+  </header>
+
+  
+  <!-- Main Boyd of Page - Chris's work -->
+  <main>     
+    
+    <!--Start of page and grid to display product image and info (example pictures and info, need to setup typescript/JS to communicate with backend)-->
+    <div class="text-bg-primary p-3">
+      <h1 style="font-family: sans-serif; margin-left: 15vw; margin-top: 1vw;">King's Hawaiian Sliced Bread</h1>
+    <div class="container text-center">
+
+    <div class="grid">
+        <div class="box-third"><img src="./wp-content/images/products/kingHawaiian_slicedsweetbread.jpg" alt="kingHawaiian_slicedsweetbread" style="height:10vw; width:10vw; margin-left: 5vw;"></div>
+        <div class="box"></div>
+        <div class="box"><p style="font-family: sans-serif; font-size: 200%; margin-top: 10vw;">King's Hawaiian</p> <p style="font-family: sans-serif; font-size: 200%;">$9.15</p> </div>
+        <div class="box-third"><p style="font-family: sans-serif; margin-left: 1rem;">A 13.5 oz loaf, 12 slices, of KING''S HAWAIIAN Original Sliced Hawaiian Sweet Bread. Bread loaf baked with the original Hawaiian Sweet Bread recipe. Sliced bread with a melt-in-your-mouth texture leaves an impression on any meal. KING''S HAWAIIAN sandwich bread is made with no high fructose corn syrup, artificial dyes or trans fat. Sliced Hawaiian bread is perfect for breakfast toast, deli sandwiches and sweet lunch snacks.</p></div>
+        <div class="box"><span class="badge rounded-pill text-bg-success" style="height: 12%; width: 120%;"><span style="font-size: 150%; color: rgba(240, 240, 11, 0.986);">Reviews!</span>
+          <p><span class="badge text-bg-success" style="margin-top: 2rem; font-family: sans-serif; size: 4vw;">Aidan, 4 stars!</span></p></div>
+        <div class="box"><button type="button" class="btn btn-warning" style="font-size: 150;">Add to cart</button></div>
+    </div>
+
+  </main>
+
+        
+
+  <!-- Wessite Footer  -->
+  <footer>
+      <div class="container-fluid bg-light pt-4 pb-1 mt-auto text-dark">
+          <!-- Using Grid to Column Sections -->
+          <div class="row justify-content-center">
+              <!-- Customer Option Section -->
+              <div class="col-6 col-md-2 mb-3">
+                  <h5>Customers</h5>
+                  <ul class="nav flex-column">
+                      <li class="nav-item mb-2"><a href="login.html" class="nav-link p-0 text-muted">Login</a></li>
+                      <li class="nav-item mb-2"><a href="registration.html" class="nav-link p-0 text-muted">Sign Up</a></li>
+                      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Orders</a></li>
+                      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Profile</a></li>
+                  </ul>
+              </div>
+
+              <!-- Shopping Option Section -->
+              <div class="col-6 col-md-2 mb-3">
+                  <h5>Shop</h5>
+                  <ul class="nav flex-column">
+                      <li class="nav-item mb-2"><a href="main.html" class="nav-link p-0 text-muted">Home</a></li>
+                      <li class="nav-item mb-2"><a href="product.html" class="nav-link p-0 text-muted">Products</a></li>
+                      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Wishlist</a></li>
+                      <li class="nav-item mb-2"><a href="cart.html" class="nav-link p-0 text-muted">Shopping Cart</a></li>
+                  </ul>
+              </div>
+
+              <!-- Company Option Section -->
+              <div class="col-6 col-md-2 mb-3">
+                  <h5>Company</h5>
+                  <ul class="nav flex-column">
+                      <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-muted">About Us</a></li>
+                  </ul>
+              </div>
+
+              <!-- Shopping Disclamers Section -->
+              <div class="col-6 col-md-2 mb-3">
+                  <div class="row">
+                      <h6 class="text-uppercase">Free shipping</h6>
+                      <p class="text-muted fw-light text-sm mb-0">Free Shipping over $50</p>
+                  </div>
+                  <div class="row mt-4">
+                      <h6 class="text-uppercase">Money back guarantee</h6>
+                      <p class="text-muted fw-light text-sm mb-0">7 Days Money Back Guarantee</p>
+                    </div>
+              </div>
+
+          </div>
+      </div>
+  
+      <!-- Website Copyright Section -->
+      <div class="container-fluid bg-dark text-white">
+          <div class="d-flex flex-column flex-sm-row justify-content-center py-3">
+              <div class="p-2 bd-highlight">© 2022 Javawockeez. All rights reserved.</div>    
+          </div>
+      </div>
+  </footer>
+    
+
+</body>
+</html>
