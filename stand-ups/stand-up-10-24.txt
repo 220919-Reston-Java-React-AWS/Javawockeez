@@ -1,0 +1,40 @@
+Chris McMilen
+
+What did they do yesterday?
+	- finished most the portfolio 
+	- studied material for QC today  
+What will they do today?
+	- will review material for today if there is any
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	- 
+Are they running into any challenges/issues?
+	- nothin specific yet, just styling with CSS
+
+
+Aidan Shafer
+
+What did they do yesterday?
+	- studied last week material
+	- experimented with React 
+What will they do today?
+	- continue experiementing with React
+	- begin looking into  React
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	-
+Are they running into any challenges/issues?
+	- N/A
+
+
+Daniel Rivera
+
+What did they do yesterday?
+	- did most portfolio 
+	- begin setting up the react front-end
+	- studied material for QC 
+What will they do today?
+	- work the project in react
+	-  
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	-
+Are they running into any challenges/issues?
+	- dealing with react-bootstrap
