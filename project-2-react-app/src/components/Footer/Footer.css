@@ -1,0 +1,10 @@
+/* Some custom CSS for elements in Footer.tsx */
+
+.LinkStyle {
+    text-decoration: none;
+    color: gray;
+}
+
+.LinkStyle:hover{
+    color: black;
+}
