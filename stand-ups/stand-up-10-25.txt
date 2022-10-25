@@ -1,0 +1,34 @@
+Chris McMilen
+
+What did they do yesterday?
+	-  Looked at react demos, started building some react projects to practice and start using some concepts that might be useful to the project.
+What will they do today?
+	- Building on learning with new technology if we can work on backend with Spring if not keep practicing react.
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-  No activity on the trello cards today.
+Are they running into any challenges/issues?
+	- N/A
+
+
+Aidan Shafer
+
+What did they do yesterday?
+	- Springified the backend, and started looking at react.
+What will they do today?
+	- Playing around with react
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	- Springified the backend no new trello updates
+Are they running into any challenges/issues?
+	- N/A
+
+
+Daniel Rivera
+
+What did they do yesterday?
+	- Submitted the revature portfolio, transferred the pages to github
+What will they do today?
+	- Making a home page
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	- Still accurate
+Are they running into any challenges/issues?
+	- N/A

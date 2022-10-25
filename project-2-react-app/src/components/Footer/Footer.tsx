@@ -17,8 +17,8 @@ function Footer() {
                     <Col xs={6} md={3} className="text-center p-3 pb-5">
                         <Row><h5>Account</h5></Row>
                         <ListGroup variant="flush">
-                            <ListGroup.Item className="bg-light"><Link to={'#login'} className="LinkStyle">Login</Link></ListGroup.Item>
-                            <ListGroup.Item className="bg-light"><Link to={'#sign-up'} className="LinkStyle">Sign Up</Link></ListGroup.Item>
+                            <ListGroup.Item className="bg-light"><Link to={'/login'} className="LinkStyle">Login</Link></ListGroup.Item>
+                            <ListGroup.Item className="bg-light"><Link to={'/sign-up'} className="LinkStyle">Sign Up</Link></ListGroup.Item>
                             <ListGroup.Item className="bg-light"><Link to={'#profile'} className="LinkStyle">Profile</Link></ListGroup.Item>
                         </ListGroup>
                     </Col>
