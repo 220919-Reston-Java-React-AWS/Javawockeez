@@ -13,32 +13,37 @@ import './custom.css'
 
 function Login() {
 
+    // The user logging in. Fills out as the form does.
     let newUser = {
         email: "",
         password: ""
     }
-
+    // The message you see after filling out the form
     let [loginMessage, setLoginMessage] = useState("");
-
+    // Whether or not you ARE filling out the form
     let [loggingIn, setLoggingIn] = useState(true);
+
 
     useEffect(() => {
         // scroll to top on page load
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
       }, []);
 
-    
+    // Set the users email as they fill it out
     function setEmail(event: React.ChangeEvent<HTMLInputElement>){
         newUser.email = event.target.value;
     }
 
+    // Set the password as they fill it out
     function setPassword(event: React.ChangeEvent<HTMLInputElement>){
         newUser.password = event.target.value;
     }
     
+    // Attempt to log into the back end
     async function submit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
 
+        // Response message based on the back ends response
         let message:string;
 
         await fetch("http://127.0.0.1:8080/login", {
@@ -53,15 +58,16 @@ function Login() {
         .then( response => response.json())
         .then( result => {
 
-            if (result.message){
+            if (result.message){ // Error message
                 message = result.message
-            } else {
-                localStorage.setItem("email", result.email)
+
+            } else { // Success message/login
+                localStorage.setItem("email", result.email) // **** NEEDS TO CHANGE **** //
                 message = `Welcome back ${result.firstName}!`
             }
 
+            // Set the message to the response card, and display it
             setLoginMessage(message)
-
             setLoggingIn(false)
         } )
         .catch( (error) => {
@@ -69,6 +75,7 @@ function Login() {
         } )
     }
 
+    // Get the form for the body
     function getForm(){
         return <Form onSubmit={submit}>
                 <h1 className="h3 mb-5 fw-normal">User Login</h1>
@@ -87,6 +94,7 @@ function Login() {
             </Form>
     }
 
+    // Get the message for the body
     function getMessage(){
         return <p>
             {loginMessage}
@@ -94,7 +102,7 @@ function Login() {
         </p>
     }
 
-
+    // Displays the amazing art, and either the form or response afterward
     return(
         <main className="min-vh-100 background">
             <Container fluid className="d-flex text-center justify-content-center vertical-center pb-5">
