@@ -39,20 +39,20 @@ function NavigationBar() {
                   
                         {/* Shop Pages */}
                         <NavDropdown title="Shopping" id={`offcanvasNavbarDropdown-expand-$'md'`}>
-                            <NavDropdown.Item as={NavLink} to='#'>Products</NavDropdown.Item>
-                            <NavDropdown.Item as={NavLink} to='#'>Shopping Cart</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='#'>Products</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='#'>Shopping Cart</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item as={NavLink} to='#'>Checkout</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='#'>Checkout</NavDropdown.Item>
                         </NavDropdown>       
 
                         {/* Account Pages */}
                         <NavDropdown title="Account" id={`offcanvasNavbarDropdown-expand-$'md'`}>
-                            <NavDropdown.Item as={NavLink} to='#'>Login</NavDropdown.Item>
-                            <NavDropdown.Item as={NavLink} to='#'>Signup</NavDropdown.Item>
-                            <NavDropdown.Item as={NavLink} to='#'>Profile</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/login'>Login</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/sign-up'>Signup</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='#'>Profile</NavDropdown.Item>
                     
                             <NavDropdown.Divider />
-                            <NavDropdown.Item as={NavLink} to='#'>Logout</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='#'>Logout</NavDropdown.Item>
                         </NavDropdown>     
 
                         {/* About Page */}
