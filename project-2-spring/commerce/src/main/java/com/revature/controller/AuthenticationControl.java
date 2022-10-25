@@ -8,12 +8,10 @@ import com.revature.model.User;
 import com.revature.service.AuthenticationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 
+@CrossOrigin
 @RestController
 public class AuthenticationControl {
 
@@ -24,13 +22,13 @@ public class AuthenticationControl {
     }
 
     @PostMapping(value = "/login", consumes="application/json")
-    public ResponseEntity login(@RequestBody User newUser) {
-
+    public ResponseEntity login(@RequestBody User user) {
+    //public ResponseEntity login(@ String email, @RequestBody String password) {
         try {
-            String email = newUser.getEmail();
-            String password = newUser.getPassword();
+            String email = user.getEmail();
+            String password = user.getPassword();
 
-            User user = AuthService.login(email, password);
+            user = AuthService.login(email, password);
 
             return new ResponseEntity(user, HttpStatus.OK);
 
