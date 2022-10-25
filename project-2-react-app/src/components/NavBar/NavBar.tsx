@@ -4,14 +4,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 // for Reactful page links
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom';
 
 //import Button from 'react-bootstrap/Button';
 //import Form from 'react-bootstrap/Form';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 
-import logo from './icon.svg'
+import logo from "./icon.svg";
+//import {ReactComponent as logo} from "./icon.svg";
+//import "./icon.svg"
 
 function NavigationBar() {
   return (
