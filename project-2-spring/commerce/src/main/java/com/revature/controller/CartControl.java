@@ -18,7 +18,11 @@ import java.util.ArrayList;
 @RestController
 public class CartControl {
 
-    CartService cs = new CartService();
+    CartService cs;// = new CartService();
+
+    public CartControl(CartService cs){
+        this.cs = cs;
+    }
 
     @GetMapping("/cart/{email}")
     public ResponseEntity getCart(@PathVariable String email){

@@ -3,12 +3,16 @@ package com.revature.repository;
 import com.revature.exceptions.QueryException;
 import com.revature.model.Product;
 
+import org.springframework.stereotype.Component;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+@Component
 public class ProductRepo {
     // Column positions in the SQL database, used to simplify minor changes.
     public final int ID_COLUMN = 1;

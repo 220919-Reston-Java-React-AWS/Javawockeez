@@ -2,6 +2,7 @@ package com.revature.repository;
 
 import com.revature.exceptions.QueryException;
 import com.revature.model.Product;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +10,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+@Component
 public class CartRepo {
 
-    ProductRepo pr = new ProductRepo();
+    ProductRepo pr;// = new ProductRepo();
 
-    public CartRepo(){
-
+    public CartRepo(ProductRepo pr){
+        this.pr = pr;
     }
 
     public void addToCart(int userID, int productID) throws SQLException {

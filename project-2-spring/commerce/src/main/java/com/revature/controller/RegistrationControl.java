@@ -15,7 +15,11 @@ import java.sql.SQLException;
 @RestController
 public class RegistrationControl {
 
-    RegistrationService rs = new RegistrationService();
+    RegistrationService rs;// = new RegistrationService();
+
+    public RegistrationControl(RegistrationService rs){
+        this.rs = rs;
+    }
 
     @PostMapping("/register")
     public ResponseEntity registerUser(@RequestBody User newUser){

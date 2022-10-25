@@ -17,7 +17,11 @@ import java.sql.SQLException;
 @RestController
 public class AuthenticationControl {
 
-    private AuthenticationService AuthService = new AuthenticationService();
+    private AuthenticationService AuthService;// = new AuthenticationService();
+
+    public AuthenticationControl(AuthenticationService AuthService){
+        this.AuthService = AuthService;
+    }
 
     @PostMapping(value = "/login", consumes="application/json")
     public ResponseEntity login(@RequestBody User newUser) {

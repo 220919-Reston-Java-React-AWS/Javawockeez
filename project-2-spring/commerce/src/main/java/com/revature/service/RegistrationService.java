@@ -5,6 +5,7 @@ import com.revature.exceptions.InvalidInputException;
 import com.revature.exceptions.QueryException;
 import com.revature.model.User;
 import com.revature.repository.UserRepo;
+import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
@@ -21,15 +22,17 @@ import java.sql.SQLException;
 //          validFirstname - Checks if the First Name is valid (30 or fewer characters long, all letters or SPACE or DASH)
 //          validLastname - Checks if the Last Name is valid (30 or fewer characters long, all letters or SPACE or DASH)
 
+
+@Component
 public class RegistrationService {
     // -----------------------------------------         SET-UP         --------------------------------------------- //
 
     // Access to the User repository (or rather, access to the thing which accesses the database)
-    UserRepo ur = new UserRepo();
+    UserRepo ur;// = new UserRepo();
 
     // Empty constructor - This isn't an 'object' so much as a list of methods
-    public RegistrationService(){
-
+    public RegistrationService(UserRepo ur){
+        this.ur = ur;
     }
 
 

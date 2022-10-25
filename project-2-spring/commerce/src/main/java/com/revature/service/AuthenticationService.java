@@ -4,6 +4,7 @@ import com.revature.exceptions.InvalidInputException;
 import com.revature.exceptions.QueryException;
 import com.revature.model.User;
 import com.revature.repository.UserRepo;
+import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
@@ -12,15 +13,17 @@ import java.sql.SQLException;
 // Method:
 //      login - Self-explanatory, logs the user in. (Logout is handled directly by the Control-Layer)
 
+
+@Component
 public class AuthenticationService {
     // -----------------------------------------         SET-UP         --------------------------------------------- //
 
     // Access to the User repository (or rather, access to the thing which accesses the database)
-    UserRepo ur = new UserRepo();
+    UserRepo ur;// = new UserRepo();
 
     // Empty constructor - This isn't an 'object' so much as two methods.
-    public AuthenticationService(){
-
+    public AuthenticationService(UserRepo ur){
+        this.ur = ur;
     }
 
 

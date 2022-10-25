@@ -4,15 +4,19 @@ import com.revature.exceptions.QueryException;
 import com.revature.model.Product;
 import com.revature.repository.ProductRepo;
 
+import org.springframework.stereotype.Component;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+@Component
 public class ProductSearchService {
 
-    private ProductRepo pr = new ProductRepo();
+    private ProductRepo pr;// = new ProductRepo();
 
-    public ProductSearchService(){
-
+    public ProductSearchService(ProductRepo pr){
+        this.pr = pr;
     }
 
     public Product getProduct(int productID) throws SQLException, QueryException {

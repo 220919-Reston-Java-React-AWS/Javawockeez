@@ -1,9 +1,12 @@
 package com.revature.controller;
 
+import com.revature.config.AppConfig;
 import com.revature.exceptions.QueryException;
 import com.revature.model.Product;
 import com.revature.model.Response;
 import com.revature.service.ProductSearchService;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +18,11 @@ import java.util.ArrayList;
 @RestController
 public class ProductControl {
 
-    private ProductSearchService pss = new ProductSearchService();
+    private ProductSearchService pss;// = new ProductSearchService();
+
+    public ProductControl(ProductSearchService pss){
+        this.pss = pss;
+    }
 
     @GetMapping("/products")
     public ResponseEntity getAllProducts(){

@@ -2,12 +2,15 @@ package com.revature.repository;
 
 import com.revature.exceptions.QueryException;
 import com.revature.model.User;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+@Component
 public class UserRepo {
 
     // Column positions in the SQL database, used to simplify minor changes.

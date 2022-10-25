@@ -12,10 +12,32 @@ import {useEffect} from 'react';
 import './custom.css'
 
 function Login() {
+
+    let newUser = {
+        email: "",
+        password: ""
+    }
+
     useEffect(() => {
         // scroll to top on page load
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
       }, []);
+
+    
+    function setEmail(event: React.ChangeEvent<HTMLInputElement>){
+        newUser.email = event.target.value;
+    }
+
+    function setPassword(event: React.ChangeEvent<HTMLInputElement>){
+        newUser.password = event.target.value;
+    }
+    
+    async function submit(event: React.FormEvent<HTMLFormElement>){
+        event.preventDefault();
+
+        await fetch("http://127.0.0.1:8080/login")
+    }
+
 
     return(
         <main className="min-vh-100 background">
