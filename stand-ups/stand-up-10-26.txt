@@ -1,0 +1,36 @@
+Chris McMilen
+
+What did they do yesterday? Setting up connection to the backend
+	-  
+What will they do today? Finish connecting to the backend and make css consistant with Daniel's design.
+	- 
+	-  
+Are they running into any challenges/issues? Connecting
+	-
+
+
+Aidan Shafer
+
+What did they do yesterday? Got the login to connect to the backend
+	- 
+What will they do today? Hopefully finish fixing login in front-end.
+	- 
+	- 
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	-
+Are they running into any challenges/issues? Saving user for login
+	-
+
+
+Daniel Rivera
+
+What did they do yesterday? Worked on project 2 - main page. 
+	- 
+What will they do today? Work on connecting the frontend with backend to display products.
+	- 
+	- 
+What progress are they making on project-2 and are they updating the Trello cards with their status? None
+	-
+
+
+Are they running into any challenges/issues?
