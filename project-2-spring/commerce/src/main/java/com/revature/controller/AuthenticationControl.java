@@ -30,6 +30,8 @@ public class AuthenticationControl {
 
             user = AuthService.login(email, password);
 
+            System.out.println(user);
+
             return new ResponseEntity(user, HttpStatus.OK);
 
         } catch (QueryException e) {

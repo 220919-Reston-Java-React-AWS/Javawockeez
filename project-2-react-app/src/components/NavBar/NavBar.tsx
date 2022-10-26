@@ -12,12 +12,23 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 
 
 import logo from "./icon.svg";
+import { NavItem } from 'react-bootstrap';
+import { selectUser } from '../Login/UserSlicer';
+import { IUserModel } from '../models/userModel';
+import { useAppSelector } from '../../shared/hooks';
 //import {ReactComponent as logo} from "./icon.svg";
 //import "./icon.svg"
 
 function NavigationBar() {
-  return (
-    <header>
+
+    const user:IUserModel = useAppSelector(selectUser);
+    
+    
+    function getUser(){
+        return user.firstName;
+    }
+
+    return <header>
         <Navbar key='md' bg="light" expand='md' className="mb-0">
           <Container fluid className="pt-2 pb-2">
             {/* Website Logo */}
@@ -35,6 +46,8 @@ function NavigationBar() {
                 <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
                         {/* "NavLink" here since "active" class styling is needed */}
+
+                        <NavItem>{getUser()}</NavItem>
 
                         {/* Home Page */}
                         <Nav.Link as={NavLink} to='/'>Home</Nav.Link>
@@ -75,7 +88,11 @@ function NavigationBar() {
           </Container>
         </Navbar>
     </header>
-  );
+
 }
 
 export default NavigationBar;
+
+function getAppSelector(selectUser: (state: { user: any; }) => any) {
+    throw new Error('Function not implemented.');
+}

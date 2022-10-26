@@ -13,14 +13,16 @@ import '../Login/custom.css'
 
 function Signup() {
 
+    // The new-user object that gets filled in as the form does
     let newUser = {
         email: "",
         password: "",
         firstName:"",
         lastName:"",
     }
-
+    // The message to be displayed after registration
     let [registrationMessage, setRegistrationMessage] = useState("");
+    // Whether or not to show the form vs the message afterwards.
     let [registering, setRegistering] = useState(true);
 
 

@@ -10,8 +10,15 @@ import {useEffect, useState} from 'react';
 
 // custom css
 import './custom.css'
+import { useAppDispatch } from '../../shared/hooks';
+import { setUser } from './UserSlicer';
+import { createStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+
 
 function Login() {
+
+    const dispatch = useAppDispatch();
 
     // The user logging in. Fills out as the form does.
     let newUser = {
@@ -62,7 +69,9 @@ function Login() {
                 message = result.message
 
             } else { // Success message/login
-                localStorage.setItem("email", result.email) // **** NEEDS TO CHANGE **** //
+                //localStorage.setItem("email", result.email) // **** NEEDS TO CHANGE **** //
+                console.log( result, result.id, result.data )
+                dispatch(setUser(result))
                 message = `Welcome back ${result.firstName}!`
             }
 

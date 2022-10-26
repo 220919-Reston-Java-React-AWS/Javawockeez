@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class UserRepo {
 
     // Column positions in the SQL database, used to simplify minor changes.
-    //id = 1
+    public final int ID_COLUMN = 1;
     public final int FIRSTNAME_COLUMN = 2;
     public final int LASTNAME_COLUMN = 3;
     public final int EMAIL_COLUMN = 4;
@@ -56,6 +56,20 @@ public class UserRepo {
             return rs.next();// If there is a record, this will return true
         }
     }
+    public boolean userExists(int id) throws SQLException {
+        try (Connection conn = ConnectionFactory.createConnection()){
+            String sql = "SELECT * FROM users WHERE email=?";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setInt(1, id);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            return rs.next();// If there is a record, this will return true
+        }
+    }
+
 
     public User getUserByEmail(String email)throws SQLException, QueryException {
         try (Connection conn = ConnectionFactory.createConnection()){
@@ -67,14 +81,38 @@ public class UserRepo {
 
             ResultSet rs = pstmt.executeQuery();
             if (rs.next() ) {
-                return new User(rs.getString(EMAIL_COLUMN),
-                        rs.getString(PASSWORD_COLUMN),
+                return new User(rs.getInt(ID_COLUMN),
+                        rs.getString(EMAIL_COLUMN),
+                        "", // rs.getString(PASSWORD_COLUMN),
                         rs.getString(FIRSTNAME_COLUMN),
                         rs.getString(LASTNAME_COLUMN),
                         rs.getInt(ROLE_ID_COLUMN)
                 );
             } else {
                 throw new QueryException("The user " + email + " could not be found");
+            }
+        }
+    }
+
+    public User getUserByID(int id)throws SQLException, QueryException {
+        try (Connection conn = ConnectionFactory.createConnection()){
+            String sql = "SELECT * FROM users WHERE id=?";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setInt(1, id);
+
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next() ) {
+                return new User(rs.getInt(ID_COLUMN),
+                        rs.getString(EMAIL_COLUMN),
+                        "",//rs.getString(PASSWORD_COLUMN),
+                        rs.getString(FIRSTNAME_COLUMN),
+                        rs.getString(LASTNAME_COLUMN),
+                        rs.getInt(ROLE_ID_COLUMN)
+                );
+            } else {
+                throw new QueryException("The user with id " + id + " could not be found");
             }
         }
     }
