@@ -11,6 +11,8 @@ import About from "./components/Pages/About/About";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Main from "./components/Pages/Main/Main";
+import Products from "./components/Pages/Products/Products";
+import Cart from "./components/Pages/Cart/Cart";
 
 // import Landing from "./Pages/Landing";
 // import Dashboard from "./Pages/Dashboard";
@@ -30,6 +32,8 @@ const Layout: React.FC = () => {
           <Route path="/about" element={<About />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/sign-up" element={<Signup />}/>
+          <Route path="/products" element={<Products />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
           <Route path="/" element={<Main />}/>
         </Routes>
 

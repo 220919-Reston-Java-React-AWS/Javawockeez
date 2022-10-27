@@ -1,0 +1,16 @@
+.checkout {
+    text-align: right;
+    margin-right: 1rem;
+    size-adjust: 300%;
+}
+.error{
+    text-align: center;
+}
+.total{
+    max-width: 10rem;
+    max-height: 7rem;
+    text-align: center;
+    size-adjust: 150%;
+    background-color: rgb(226, 224, 224);
+    align-content: right;
+}

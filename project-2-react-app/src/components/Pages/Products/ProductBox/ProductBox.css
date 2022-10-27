@@ -1,0 +1,23 @@
+.box {
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: rgb(0, 0, 0, 0.35) 15px 20px 10px;
+    max-width: 17rem;
+    height: 35rem;
+
+    text-align: center;
+}
+
+img{
+    max-width: 90%;
+    margin-top: 1rem;
+}
+
+button{
+    margin-bottom: 2rem;
+}
+
+h4{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
