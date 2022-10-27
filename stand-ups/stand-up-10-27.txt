@@ -1,0 +1,38 @@
+Chris McMilen
+
+What did they do yesterday?
+	- kept working on the product list from yesterday
+What will they do today?
+	- needs to add styling to products page
+	- 
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-  
+Are they running into any challenges/issues?
+	- encounter the infinite search issue in console.log
+
+
+Aidan Shafer
+
+What did they do yesterday?
+	- included a search bar in navbar, started a product search page
+	- 
+What will they do today?
+	- continue the product page, and spring-a-fy database
+	- 
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	- 
+Are they running into any challenges/issues?
+	- 
+
+
+Daniel Rivera
+
+What did they do yesterday?
+	- got sick yesterday, but was looking at spring-a-fying the backend
+What will they do today?
+	- if can't get backend running, then will look at the check out instead
+	- 
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	- 
+Are they running into any challenges/issues?
+	- just not being able to run backend 
