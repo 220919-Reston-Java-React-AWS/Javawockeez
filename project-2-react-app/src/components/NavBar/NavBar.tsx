@@ -12,30 +12,63 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 
 
 import logo from "./icon.svg";
-import { NavItem } from 'react-bootstrap';
+import "./NavBar.css";
+
+import { Button, Form, NavItem } from 'react-bootstrap';
 import { selectUser } from '../Login/UserSlicer';
 import { IUserModel } from '../models/userModel';
 import { useAppSelector } from '../../shared/hooks';
+import { useState } from 'react';
 //import {ReactComponent as logo} from "./icon.svg";
 //import "./icon.svg"
 
 function NavigationBar() {
 
     const user:IUserModel = useAppSelector(selectUser);
+
+    let query:string = "";
+    
     
     
     function getUser(){
-        return user.firstName;
+        return <Navbar.Text className="userName">
+            {user.firstName}
+            </Navbar.Text>
     }
+
+
+    function setQuery(event:React.ChangeEvent<HTMLInputElement>){
+        query = event.target.value;
+    }
+
+    function search(event:React.FormEvent<HTMLFormElement>){
+        event.preventDefault();
+        alert("Searching for " + query);
+    }
+    
 
     return <header>
         <Navbar key='md' bg="light" expand='md' className="mb-0">
-          <Container fluid className="pt-2 pb-2">
+          <Container fluid className="pt-2 pb-2 justify-content-center">
             {/* Website Logo */}
             {/* "Link" in brand component since just redirect is needed */}
             <Navbar.Brand as={Link} to='/'>
                 <img src={logo} width={128} height={48} alt="..." />
             </Navbar.Brand>
+
+            {/*getUser()*/}
+
+            {/* Search Bar */}
+            <Form className="d-flex flex-grow-1 searchBarMargin" onSubmit={search}>
+                <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+                onChange={setQuery}
+                    />
+                <Button variant="outline-success" type="submit">Search</Button>
+            </Form>
 
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-$'md'`} />
             <Navbar.Offcanvas id={`offcanvasNavbar-expand-$'md'`} aria-labelledby={`offcanvasNavbarLabel-expand-$'md'`} placement="end">
@@ -44,10 +77,10 @@ function NavigationBar() {
                     <Offcanvas.Title id={`offcanvasNavbarLabel-expand-$'md'`}>Menu</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
+
                     <Nav className="justify-content-end flex-grow-1 pe-3">
                         {/* "NavLink" here since "active" class styling is needed */}
 
-                        <NavItem>{getUser()}</NavItem>
 
                         {/* Home Page */}
                         <Nav.Link as={NavLink} to='/'>Home</Nav.Link>
@@ -62,6 +95,9 @@ function NavigationBar() {
 
                         {/* Account Pages */}
                         <NavDropdown title="Account" id={`offcanvasNavbarDropdown-expand-$'md'`}>
+                            {getUser()}
+
+                            <NavDropdown.Divider />
                             <NavDropdown.Item as={Link} to='/login'>Login</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to='/sign-up'>Signup</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to='#'>Profile</NavDropdown.Item>
@@ -73,16 +109,6 @@ function NavigationBar() {
                         {/* About Page */}
                         <Nav.Link as={NavLink} to='/about'>About</Nav.Link>
                     </Nav>
-                
-                    {/* <Form className="d-flex">
-                    <Form.Control
-                        type="search"
-                        placeholder="Search"
-                        className="me-2"
-                        aria-label="Search"
-                    />
-                    <Button variant="outline-success">Search</Button>
-                    </Form> */}
                 </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>

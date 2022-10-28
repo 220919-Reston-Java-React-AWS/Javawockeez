@@ -83,6 +83,7 @@ values
 
 --Product category pairs
 create table product_categories(
+	--id serial primary key,
 	product_id int not null,
 	category_id int not null,
 	constraint fk_product_id foreign key(product_id) references products(id) on delete cascade,
