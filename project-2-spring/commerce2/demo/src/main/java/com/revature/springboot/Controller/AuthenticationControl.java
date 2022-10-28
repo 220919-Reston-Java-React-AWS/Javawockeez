@@ -17,17 +17,6 @@ public class AuthenticationControl {
     @Autowired
     private AuthenticationService AuthService;
 
-//    @GetMapping(value="/test/{id}")
-//    public ResponseEntity test(@PathVariable int id){
-//        try {
-//            User user = AuthService.getUserById(id);
-//            user.secure();
-//            return new ResponseEntity(user, HttpStatus.OK);
-//        } catch (Exception e) {
-//            return new ResponseEntity(new Response(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
-
     @PostMapping(value = "/login", consumes="application/json")
     public ResponseEntity login(@RequestBody User user) {
         //public ResponseEntity login(@ String email, @RequestBody String password) {

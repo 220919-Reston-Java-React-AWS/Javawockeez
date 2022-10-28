@@ -24,7 +24,10 @@ public class ProfileService {
             throw new QueryException("The user is not in the datebase");
         }
 
-        return userOpt.get();
+        User user = userOpt.get();
+        user.secure();
+
+        return user;
     }
 
     public void updateProfile(int userId, User updatedProfile) throws QueryException {

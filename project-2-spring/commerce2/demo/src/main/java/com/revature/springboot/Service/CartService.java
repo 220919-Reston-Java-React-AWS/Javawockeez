@@ -2,7 +2,6 @@ package com.revature.springboot.Service;
 
 import com.revature.springboot.Repository.CartRepo;
 import com.revature.springboot.Repository.ProductRepo;
-import com.revature.springboot.Repository.UserRepo;
 import com.revature.springboot.model.CartItem;
 import com.revature.springboot.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,6 @@ public class CartService {
     @Autowired
     ProductRepo pr;
 
-//    @Autowired
-//    UserRepo ur;
 
     public List<Product> getCart(int userId){
         List<CartItem> userCart = cr.findByUserId(userId);
@@ -41,8 +38,5 @@ public class CartService {
 
         cr.save(newItem);
     }
-
-
-
 
 }
