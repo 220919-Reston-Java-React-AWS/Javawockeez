@@ -100,7 +100,7 @@ function NavigationBar() {
                             <NavDropdown.Divider />
                             <NavDropdown.Item as={Link} to='/login'>Login</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to='/sign-up'>Signup</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to='#'>Profile</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/profile'>Profile</NavDropdown.Item>
                     
                             <NavDropdown.Divider />
                             <NavDropdown.Item as={Link} to='#'>Logout</NavDropdown.Item>

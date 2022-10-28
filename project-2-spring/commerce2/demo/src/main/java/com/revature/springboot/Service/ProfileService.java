@@ -30,7 +30,7 @@ public class ProfileService {
         return user;
     }
 
-    public void updateProfile(int userId, User updatedProfile) throws QueryException {
+    public User updateProfile(int userId, User updatedProfile) throws QueryException {
 
         Optional<User> original = ur.findById(userId);
 
@@ -42,6 +42,8 @@ public class ProfileService {
         mergeProfiles(orig, updatedProfile);
 
         ur.save( orig );
+
+        return orig;
 
     }
 

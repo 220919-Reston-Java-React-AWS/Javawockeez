@@ -14,6 +14,7 @@ import { ProductSearch } from "./components/ProductSearch/ProductSearch";
 import Main from "./components/Pages/Main/Main";
 import Products from "./components/Pages/Products/Products";
 import Cart from "./components/Pages/Cart/Cart";
+import { UserProfile } from "./components/UserProfile/UserProfile";
 
 // import Landing from "./Pages/Landing";
 // import Dashboard from "./Pages/Dashboard";
@@ -36,6 +37,7 @@ const Layout: React.FC = () => {
           <Route path="/products" element={<Products />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/" element={<Main />}/>
+          <Route path="/profile" element={<UserProfile />}/>
         </Routes>
 
         {/* The Footer is here to be persistent across website */}

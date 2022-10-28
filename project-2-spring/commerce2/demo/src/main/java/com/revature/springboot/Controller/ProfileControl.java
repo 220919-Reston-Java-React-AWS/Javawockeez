@@ -38,8 +38,7 @@ public class ProfileControl {
     public ResponseEntity updateProfile(@PathVariable int userId, @RequestBody User updatedUser){
 
         try{
-            ps.updateProfile(userId, updatedUser);
-            return new ResponseEntity( new Response( "Profile was updated successfully!" ), HttpStatus.OK );
+            return new ResponseEntity( ps.updateProfile(userId, updatedUser), HttpStatus.OK );
 
         } catch (QueryException e) {
             return new ResponseEntity( new Response( e.getMessage() ), HttpStatus.BAD_REQUEST);
