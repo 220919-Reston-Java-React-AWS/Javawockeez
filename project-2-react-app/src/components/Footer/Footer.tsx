@@ -28,8 +28,8 @@ function Footer() {
                         <Row><h5>Shop</h5></Row>
                         <ListGroup variant="flush">
                             <ListGroup.Item className="bg-light"><Link to={'/'} className="LinkStyle">Home</Link></ListGroup.Item>
-                            <ListGroup.Item className="bg-light"><Link to={'#product'} className="LinkStyle">Products</Link></ListGroup.Item>
-                            <ListGroup.Item className="bg-light"><Link to={'#cart'} className="LinkStyle">Shopping Cart</Link></ListGroup.Item>
+                            <ListGroup.Item className="bg-light"><Link to={'/products'} className="LinkStyle">Products</Link></ListGroup.Item>
+                            <ListGroup.Item className="bg-light"><Link to={'/cart'} className="LinkStyle">Shopping Cart</Link></ListGroup.Item>
                         </ListGroup>
                     </Col>
 

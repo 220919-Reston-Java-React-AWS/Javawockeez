@@ -87,8 +87,8 @@ function NavigationBar() {
                   
                         {/* Shop Pages */}
                         <NavDropdown title="Shopping" id={`offcanvasNavbarDropdown-expand-$'md'`}>
-                            <NavDropdown.Item as={Link} to='#'>Products</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to='#'>Shopping Cart</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/products'>Products</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/cart'>Shopping Cart</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item as={Link} to='#'>Checkout</NavDropdown.Item>
                         </NavDropdown>       
