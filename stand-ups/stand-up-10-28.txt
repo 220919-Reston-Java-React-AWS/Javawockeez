@@ -1,0 +1,35 @@
+
+Chris McMilen
+
+What did they do yesterday?
+	-  Worked on setting up products page and cart page with setting up connection for add to cart 	feature.
+What will they do today?
+	- Work on finishing features for both pages and work on individual products page
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	-  Everything I am working on is still in progress.
+Are they running into any challenges/issues?
+	- Not yet.
+
+
+Aidan Shafer
+
+What did they do yesterday?
+	- Finished converting backend to spring formatting.
+What will they do today?
+	- Work on search bar and search page.
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	- Finished springifying backend.
+Are they running into any challenges/issues?
+	- N/A
+
+
+Daniel Rivera
+
+What did they do yesterday?
+	- Researched integrating Stripe API and spring with react. 
+What will they do today?
+	- Keep researching to incorporate Stripe.
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	- Pushed home page to github
+Are they running into any challenges/issues?
+	- All stripe examples are using JS instead of TS.
