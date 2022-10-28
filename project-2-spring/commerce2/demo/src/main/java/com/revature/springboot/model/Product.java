@@ -40,6 +40,10 @@ public @Data class Product {
     private double avgRating = -1;
 
 
+    @Transient
+    private String stripeKey;
+
+
     @ManyToMany
     @JoinTable(name = "product_categories",
             joinColumns = @JoinColumn(
