@@ -30,6 +30,7 @@ const Layout: React.FC = () => {
         {/* This is where setting the webpages are located */}
         <Routes>
           {/* Individual route within this React App */}
+          <Route path="/" element={<Main />}/>
           <Route path="/placeholder" element={<Placeholder />}/>
           <Route path="/about" element={<About />}/>
           <Route path="/login" element={<Login />}/>
@@ -37,7 +38,6 @@ const Layout: React.FC = () => {
           <Route path="/products" element={<Products />}></Route>
           <Route path="/products/search=:keyword" element={<ProductSearch />}/>
           <Route path="/cart" element={<Cart />}/>
-          <Route path="/" element={<Main />}/>
           <Route path="/profile" element={<UserProfile />}/>
         </Routes>
 
