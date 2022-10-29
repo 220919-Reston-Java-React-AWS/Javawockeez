@@ -1,5 +1,5 @@
 export interface productModel{
-    avg_rating: number,
+    avgRating: number,
     brand: string,
     description: string,
     id: number,

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { productModel } from "../models/productModel";
 import CartBox from "../Pages/Cart/CartBox/CartBox";
 import ProductBox from "../Pages/Products/ProductBox/ProductBox";
+import "./ProductSearch.css"
 
 export function ProductSearch(){
 
@@ -68,7 +69,7 @@ export function ProductSearch(){
         setThisURL(window.location.href);
     }
 
-    return <div>
+    return <main className="min-vh-100 background-search">
         {displayProducts()}
-    </div>
+    </main>
 }

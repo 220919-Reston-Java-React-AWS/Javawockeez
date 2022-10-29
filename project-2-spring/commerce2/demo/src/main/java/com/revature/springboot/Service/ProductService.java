@@ -37,14 +37,8 @@ public class ProductService {
     // -----------------------------------------        GETTERS         --------------------------------------------- //
 
     public Product getProduct(int productID) throws QueryException {
-        System.out.println(productID);
-
 
         List<Product> productList = formatProductList( pr.findById(productID) );
-
-
-        System.out.println(productList.toString());
-
 
         if (productList.isEmpty()){
             throw new QueryException("That product was not in the system");
