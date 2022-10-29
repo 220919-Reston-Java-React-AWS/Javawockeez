@@ -4,7 +4,7 @@ import AddToCart from "../../Cart/Cart"
 
 function ProductBox(props: productModel){
     return <div className="box">
-        <img src={`/${props.imagePath} className="product-img"`}/>
+        <img src={`/${props.imagePath}`}/>
         <h4>{props.name}</h4>
         <p>${props.price}</p>
         <p>{props.brand}</p>

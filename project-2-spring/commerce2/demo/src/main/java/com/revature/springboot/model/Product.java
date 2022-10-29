@@ -39,8 +39,7 @@ public @Data class Product {
     @Transient
     private double avgRating = -1;
 
-
-    @Transient
+    @Column(name="stripe_key")
     private String stripeKey;
 
 

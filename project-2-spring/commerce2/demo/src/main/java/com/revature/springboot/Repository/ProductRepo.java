@@ -12,8 +12,6 @@ import java.util.Optional;
 @Repository
 public interface ProductRepo extends JpaRepository<Product, Integer> {
 
-
-    public List<Product> findAll();
     public List<Product> findById(int id);
 
     public List<Product> findByNameContainingIgnoreCase(String keyword);

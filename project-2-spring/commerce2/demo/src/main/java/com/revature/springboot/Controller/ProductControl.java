@@ -24,15 +24,17 @@ import java.util.List;
 public class ProductControl {
 
     @Autowired
-    private ProductService pss;// = new ProductSearchService();
+    private ProductService ps;// = new ProductSearchService();
 
     @GetMapping("/products")
     public ResponseEntity getAllProducts(){
         try{
-            List<Product> productList = pss.getAllProducts();
+            List<Product> productList = ps.getAllProducts();
             return new ResponseEntity( productList, HttpStatus.OK);
 
         } catch (Exception e) {
+            System.out.println( e.getMessage() );
+            System.out.println( e.fillInStackTrace().toString() );
             return new ResponseEntity( new Response("An unexpected error has occurred"), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -40,11 +42,14 @@ public class ProductControl {
     @GetMapping("/products/id={product_id}")
     public ResponseEntity getSpecificProduct(@PathVariable String product_id) {
         try {
-            Product product = pss.getProduct(Integer.parseInt(product_id));
+            Product product = ps.getProduct(Integer.parseInt(product_id));
             return new ResponseEntity(product, HttpStatus.OK);
+
         } catch (QueryException e) {
             return new ResponseEntity(new Response(e.getMessage()), HttpStatus.BAD_REQUEST);
+
         } catch (Exception e) {
+            System.out.println( e.getMessage() );
             return new ResponseEntity(new Response(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -52,7 +57,7 @@ public class ProductControl {
     @GetMapping("/products/category={category}")
     public ResponseEntity getProductsByCategory(@PathVariable String category){
         try{
-            List<Product>  productList = pss.getProductsInCategory(category);
+            List<Product>  productList = ps.getProductsInCategory(category);
             return new ResponseEntity( productList, HttpStatus.OK);
 
         } catch (Exception e) {
@@ -63,13 +68,14 @@ public class ProductControl {
     @GetMapping("/products/search={keyword}")
     public ResponseEntity getProductsByKeyword(@PathVariable String keyword){
         try{
-            List<Product>  productList = pss.productSearch(keyword);
+            List<Product>  productList = ps.productSearch(keyword);
             return new ResponseEntity( productList, HttpStatus.OK);
 
         } catch (QueryException e) {
             return new ResponseEntity(new Response(e.getMessage()), HttpStatus.BAD_REQUEST);
 
         } catch (Exception e) {
+            System.out.println( e.getMessage() );
             return new ResponseEntity( new Response("An unexpected error has occurred"), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

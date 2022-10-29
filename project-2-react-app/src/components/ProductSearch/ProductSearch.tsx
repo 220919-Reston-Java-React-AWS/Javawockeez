@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { productModel } from "../models/productModel";
+import CartBox from "../Pages/Cart/CartBox/CartBox";
 import ProductBox from "../Pages/Products/ProductBox/ProductBox";
 
 export function ProductSearch(){
@@ -48,14 +49,9 @@ export function ProductSearch(){
 
             productList.forEach(function(product:productModel){
                 //tmp.push(<li key={product.id}> {product.brand} </li>)
-                tmp.push( <Card className="product-box">
+                tmp.push( <Card key={product.id} className="product-box">
                     {ProductBox(product)}
-                    {/* <img src = {`.../public/${product.imagePath}`} />
-                    <ul>
-                        <li key={product.name}>Name: {product.name}</li>
-                        <li key={product.brand}>Brand: {product.brand}</li>
-                        <li></li>
-                    </ul> */}
+                    {/* <CartBox key={product.id} {...product}></CartBox> */}
                 </Card> )
             })
 
