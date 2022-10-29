@@ -3,8 +3,9 @@ export interface productModel{
     brand: string,
     description: string,
     id: number,
-    image_path: string,
+    imagePath: string,
     price: number,
-    productName: string,  
+    name: string,  
     weight: number,
+    stripeKey: string,
 }

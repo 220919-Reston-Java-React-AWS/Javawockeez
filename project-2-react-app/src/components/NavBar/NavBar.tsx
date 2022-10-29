@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useNavigate } from "react-router-dom";
 
 // for Reactful page links
 import { Link, NavLink } from 'react-router-dom';
@@ -26,7 +27,11 @@ function NavigationBar() {
 
     const user:IUserModel = useAppSelector(selectUser);
 
-    let query:string = "";
+    const [query, setSearchQuery] = useState("")
+
+    let navigate = useNavigate();
+
+    //let query:string = "";
     
     
     
@@ -38,12 +43,14 @@ function NavigationBar() {
 
 
     function setQuery(event:React.ChangeEvent<HTMLInputElement>){
-        query = event.target.value;
+        //query = event.target.value;
+        setSearchQuery(event.target.value)
     }
 
     function search(event:React.FormEvent<HTMLFormElement>){
         event.preventDefault();
-        alert("Searching for " + query);
+        //alert("Searching for " + query);
+        navigate(`/products/search=${query}`)
     }
     
 

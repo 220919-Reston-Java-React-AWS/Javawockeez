@@ -1,0 +1,15 @@
+.product-box{
+    display: flex;
+    flex-direction: row;
+}
+
+.vertical-center-col {
+    padding-top: 15%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+  }
+
+  .trait-list {
+    color: black;
+  }

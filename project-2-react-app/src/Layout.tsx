@@ -35,7 +35,8 @@ const Layout: React.FC = () => {
           <Route path="/login" element={<Login />}/>
           <Route path="/sign-up" element={<Signup />}/>
           <Route path="/products" element={<Products />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/products/search=:keyword" element={<ProductSearch />}/>
+          <Route path="/cart" element={<Cart />}/>
           <Route path="/" element={<Main />}/>
           <Route path="/profile" element={<UserProfile />}/>
         </Routes>
