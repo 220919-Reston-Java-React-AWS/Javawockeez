@@ -3,13 +3,15 @@
 }
 
 /* vertically align class object to middle of page (eye-balling it) */
-.vertical-center {
+.vertical-center-col {
     padding-top: 15%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
   }
 
-.background_login{
-    /* background-image: url("https://wallpapercave.com/wp/wp2003928.jpg"); */
-    background-image: url("https://live.staticflickr.com/65535/50868630807_dcef1c0d6e_b.jpg");
+.background_profile{
+    background-image: url("https://wallpapercave.com/wp/wp2003928.jpg");
     
     /* scale image neatly */
     background-position: center;
@@ -20,6 +22,11 @@
 /* custom card responsive widths */
 .card-width{
     width: 50%;
+}
+
+.profile-list{
+    text-align: left;
+    font-size: large;
 }
 
 @media (max-width: 768px) {

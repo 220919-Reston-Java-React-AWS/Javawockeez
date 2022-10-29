@@ -12,8 +12,6 @@ import {useEffect, useState} from 'react';
 import './custom.css'
 import { useAppDispatch } from '../../shared/hooks';
 import { setUser } from './UserSlicer';
-import { createStore } from '@reduxjs/toolkit';
-import { Provider } from 'react-redux';
 
 
 function Login() {
@@ -113,7 +111,7 @@ function Login() {
 
     // Displays the amazing art, and either the form or response afterward
     return(
-        <main className="min-vh-100 background">
+        <main className="min-vh-100 background_login">
             <Container fluid className="d-flex text-center justify-content-center vertical-center pb-5">
                 <Card className='card-width p-5' >
                     {loggingIn ? getForm() : getMessage()}

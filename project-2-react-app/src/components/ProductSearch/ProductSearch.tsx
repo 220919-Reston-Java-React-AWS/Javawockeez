@@ -1,9 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Card, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { productModel } from "../models/productModel";
+import ProductBox from "../Pages/Products/ProductBox/ProductBox";
 
 export function ProductSearch(){
 
-    const { keyword } = useParams();
+    //const [keyword, setKeyword] = useState( useParams() );
+    const {keyword} = useParams();
+
+    const [thisURL, setThisURL] = useState("") //for checking redirects
 
     const [productList, setProductList] = useState([])
 
@@ -17,7 +23,12 @@ export function ProductSearch(){
         .then( response => response.json())
         .then( result => {
 
-            setProductList(result)
+            if (result.message){
+                setProductList([])
+
+            } else {
+                setProductList(result)
+            }
             
         } )
         .catch( (error) => {
@@ -26,19 +37,40 @@ export function ProductSearch(){
     }
 
     function displayProducts(){
-        let tmp:any[] = [];
 
-        productList.forEach(function(product:any){
-            tmp.push(<li key={product.id}> {product.brand} </li>)
-        })
+        if ( productList.length == 0 ){
+            return <p>
+                There are no products with that description.
+            </p>
+        } else {
 
-        return <ul>
-                {tmp}
-            </ul>
+            let tmp:any[] = [];
+
+            productList.forEach(function(product:productModel){
+                //tmp.push(<li key={product.id}> {product.brand} </li>)
+                tmp.push( <Card className="product-box">
+                    {ProductBox(product)}
+                    {/* <img src = {`.../public/${product.imagePath}`} />
+                    <ul>
+                        <li key={product.name}>Name: {product.name}</li>
+                        <li key={product.brand}>Brand: {product.brand}</li>
+                        <li></li>
+                    </ul> */}
+                </Card> )
+            })
+
+            return <Container fluid className="d-flex text-center justify-content-center vertical-center-col pb-5">
+                    {tmp}
+                </Container>
+        }
     }
 
 
-    getProducts()
+
+    if (thisURL != window.location.href){
+        getProducts();
+        setThisURL(window.location.href);
+    }
 
     return <div>
         {displayProducts()}
