@@ -8,7 +8,6 @@ import "./ProductSearch.css"
 
 export function ProductSearch(){
 
-    //const [keyword, setKeyword] = useState( useParams() );
     const {keyword} = useParams();
 
     const [thisURL, setThisURL] = useState("") //for checking redirects
@@ -41,18 +40,18 @@ export function ProductSearch(){
     function displayProducts(){
 
         if ( productList.length == 0 ){
-            return <p>
-                There are no products with that description.
-            </p>
+            return <Container fluid className="d-flex text-center justify-content-center vertical-center-col pb-5">
+                <Card className="empty-list-box">
+                    There are no products with that description.
+                </Card>
+            </Container>
         } else {
 
             let tmp:any[] = [];
 
             productList.forEach(function(product:productModel){
-                //tmp.push(<li key={product.id}> {product.brand} </li>)
                 tmp.push( <Card key={product.id} className="product-box">
                     {ProductBox(product)}
-                    {/* <CartBox key={product.id} {...product}></CartBox> */}
                 </Card> )
             })
 

@@ -45,29 +45,22 @@ export default function Cart(){
             </div>
     }
 
-    //add to cart feature in progress
-/*export function AddToCart(){
+//add to cart feature in progress
+export async function AddToCart(productId:string){ //Product id should be a number, the string is for convenience
     const user = useAppSelector(selectUser);
-    const email = user.email
-    const id = <productModel className="id"></productModel>
-    if (email == ""){
-        return <div>
-            <h3 className="error">You need to sign in to access the cart feature.</h3>
-        </div>
+    if (user.id == 0){
+        return "You need to sign in to access the cart feature."
     }
-    async function cartAdd(){
-        await fetch(`http://127.0.0.1:8080/cart/${email}/${id}`, {
-            body: JSON.stringify(id),
+    await fetch(`http://127.0.0.1:8080/cart/${user.id}/${productId}`, {
             method: "POST",
             credentials: "same-origin",
-            headers: {'Content-Type': 'application/json'}
-        })
-        .then( response => response.json())
-            .then( result => {
-                console.log(result)
-            } )
-            .catch( (error) => {
-            console.error(error)
-            } )
-        }
-    }*/
+    })
+    .then( response => response.json())
+    .then( result => {
+        console.log(result)
+        return result.message
+    } )
+    .catch( (error) => {
+        console.error(error)
+    } )
+}

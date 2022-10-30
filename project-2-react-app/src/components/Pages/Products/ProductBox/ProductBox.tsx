@@ -2,14 +2,27 @@ import { productModel } from "../../../models/productModel";
 //@ts-ignore
 import ReactStars from "react-rating-stars-component";
 import "./ProductBox.css"
-import AddToCart from "../../Cart/Cart"
+
+import { Button } from "react-bootstrap";
+import { IUserModel } from "../../../models/userModel";
+import { useAppSelector } from "../../../../shared/hooks";
+import { selectUser } from "../../../Login/UserSlicer";
+import React from "react";
+import { AddToCart } from "../../Cart/Cart";
 
 function ProductBox(props: productModel){
+
+    /*let user:IUserModel = useAppSelector(selectUser);*/
 
     let currency_format = {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 2,
+    }
+
+    async function addToCart(event: React.MouseEvent<HTMLButtonElement, MouseEvent>){
+        let response = AddToCart(event.currentTarget.ariaLabel ? event.currentTarget.ariaLabel : '0')
+        response.then((result)=>{alert(result)});
     }
 
     return <div className="box">
@@ -27,7 +40,8 @@ function ProductBox(props: productModel){
                 </div> */}
             </div>
             <div className="cart-button">
-                <button>Add to Cart</button>
+                <Button aria-label={props.id.toString()} onClick={addToCart}>Add to Cart</Button>
+                {/* <button>Add to Cart</button> */}
             </div>
         </div>
     </div>
