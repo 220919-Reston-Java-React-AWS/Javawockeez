@@ -40,17 +40,22 @@ export function ProductSearch(){
     function displayProducts(){
 
         if ( productList.length == 0 ){
-            return <Container fluid className="d-flex text-center justify-content-center vertical-center-col pb-5">
-                <Card className="empty-list-box">
-                    There are no products with that description.
-                </Card>
-            </Container>
+            return(
+                <Container fluid className="d-flex text-center justify-content-center vertical-center-col pb-5">
+                    <Card className="p-5">
+                        <h1>
+                            There are no products with that description.
+                        </h1>
+                    </Card>
+                </Container>
+            )
         } else {
 
             let tmp:any[] = [];
 
             productList.forEach(function(product:productModel){
-                tmp.push( <Card key={product.id} className="product-box">
+                //tmp.push(<li key={product.id}> {product.brand} </li>)
+                tmp.push( <Card key={product.id} className="product-box mb-3">
                     {ProductBox(product)}
                 </Card> )
             })
