@@ -129,7 +129,7 @@ export function UserProfile(){
 
     function getProfile(){
         return <Container fluid className="text-center justify-content-center vertical-center-col pb-5">
-            <Card className='card-width p-5 text-left'>
+            <Card className='card-width p-5 text-left mb-3'>
                 <ul className="profile-list">
                 <li>Name: {currentUser.firstName + " " + currentUser.lastName}</li>
                 <li>Email: {currentUser.email}</li>
