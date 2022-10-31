@@ -1,0 +1,24 @@
+.product-box{
+  display: flex;
+  flex-direction: row;
+}
+
+.background-search{
+  background-image: url("https://bakerynouveau.com/wp-content/uploads/2015/11/pastry-0491.jpg");
+
+  /* scale image neatly */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.vertical-center-col {
+  padding-top: 15%;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+}
+
+.trait-list {
+  color: black;
+}

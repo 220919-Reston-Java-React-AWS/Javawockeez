@@ -5,14 +5,15 @@ import { productModel } from "../../models/productModel";
 
 
 const initialState:productModel = {
-    avg_rating: 0,
+    avgRating: 0,
     brand: "",
     description: "",
     id: 0,
     imagePath: "",
     price: 0,
-    name: "",  
+    name: "",
     weight: 0,
+    stripeKey: ""
 };
 
 const cartSlice:Slice<productModel> = createSlice({
@@ -24,7 +25,7 @@ const cartSlice:Slice<productModel> = createSlice({
 
             console.log(action.payload)
 
-            state.avg_rating = action.payload.avg_rating;
+            state.avgRating = action.payload.avgRating;
             state.brand = action.payload.brand;
             state.description = action.payload.description;
             state.id = action.payload.id;
@@ -36,7 +37,7 @@ const cartSlice:Slice<productModel> = createSlice({
 
         setDefault: ( state ) => {
 
-            state.avg_rating = 0;
+            state.avgRating = 0;
             state.brand = "";
             state.description = "";
             state.id = 0;

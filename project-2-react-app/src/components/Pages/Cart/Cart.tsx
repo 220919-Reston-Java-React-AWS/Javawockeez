@@ -21,15 +21,15 @@ export default function Cart(){
 
     const user = useAppSelector(selectUser);
     const [cartList, setCartList] = useState<productModel[]>([])
-    const userId = user.id;
-    //user isn't signed in
-    if (userId == 0){
+    let carTotal = 0;
+    const id = user.id;
+    if (id == undefined){
         return <div>
         <h3 className="error">You need to sign in to access the cart feature.</h3>
         </div>
     }
         async function getCart(){
-            await fetch(`http://127.0.0.1:8080/cart/${userId}`, {
+            await fetch(`http://127.0.0.1:8080/cart/${id}`, {
                 method: "GET",
                 credentials: 'same-origin',
             })

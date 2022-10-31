@@ -2,16 +2,14 @@ package com.revature.springboot.Controller;
 
 
 import com.revature.springboot.Service.CartService;
-
-import com.revature.springboot.exceptions.QueryException;
 import com.revature.springboot.model.Product;
 import com.revature.springboot.model.Response;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

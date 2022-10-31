@@ -4,12 +4,12 @@
 
 /* vertically align class object to middle of page (eye-balling it) */
 .vertical-center {
-    padding-top: 15%;
+    padding-top: 10%;
   }
 
-.background_login{
-    /* background-image: url("https://wallpapercave.com/wp/wp2003928.jpg"); */
-    background-image: url("https://live.staticflickr.com/65535/50868630807_dcef1c0d6e_b.jpg");
+.background_register{
+    /*background-image: url("https://live.staticflickr.com/65535/50868630807_dcef1c0d6e_b.jpg");*/
+    background-image: url("https://www.lgdf.ca/wp-content/uploads/2015/08/istock_000071450993_large_web-2048x1365.jpg");
     
     /* scale image neatly */
     background-position: center;

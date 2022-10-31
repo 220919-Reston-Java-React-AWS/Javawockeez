@@ -14,6 +14,7 @@ import { ProductSearch } from "./components/ProductSearch/ProductSearch";
 import Main from "./components/Pages/Main/Main";
 import Products from "./components/Pages/Products/Products";
 import Cart from "./components/Pages/Cart/Cart";
+import { UserProfile } from "./components/UserProfile/UserProfile";
 
 // import Landing from "./Pages/Landing";
 // import Dashboard from "./Pages/Dashboard";
@@ -29,13 +30,15 @@ const Layout: React.FC = () => {
         {/* This is where setting the webpages are located */}
         <Routes>
           {/* Individual route within this React App */}
+          <Route path="/" element={<Main />}/>
           <Route path="/placeholder" element={<Placeholder />}/>
           <Route path="/about" element={<About />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/sign-up" element={<Signup />}/>
           <Route path="/products" element={<Products />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/" element={<Main />}/>
+          <Route path="/products/search=:keyword" element={<ProductSearch />}/>
+          <Route path="/cart" element={<Cart />}/>
+          <Route path="/profile" element={<UserProfile />}/>
         </Routes>
 
         {/* The Footer is here to be persistent across website */}

@@ -11,6 +11,7 @@ import com.revature.springboot.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +37,9 @@ public class ProductService {
     // -----------------------------------------        GETTERS         --------------------------------------------- //
 
     public Product getProduct(int productID) throws QueryException {
+
         List<Product> productList = formatProductList( pr.findById(productID) );
+
         if (productList.isEmpty()){
             throw new QueryException("That product was not in the system");
         }
@@ -44,6 +47,7 @@ public class ProductService {
     }
 
     public List<Product> getAllProducts() throws QueryException {
+        System.out.println(pr.findAll().size());
         return formatProductList( pr.findAll() );
     }
 
@@ -68,14 +72,15 @@ public class ProductService {
             throw new QueryException("There are no products to display");
         }
 
-        double avgRating;
+        Optional<Double> avgRating;
         for (Product product : products) {
             avgRating = rr.findAverageRating(product.getId()); //Somewhat of a band-aid. not totally spring but much simpler
-            product.setAvgRating(avgRating);
+            if (!avgRating.isEmpty()){
+                product.setAvgRating(avgRating.get());
+            }
         }
 
         return products;
     }
-
 
 }

@@ -1,5 +1,5 @@
 export interface productModel{
-    avg_rating: number,
+    avgRating: number,
     brand: string,
     description: string,
     id: number,
@@ -7,4 +7,5 @@ export interface productModel{
     price: number,
     name: string,  
     weight: number,
+    stripeKey: string,
 }

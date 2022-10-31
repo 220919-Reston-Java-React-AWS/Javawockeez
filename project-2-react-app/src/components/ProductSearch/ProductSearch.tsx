@@ -1,9 +1,19 @@
-import { useEffect, useState } from "react";
+import { IProduceWithPatches } from "immer/dist/internal";
+import { useState } from "react";
+import { Card, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { isPropertyAccessChain } from "typescript";
+import { productModel } from "../models/productModel";
+import CartBox from "../Pages/Cart/CartBox/CartBox";
+import ProductBox, {Iprop} from "../Pages/Products/ProductBox/ProductBox";
+import "./ProductSearch.css"
 
 export function ProductSearch(){
 
-    const { keyword } = useParams();
+    //const [keyword, setKeyword] = useState( useParams() );
+    const {keyword} = useParams();
+
+    const [thisURL, setThisURL] = useState("") //for checking redirects
 
     const [productList, setProductList] = useState([])
 
@@ -17,7 +27,12 @@ export function ProductSearch(){
         .then( response => response.json())
         .then( result => {
 
-            setProductList(result)
+            if (result.message){
+                setProductList([])
+
+            } else {
+                setProductList(result)
+            }
             
         } )
         .catch( (error) => {
@@ -26,21 +41,43 @@ export function ProductSearch(){
     }
 
     function displayProducts(){
-        let tmp:any[] = [];
 
-        productList.forEach(function(product:any){
-            tmp.push(<li key={product.id}> {product.brand} </li>)
-        })
+        if ( productList.length == 0 ){
+            return(
+                <Container fluid className="d-flex text-center justify-content-center vertical-center-col pb-5">
+                    <Card className="p-5">
+                        <h1>
+                            There are no products with that description.
+                        </h1>
+                    </Card>
+                </Container>
+            )
+        } else {
 
-        return <ul>
-                {tmp}
-            </ul>
+            let tmp:any[] = [];
+
+            productList.forEach(function(product:Iprop){
+                //tmp.push(<li key={product.id}> {product.brand} </li>)
+                tmp.push( <Card key={product.id} className="product-box mb-3">
+                    {ProductBox(product)}
+                    {/* <CartBox key={product.id} {...product}></CartBox> */}
+                </Card> )
+            })
+
+            return <Container fluid className="d-flex text-center justify-content-center vertical-center-col pb-5">
+                    {tmp}
+                </Container>
+        }
     }
 
 
-    getProducts()
 
-    return <div>
+    if (thisURL != window.location.href){
+        getProducts();
+        setThisURL(window.location.href);
+    }
+
+    return <main className="min-vh-100 background-search">
         {displayProducts()}
-    </div>
+    </main>
 }

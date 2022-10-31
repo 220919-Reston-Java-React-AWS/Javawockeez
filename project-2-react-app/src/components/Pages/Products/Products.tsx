@@ -34,7 +34,15 @@ export default function Products(){
             console.error(error)
         } )
     }
-    getProducts()
+    
+    //on page load
+    useEffect(() => {
+        // scroll to top on page load
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        // get all products
+        getProducts();
+    }, []);
+
     return <div className="grid">
         {productList.map((product) => <ProductBox key={product.id} {...product} onButtonClick={handleOnClickEvent}></ProductBox>)}
     </div>
