@@ -44,11 +44,40 @@ export default function Cart(){
         getCart()
         return <div>
             <ListGroup as="ol" numbered>
-                {cartList.map((product) => <CartBox key={product.id} {...product}></CartBox>)}
+                {cartList.map((product) => <CartBox key={product.id} {...product} onButton={handleOnButton}></CartBox>)}
             </ListGroup>
             <p className="total">Total = $ </p>
             <div className="checkout"><Button variant="success"> Checkout </Button>{' '}</div>
             </div>
+
+        function handleOnButton(infoFromChild:number){
+
+            let productId = infoFromChild
+
+            let message: string
+        
+        async function cartRemove(){
+            alert("waiting for fetch to be made")
+            /*await fetch(`http://127.0.0.1:8080/cart/${id}/${productId}`, {
+                method: "POST",
+                credentials: "same-origin",
+                headers: {'Content-Type': 'application/json'}
+            })
+            .then( response => response.json())
+                .then( result => {
+                    console.log(result);
+                    message = result.message;
+                    alert(message);
+                } )
+                .catch( (error) => {
+                    console.error(error)
+                    message = error.message;
+                    alert(message)
+                    } )
+                }*/  
+        }
+        cartRemove()
+        }
     }
 
     

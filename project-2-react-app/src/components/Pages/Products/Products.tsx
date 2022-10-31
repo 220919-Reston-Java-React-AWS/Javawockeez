@@ -9,6 +9,8 @@ import { selectUser } from "../../Login/UserSlicer";
 
 export default function Products(){
 
+    const [count, setCount] = useState(1)
+
     const [productList, setProductList] = useState<productModel[]>([])
     const user = useAppSelector(selectUser)
     const id = user.id
@@ -37,14 +39,16 @@ export default function Products(){
     }
     
 
-    return <div className="grid">
-        {productList.map((product) => <ProductBox key={product.id} {...product} onButtonClick={handleOnClickEvent}></ProductBox>)}
+    return <main className="background-search">
+        <div className="grid">
+        {productList.map((product) => <ProductBox key={product.id} {...product} count={count} onButtonClick={handleOnClickEvent} decreaseButton={handleDecrease} increaseButton={handleIncrease}></ProductBox>)}
     </div>
-    function handleOnClickEvent(infoFromChild: number){
-        alert("we have hit the button")
-        alert(infoFromChild)
+    </main>
 
-        alert("we have entered the function")
+    // start of add to cart
+    function handleOnClickEvent(infoFromChild: number){
+
+
         let productId = infoFromChild
         
         
@@ -73,6 +77,18 @@ export default function Products(){
                     } )
                 }
             cartAdd() 
-            alert("we should have done the function")
         }
+
+        //implementing counters for quantity
+
+        function handleDecrease(infoFromChild:number){
+            setCount(infoFromChild - 1)
+
+
+        }
+
+        function handleIncrease(infoFromChild:number){
+            setCount(infoFromChild + 1)
+        }
+
     }
