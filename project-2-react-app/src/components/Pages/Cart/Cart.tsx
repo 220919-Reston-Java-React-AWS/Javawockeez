@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { ButtonHTMLAttributes, useEffect, useState } from "react";
 import { getEnabledCategories } from "trace_events";
 import CartBox from "./CartBox/CartBox";
 import { productModel } from "../../models/productModel";
@@ -11,8 +10,15 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import { idText } from "typescript";
 
+
+
 export default function Cart(){
     //grabbing user from the store
+    useEffect(() => {
+    // scroll to top on page load
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        }, []); 
+
     const user = useAppSelector(selectUser);
     const [cartList, setCartList] = useState<productModel[]>([])
     let carTotal = 0;
@@ -45,22 +51,4 @@ export default function Cart(){
             </div>
     }
 
-//add to cart feature in progress
-export async function AddToCart(productId:string){ //Product id should be a number, the string is for convenience
-    const user = useAppSelector(selectUser);
-    if (user.id == 0){
-        return "You need to sign in to access the cart feature."
-    }
-    await fetch(`http://127.0.0.1:8080/cart/${user.id}/${productId}`, {
-            method: "POST",
-            credentials: "same-origin",
-    })
-    .then( response => response.json())
-    .then( result => {
-        console.log(result)
-        return result.message
-    } )
-    .catch( (error) => {
-        console.error(error)
-    } )
-}
+    

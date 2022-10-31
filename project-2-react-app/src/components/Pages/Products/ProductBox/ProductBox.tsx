@@ -1,18 +1,19 @@
 import { productModel } from "../../../models/productModel";
+import "./ProductBox.css";
+
+
+
 //@ts-ignore
 import ReactStars from "react-rating-stars-component";
 import "./ProductBox.css"
+import AddToCart from "../../Cart/Cart"
 
-import { Button } from "react-bootstrap";
-import { IUserModel } from "../../../models/userModel";
-import { useAppSelector } from "../../../../shared/hooks";
-import { selectUser } from "../../../Login/UserSlicer";
-import React from "react";
-import { AddToCart } from "../../Cart/Cart";
+export interface Iprop extends productModel{
+    onButtonClick(infoToParent:number):void
+}
 
-function ProductBox(props: productModel){
 
-    /*let user:IUserModel = useAppSelector(selectUser);*/
+function ProductBox(props: Iprop){
 
     let currency_format = {
         style: 'currency',
@@ -40,8 +41,7 @@ function ProductBox(props: productModel){
                 </div> */}
             </div>
             <div className="cart-button">
-                <Button aria-label={props.id.toString()} onClick={addToCart}>Add to Cart</Button>
-                {/* <button>Add to Cart</button> */}
+                <button onClick={() => {props.onButtonClick(props.id)}}>Add to Cart</button>
             </div>
         </div>
     </div>

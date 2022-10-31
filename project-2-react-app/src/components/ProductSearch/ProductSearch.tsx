@@ -1,9 +1,11 @@
+import { IProduceWithPatches } from "immer/dist/internal";
 import { useState } from "react";
 import { Card, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { isPropertyAccessChain } from "typescript";
 import { productModel } from "../models/productModel";
 import CartBox from "../Pages/Cart/CartBox/CartBox";
-import ProductBox from "../Pages/Products/ProductBox/ProductBox";
+import ProductBox, {Iprop} from "../Pages/Products/ProductBox/ProductBox";
 import "./ProductSearch.css"
 
 export function ProductSearch(){
@@ -53,7 +55,7 @@ export function ProductSearch(){
 
             let tmp:any[] = [];
 
-            productList.forEach(function(product:productModel){
+            productList.forEach(function(product:Iprop){
                 //tmp.push(<li key={product.id}> {product.brand} </li>)
                 tmp.push( <Card key={product.id} className="product-box mb-3">
                     {ProductBox(product)}
