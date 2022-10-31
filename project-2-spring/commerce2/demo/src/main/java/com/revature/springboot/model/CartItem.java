@@ -18,6 +18,8 @@ public @Data class CartItem {
     @JoinColumn(name="product_id", referencedColumnName = "id")
     Product product;
 
+    int quantity;
+
     // Empty
     public CartItem(){
 
@@ -31,9 +33,15 @@ public @Data class CartItem {
 
     // For getting the cart
     public CartItem(int id, int userId, Product product){
-        this.id = id;
         this.userId = userId;
         this.product = product;
+    }
+
+    // For getting the cart
+    public CartItem(int id, int userId, Product product, int quantity){
+        this.userId = userId;
+        this.product = product;
+        this.quantity = quantity;
     }
 
 }

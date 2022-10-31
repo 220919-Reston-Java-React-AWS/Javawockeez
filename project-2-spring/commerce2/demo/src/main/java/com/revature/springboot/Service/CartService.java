@@ -2,13 +2,17 @@ package com.revature.springboot.Service;
 
 import com.revature.springboot.Repository.CartRepo;
 import com.revature.springboot.Repository.ProductRepo;
+import com.revature.springboot.exceptions.QueryException;
 import com.revature.springboot.model.CartItem;
+import com.revature.springboot.model.CartItemRaw;
 import com.revature.springboot.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class CartService {
@@ -20,7 +24,9 @@ public class CartService {
     ProductRepo pr;
 
 
-    public List<Product> getCart(int userId){
+    public List<CartItem> getCart(int userId){
+        return cr.findByUserId(userId);
+        /*
         List<CartItem> userCart = cr.findByUserId(userId);
 
         List<Product> products = new ArrayList<Product>();
@@ -29,6 +35,8 @@ public class CartService {
         }
 
         return products;
+
+         */
     }
 
     public void addToCart(int userId, int prodId){
@@ -37,6 +45,48 @@ public class CartService {
         CartItem newItem = new CartItem(userId, product);
 
         cr.save(newItem);
+    }
+
+//    public void adjustQuantity(CartItem item){
+//        cr.save(item);
+//    }
+
+    public void adjustQuantity(CartItemRaw itemRaw){
+        CartItem item;
+
+//        Product product = pr.findById(itemRaw.getProductId()).get(0);
+//
+//        CartItem item = new CartItem(itemRaw.getId(), itemRaw.getUserId(), product, itemRaw.getQuantity());
+//
+
+
+        //Optional<CartItem> repoItem = cr.findById(itemRaw.getId());//Id();
+        Optional<CartItem> repoItem = cr.findByUserIdAndProductId(itemRaw.getUserId(), itemRaw.getProductId());
+        if (repoItem.isEmpty()){
+            Product product = pr.findById(itemRaw.getProductId()).get(0);
+            item = new CartItem(0, itemRaw.getUserId(), product, itemRaw.getQuantity());
+
+        } else {
+            item = repoItem.get();
+            item.setQuantity(itemRaw.getQuantity());
+        }
+        System.out.println(item.getQuantity());
+        cr.save(item);
+    }
+
+    @Transactional
+    public void removeItem(CartItemRaw itemRaw){
+//        Product product = pr.findById(itemRaw.getProductId()).get(0);
+//
+//        CartItem item = new CartItem(itemRaw.getId(), itemRaw.getUserId(), product, itemRaw.getQuantity());
+//
+//        cr.delete(item);
+        cr.deleteByUserIdAndProductId( itemRaw.getUserId(), itemRaw.getProductId() );
+    }
+
+    @Transactional
+    public void checkout(int UserID){
+        cr.deleteByUserId(UserID);
     }
 
 }

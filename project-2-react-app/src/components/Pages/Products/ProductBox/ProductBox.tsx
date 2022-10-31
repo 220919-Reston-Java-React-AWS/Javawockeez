@@ -6,7 +6,6 @@ import "./ProductBox.css";
 //@ts-ignore
 import ReactStars from "react-rating-stars-component";
 import "./ProductBox.css"
-import AddToCart from "../../Cart/Cart"
 
 export interface Iprop extends productModel{
     onButtonClick(infoToParent:number):void
@@ -19,11 +18,6 @@ function ProductBox(props: Iprop){
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 2,
-    }
-
-    async function addToCart(event: React.MouseEvent<HTMLButtonElement, MouseEvent>){
-        let response = AddToCart(event.currentTarget.ariaLabel ? event.currentTarget.ariaLabel : '0')
-        response.then((result)=>{alert(result)});
     }
 
     return <div className="box">

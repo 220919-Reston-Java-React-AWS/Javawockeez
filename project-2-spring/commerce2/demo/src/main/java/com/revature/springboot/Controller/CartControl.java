@@ -2,6 +2,8 @@ package com.revature.springboot.Controller;
 
 
 import com.revature.springboot.Service.CartService;
+import com.revature.springboot.model.CartItem;
+import com.revature.springboot.model.CartItemRaw;
 import com.revature.springboot.model.Product;
 import com.revature.springboot.model.Response;
 
@@ -23,7 +25,8 @@ public class CartControl {
     @GetMapping("/cart/{userId}")
     public ResponseEntity getCart(@PathVariable int userId){
         try {
-            List<Product> cart = cs.getCart(userId);
+            //List<Product> cart = cs.getCart(userId);
+            List<CartItem> cart = cs.getCart(userId);
 
             return new ResponseEntity(cart, HttpStatus.OK);
 
@@ -31,6 +34,43 @@ public class CartControl {
             return new ResponseEntity( new Response( e.getMessage() ), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+//    @PostMapping("/cart")
+//    public ResponseEntity adjustQuantity(@RequestBody CartItem adjItem){
+//        try {
+//            cs.adjustQuantity(adjItem);
+//
+//            return new ResponseEntity(new Response( "Table was updated successfully" ), HttpStatus.OK);
+//
+//        } catch (Exception e) {
+//            return new ResponseEntity( new Response( e.getMessage() ), HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+
+    @PostMapping("/cart")
+    public ResponseEntity adjustQuantity(@RequestBody CartItemRaw adjItem){
+        try {
+            cs.adjustQuantity(adjItem);
+
+            return new ResponseEntity(new Response( "Table was updated successfully" ), HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity( new Response( e.getMessage() ), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/cart")
+    public ResponseEntity removeItem(@RequestBody CartItemRaw oldItem){
+        try {
+            cs.removeItem(oldItem);
+
+            return new ResponseEntity(new Response( "Table was updated successfully" ), HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity( new Response( e.getMessage() ), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
     @PostMapping("/cart/{userId}/{productId}")
     public ResponseEntity newCartItem(@PathVariable int userId, @PathVariable int productId){
@@ -43,4 +83,16 @@ public class CartControl {
         }
     }
 
+    @DeleteMapping("cart/{userId}")
+    public ResponseEntity checkout(@PathVariable int userId){
+        try {
+            cs.checkout(userId);
+            return new ResponseEntity( new Response("Cart was deleted successfully"), HttpStatus.OK );
+
+            //return new ResponseEntity(cart, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity( new Response( e.getMessage() ), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
