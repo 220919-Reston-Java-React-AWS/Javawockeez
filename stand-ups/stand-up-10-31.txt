@@ -1,0 +1,34 @@
+
+Chris McMilen
+
+What did they do yesterday? Got some functionalities to work.
+	-  
+What will they do today? Add features and format. Work on backend.
+	-  
+Are they running into any challenges/issues?
+	-
+
+
+Aidan Shafer
+
+What did they do yesterday? Product Search and rating stars
+	- 
+	- 
+What will they do today? JUnit testing. Add delete from cart to backend. Get just key.
+	- 
+	-
+Are they running into any challenges/issues? None
+	-
+
+
+Daniel Rivera
+
+What did they do yesterday? Started incoorperating stripe
+	- 
+What will they do today? Finish incorperating stripe.
+	- 
+	- 
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-
+Are they running into any challenges/issues? CORS issue on client side.
+	- 
