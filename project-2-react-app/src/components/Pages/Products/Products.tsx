@@ -13,13 +13,14 @@ export default function Products(){
     const user = useAppSelector(selectUser)
     const id = user.id
 
-    
+
+    //on page load
     useEffect(() => {
         // scroll to top on page load
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-      }, []);
-
-    
+        // get all products
+        getProducts();
+    }, []);
     
     async function getProducts(){
         await fetch(`http://127.0.0.1:8080/products`, {
@@ -35,13 +36,6 @@ export default function Products(){
         } )
     }
     
-    //on page load
-    useEffect(() => {
-        // scroll to top on page load
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-        // get all products
-        getProducts();
-    }, []);
 
     return <div className="grid">
         {productList.map((product) => <ProductBox key={product.id} {...product} onButtonClick={handleOnClickEvent}></ProductBox>)}

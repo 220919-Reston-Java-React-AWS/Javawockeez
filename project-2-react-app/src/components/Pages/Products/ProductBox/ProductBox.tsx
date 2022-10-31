@@ -21,11 +21,6 @@ function ProductBox(props: Iprop){
         minimumFractionDigits: 2,
     }
 
-    async function addToCart(event: React.MouseEvent<HTMLButtonElement, MouseEvent>){
-        let response = AddToCart(event.currentTarget.ariaLabel ? event.currentTarget.ariaLabel : '0')
-        response.then((result)=>{alert(result)});
-    }
-
     return <div className="box">
         <div className="product-img">
             <img src={`/${props.imagePath}`}/>
