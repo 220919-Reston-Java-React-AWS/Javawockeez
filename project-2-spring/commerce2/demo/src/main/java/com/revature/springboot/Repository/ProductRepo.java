@@ -14,6 +14,8 @@ public interface ProductRepo extends JpaRepository<Product, Integer> {
 
     public List<Product> findById(int id);
 
+    public List<Product> findByStripeKey(String stripeKey);
+
     public List<Product> findByNameContainingIgnoreCase(String keyword);
 
 //    @Query("SELECT avg(rating) FROM ratings WHERE product_id = ?1 GROUP BY product_id")

@@ -46,6 +46,15 @@ public class ProductService {
         return productList.get(0); // There really should only be one item in the list anyway
     }
 
+    public Product getProduct(String stripeKey) throws QueryException {
+        List<Product> productList = formatProductList( pr.findByStripeKey(stripeKey) );
+
+        if (productList.isEmpty()){
+            throw new QueryException("That product was not in the system");
+        }
+        return productList.get(0); // There really should only be one item in the list anyway
+    }
+
     public List<Product> getAllProducts() throws QueryException {
         System.out.println(pr.findAll().size());
         return formatProductList( pr.findAll() );

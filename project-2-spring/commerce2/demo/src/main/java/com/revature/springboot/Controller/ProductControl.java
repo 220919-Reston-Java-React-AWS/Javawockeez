@@ -54,6 +54,21 @@ public class ProductControl {
         }
     }
 
+    @GetMapping("/products/key={productKey}")
+    public ResponseEntity getProductByStripeKey(@PathVariable String productKey) {
+        try {
+            Product product = ps.getProduct(productKey);
+            return new ResponseEntity(product, HttpStatus.OK);
+
+        } catch (QueryException e) {
+            return new ResponseEntity(new Response(e.getMessage()), HttpStatus.BAD_REQUEST);
+
+        } catch (Exception e) {
+            System.out.println( e.getMessage() );
+            return new ResponseEntity(new Response(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/products/category={category}")
     public ResponseEntity getProductsByCategory(@PathVariable String category){
         try{
