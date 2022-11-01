@@ -1,10 +1,12 @@
 package com.revature.springboot.Service;
 
 import com.revature.springboot.Repository.CartRepo;
+import com.revature.springboot.Repository.OrderHistoryRepo;
 import com.revature.springboot.Repository.ProductRepo;
 import com.revature.springboot.exceptions.QueryException;
 import com.revature.springboot.model.CartItem;
 import com.revature.springboot.model.CartItemRaw;
+import com.revature.springboot.model.Order;
 import com.revature.springboot.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,6 +24,9 @@ public class CartService {
 
     @Autowired
     ProductRepo pr;
+
+    @Autowired
+    OrderHistoryRepo ohr;
 
 
     public List<CartItem> getCart(int userId){
@@ -54,13 +59,6 @@ public class CartService {
     public void adjustQuantity(CartItemRaw itemRaw){
         CartItem item;
 
-//        Product product = pr.findById(itemRaw.getProductId()).get(0);
-//
-//        CartItem item = new CartItem(itemRaw.getId(), itemRaw.getUserId(), product, itemRaw.getQuantity());
-//
-
-
-        //Optional<CartItem> repoItem = cr.findById(itemRaw.getId());//Id();
         Optional<CartItem> repoItem = cr.findByUserIdAndProductId(itemRaw.getUserId(), itemRaw.getProductId());
         if (repoItem.isEmpty()){
             Product product = pr.findById(itemRaw.getProductId()).get(0);
@@ -76,17 +74,18 @@ public class CartService {
 
     @Transactional
     public void removeItem(CartItemRaw itemRaw){
-//        Product product = pr.findById(itemRaw.getProductId()).get(0);
-//
-//        CartItem item = new CartItem(itemRaw.getId(), itemRaw.getUserId(), product, itemRaw.getQuantity());
-//
-//        cr.delete(item);
         cr.deleteByUserIdAndProductId( itemRaw.getUserId(), itemRaw.getProductId() );
     }
 
     @Transactional
-    public void checkout(int UserID){
-        cr.deleteByUserId(UserID);
+    public void checkout(int userID){
+        List<CartItem> cart = getCart(userID);
+
+        for (CartItem item : cart){
+            ohr.save( new Order(item.getUserId(), item.getProduct(), item.getQuantity()) );
+        }
+
+        cr.deleteByUserId(userID);
     }
 
 }
