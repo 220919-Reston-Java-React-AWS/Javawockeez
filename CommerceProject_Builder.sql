@@ -7,7 +7,7 @@ drop table if exists product_categories cascade;
 drop table if exists categories cascade;
 drop table if exists ratings cascade;
 drop table if exists cart cascade;
-
+drop table if exists order_history cascade;
 
 
 
@@ -173,14 +173,37 @@ create table cart(
 	id serial primary key,
 	user_id int,
 	product_id int,
+	quantity int,
 	constraint fk_user_id foreign key(user_id) references users(id) on delete cascade,
 	constraint fk_product_id foreign key(product_id) references products(id) on delete cascade
 );
-insert into cart(user_id, product_id)
+insert into cart(user_id, product_id, quantity)
 values 
-(3, 10),
-(3, 6),
-(3, 1);
+(3, 10, 1),
+(3, 6, 1),
+(3, 1, 3),
+(1, 6, 2),
+(1, 25, 1);
+
+--Order History 
+create table order_history(
+	id serial primary key,
+	user_id int,
+	product_id int,
+	quantity int,
+	purchase_date date default current_timestamp,
+	constraint fk_user_id foreign key(user_id) references users(id) on delete cascade,
+	constraint fk_product_id foreign key(product_id) references products(id) on delete cascade
+);
+insert into order_history(user_id, product_id, quantity)
+values 
+(1, 10, 3),
+(1, 1, 1),
+(2, 2, 2),
+(4, 4, 4),
+(4, 1, 2);
+
+
 
 
 
