@@ -94,4 +94,19 @@ public class ProductControl {
             return new ResponseEntity( new Response("An unexpected error has occurred"), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/products/stripe/{product_id}")
+    public ResponseEntity getStripeKeyById(@PathVariable String product_id) {
+        try {
+            Product product = ps.getProduct(Integer.parseInt(product_id));
+            return new ResponseEntity(product.getStripeKey(), HttpStatus.OK);
+
+        } catch (QueryException e) {
+            return new ResponseEntity(new Response(e.getMessage()), HttpStatus.BAD_REQUEST);
+
+        } catch (Exception e) {
+            System.out.println( e.getMessage() );
+            return new ResponseEntity(new Response(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
