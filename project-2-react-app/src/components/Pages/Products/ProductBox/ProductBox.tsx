@@ -1,6 +1,11 @@
 import { productModel } from "../../../models/productModel";
 import "./ProductBox.css";
 
+//bootstrap
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 
 //@ts-ignore
@@ -8,7 +13,10 @@ import ReactStars from "react-rating-stars-component";
 import "./ProductBox.css"
 
 export interface Iprop extends productModel{
-    onButtonClick(infoToParent:number):void
+    count:number,
+    onButtonClick(infoToParent:number):void,
+    increaseButton(infoToParent:number):void,
+    decreaseButton(infoToParent:number):void,
 }
 
 
@@ -35,10 +43,11 @@ function ProductBox(props: Iprop){
                 </div> */}
             </div>
             <div className="cart-button">
-                <button onClick={() => {props.onButtonClick(props.id)}}>Add to Cart</button>
+                <Button variant="success"  onClick={() => {props.onButtonClick(props.id)}}>Add to Cart</Button>
             </div>
-        </div>
-    </div>
+            <div> <ButtonToolbar><ButtonGroup className="me-2" aria-label="Second group"><Button onClick={() => props.decreaseButton(props.count)}>-</Button> <InputGroup.Text id="btnGroupAddon"> {props.count} </InputGroup.Text> <Button onClick={() => props.increaseButton(props.count)}>+</Button></ButtonGroup></ButtonToolbar></div>
+            </div>
+            </div>
 }
 
 function formatLength(description:string, length:number){

@@ -3,8 +3,12 @@ import "./CartBox.css"
 import Badge from 'react-bootstrap/Badge';
 import ListGroup from 'react-bootstrap/ListGroup';
 
+interface deleteButton extends productModel{
+    onButton(infoToParent:number):void
+}
 
-function CartBox(props: productModel){
+
+function CartBox(props: deleteButton){
      return <ListGroup.Item
     as="li"
     className="d-flex justify-content-between align-items-start"
@@ -14,6 +18,7 @@ function CartBox(props: productModel){
             Quantity: 1
             </div>
             <Badge bg="primary" pill>${props.price}</Badge>
+            <button onClick={() => {props.onButton(props.id)}}> Remove From Cart </button>
         </ListGroup.Item>
 }
 export default CartBox;

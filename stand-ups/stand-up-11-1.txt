@@ -1,0 +1,39 @@
+Chris McMilen
+
+What did they do yesterday?
+	- worked on add and remove from cart
+	- worked on setting up the buttons for functionality
+What will they do today?
+	- using Aiden's work, complete his work
+	- some CSS styling to look nice
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-  
+Are they running into any challenges/issues?
+	- N/A
+
+
+Aidan Shafer
+
+What did they do yesterday?
+	- change the cart functionality
+What will they do today?
+	- will experiement with unit testing
+	-  
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-
+Are they running into any challenges/issues?
+	- N/A
+
+
+Daniel Rivera
+
+What did they do yesterday?
+	- complete the payment React pages
+	- with Stephen's help, fixed the Stripe payment redirect 
+What will they do today?
+	- look into merging work to repo
+	- add a server function needed for backend (unless Aiden takes it) 
+What progress are they making on project-1 and are they updating the Trello cards with their status?
+	-
+Are they running into any challenges/issues?
+	- N/A 

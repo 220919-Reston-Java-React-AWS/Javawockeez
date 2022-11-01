@@ -9,17 +9,20 @@ import { selectUser } from "../../Login/UserSlicer";
 
 export default function Products(){
 
+    const [count, setCount] = useState(1)
+
     const [productList, setProductList] = useState<productModel[]>([])
     const user = useAppSelector(selectUser)
     const id = user.id
 
-    
+
+    //on page load
     useEffect(() => {
         // scroll to top on page load
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-      }, []);
-
-    
+        // get all products
+        getProducts();
+    }, []);
     
     async function getProducts(){
         await fetch(`http://127.0.0.1:8080/products`, {
@@ -35,22 +38,17 @@ export default function Products(){
         } )
     }
     
-    //on page load
-    useEffect(() => {
-        // scroll to top on page load
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-        // get all products
-        getProducts();
-    }, []);
 
-    return <div className="grid">
-        {productList.map((product) => <ProductBox key={product.id} {...product} onButtonClick={handleOnClickEvent}></ProductBox>)}
+    return <main className="background-search">
+        <div className="grid">
+        {productList.map((product) => <ProductBox key={product.id} {...product} count={count} onButtonClick={handleOnClickEvent} decreaseButton={handleDecrease} increaseButton={handleIncrease}></ProductBox>)}
     </div>
-    function handleOnClickEvent(infoFromChild: number){
-        alert("we have hit the button")
-        alert(infoFromChild)
+    </main>
 
-        alert("we have entered the function")
+    // start of add to cart
+    function handleOnClickEvent(infoFromChild: number){
+
+
         let productId = infoFromChild
         
         
@@ -79,6 +77,18 @@ export default function Products(){
                     } )
                 }
             cartAdd() 
-            alert("we should have done the function")
         }
+
+        //implementing counters for quantity
+
+        function handleDecrease(infoFromChild:number){
+            setCount(infoFromChild - 1)
+
+
+        }
+
+        function handleIncrease(infoFromChild:number){
+            setCount(infoFromChild + 1)
+        }
+
     }
