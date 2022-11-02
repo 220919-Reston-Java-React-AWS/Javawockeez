@@ -1,0 +1,34 @@
+Chris McMilen
+
+What did they do yesterday?
+	-  Worked on individual products page, implemented dropdown for cart and remove from cart.
+What will they do today?
+	- Format pages
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	-  Finishing up products and cart pages
+Are they running into any challenges/issues?
+	- N/A
+
+
+Aidan Shafer
+
+What did they do yesterday?
+	- Individual products pages, and order history.
+What will they do today?
+	- Night Mode
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	- N/A
+Are they running into any challenges/issues?
+	- N/A
+
+
+Daniel Rivera
+
+What did they do yesterday?
+	- Working with stripe, how to apply more info into stripe.
+What will they do today?
+	- Continue implementing stripe
+What progress are they making on project-2 and are they updating the Trello cards with their status?
+	- Implementing backend API
+Are they running into any challenges/issues?
+	- N/A
