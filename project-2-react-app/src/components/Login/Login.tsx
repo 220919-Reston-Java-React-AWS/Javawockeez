@@ -113,7 +113,7 @@ function Login() {
     return(
         <main className="min-vh-100 background_login">
             <Container fluid className="d-flex text-center justify-content-center vertical-center pb-5">
-                <Card className='card-width p-5' >
+                <Card className='card-width p-5 background-form' >
                     {loggingIn ? getForm() : getMessage()}
                 </Card>
             </Container>

@@ -1,0 +1,42 @@
+@media (prefers-color-scheme: dark){
+    .box{
+        background-color: rgb(20, 20, 30);
+        color: rgb(228, 226, 255);
+    }
+
+    .nav-color{
+        background-color: rgb(201, 199, 199);
+        color: rgb(228, 226, 255);
+    }
+
+    .product-description{
+        background-color: rgb(20, 20, 30) !important;
+        color: rgb(228, 226, 255) !important;
+    }
+
+    .footer-color{
+        background-color: rgb(20, 20, 30) !important;
+        color: rgb(228, 226, 255) !important;
+    }
+
+    .background-form{
+        background-color: rgb(34, 34, 51) !important;
+        color: rgb(204, 202, 226) !important;
+    }
+
+    .background-text{
+        background-color: rgb(47, 47, 49) !important;
+        color: rgb(206, 226, 202) !important;
+    }
+
+    .about-page-theme{
+        background-color: rgb(47, 47, 49) !important;
+        color: rgb(206, 226, 202) !important;
+    }
+
+    .bg-main{
+        background-color: rgb(47, 47, 49) !important;
+        color: rgb(206, 226, 202) !important;
+    }
+
+}

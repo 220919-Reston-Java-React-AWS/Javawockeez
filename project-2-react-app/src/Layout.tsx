@@ -21,6 +21,8 @@ import { Logout } from "./components/Login/Logout";
 import { ProductPage } from "./components/Pages/Products/ProductPage";
 import { OrderHistory } from "./components/Pages/OrderHistory/OrderHistory";
 
+import "./Layout.css"
+
 // import Landing from "./Pages/Landing";
 // import Dashboard from "./Pages/Dashboard";
 // import Login from "./Pages/Login";

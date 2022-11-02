@@ -179,7 +179,7 @@ function Main(){
                     {/* Bread Card */}
                     <Col sm="6" md="4" lg="2" className='mb-3'>
                         <Link to={"#"} onClick={() => scrollToSection(breadCategory)} className="text-decoration-none text-dark text-center">
-                            <Card className="p-4">
+                            <Card className="p-4 background-form">
                                     {/* <!-- product img --> */}
                                     <Image src={cate_bread} roundedCircle fluid={true} id="card-image"/>
                                     {/* <!-- text --> */}
@@ -191,7 +191,7 @@ function Main(){
                     {/* Cake Card */}
                     <Col sm="6" md="4" lg="2" className='mb-3'>
                         <Link to={"#"} onClick={() => scrollToSection(cakeCategory)} className="text-decoration-none text-dark text-center">
-                            <Card className="p-4">
+                            <Card className="p-4 background-form">
                                     {/* <!-- product img --> */}
                                     <Image src={cate_cake} roundedCircle fluid={true} id="card-image"/>
                                     {/* <!-- text --> */}
@@ -203,7 +203,7 @@ function Main(){
                     {/* Cookie Card */}
                     <Col sm="6" md="4" lg="2" className='mb-3'>
                         <Link to={"#"}  onClick={() => scrollToSection(cookieCategory)} className="text-decoration-none text-dark text-center">
-                            <Card className="p-4">
+                            <Card className="p-4 background-form">
                                     {/* <!-- product img --> */}
                                     <Image src={cate_cookie} roundedCircle fluid={true} id="card-image"/>
                                     {/* <!-- text --> */}
@@ -215,7 +215,7 @@ function Main(){
                     {/* Muffin Card */}
                     <Col sm="6" md="4" lg="2" className='mb-3'>
                         <Link to={"#"}  onClick={() => scrollToSection(muffinCategory)}  className="text-decoration-none text-dark text-center">
-                            <Card className="p-4">
+                            <Card className="p-4 background-form">
                                     {/* <!-- product img --> */}
                                     <Image src={cate_muffin} roundedCircle fluid={true} id="card-image"/>
                                     {/* <!-- text --> */}
@@ -227,7 +227,7 @@ function Main(){
                     {/* Pie Card */}
                     <Col sm="6" md="4" lg="2" className='mb-3'>
                         <Link to={"#"}  onClick={() => scrollToSection(pieCategory)}  className="text-decoration-none text-dark text-center">
-                            <Card className="p-4">
+                            <Card className="p-4 background-form">
                                     {/* <!-- product img --> */}
                                     <Image src={cate_pie} roundedCircle fluid={true} id="card-image"/>
                                     {/* <!-- text --> */}

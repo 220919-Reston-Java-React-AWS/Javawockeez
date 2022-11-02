@@ -85,7 +85,7 @@ function NavigationBar() {
 
 
     return <header>
-        <Navbar key='md' bg="light" expand='md' className="mb-0">
+        <Navbar key='md' expand='md' className="mb-0 nav-color">
           <Container fluid className="pt-2 pb-2 justify-content-center">
             {/* Website Logo */}
             {/* "Link" in brand component since just redirect is needed */}
