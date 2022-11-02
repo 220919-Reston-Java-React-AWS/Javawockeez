@@ -38,7 +38,7 @@ export function ProductOrderBox(props: IOrderProp){
                 }),
                 headers: {'Content-Type': 'application/json'}
             })
-            .then( response => response.json())
+            .then( response => response.text())
             .then( result => {
                 console.log(result);
             } )
@@ -47,10 +47,9 @@ export function ProductOrderBox(props: IOrderProp){
             } )
     }
 
-    console.log("before: ", props.purchaseDate)
-    //let orderDate:string = (props.purchaseDate ? props.purchaseDate.toDateString() : "No info available")
+
+
     let orderDate:string = new Date(props.purchaseDate).toDateString()
-    console.log("order date: ",orderDate)
 
     return <div className="box">
             <div className="product-img">

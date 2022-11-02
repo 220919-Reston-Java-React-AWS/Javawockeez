@@ -140,6 +140,7 @@ values
 
 -- Ratings
 create table ratings(
+	id serial primary key,
 	product_id int, 
 	customer_id int, 
 	rating int check(0<=rating and rating<=5),

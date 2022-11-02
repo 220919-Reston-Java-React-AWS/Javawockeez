@@ -24,6 +24,7 @@ public class RatingControl {
             rs.rateProduct(rating);
             return new ResponseEntity( "Rating was successful", HttpStatus.OK );
         } catch (Exception e) {
+            System.out.println( e.getMessage() );
             return new ResponseEntity( "The server has experienced an unexpected error", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
