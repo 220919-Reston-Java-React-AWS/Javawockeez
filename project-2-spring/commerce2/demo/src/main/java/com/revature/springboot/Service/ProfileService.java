@@ -1,6 +1,7 @@
 package com.revature.springboot.Service;
 
 import com.revature.springboot.Repository.UserRepo;
+import com.revature.springboot.exceptions.InvalidInputException;
 import com.revature.springboot.exceptions.QueryException;
 import com.revature.springboot.model.User;
 
@@ -16,6 +17,9 @@ public class ProfileService {
     @Autowired
     UserRepo ur;
 
+    @Autowired
+    RegistrationService rs;
+
 
     public User getProfile(int userId) throws QueryException {
         Optional<User> userOpt = ur.findById(userId);
@@ -30,7 +34,7 @@ public class ProfileService {
         return user;
     }
 
-    public User updateProfile(int userId, User updatedProfile) throws QueryException {
+    public User updateProfile(int userId, User updatedProfile) throws Exception {
 
         Optional<User> original = ur.findById(userId);
 
@@ -47,32 +51,32 @@ public class ProfileService {
 
     }
 
-    public void mergeProfiles(User original, User update){
+    public void mergeProfiles(User original, User update) throws Exception {
 
         String newEmail = update.getEmail();
         if ( newEmail!=null ){
-            if ( !newEmail.isEmpty() ) {
+            if ( !newEmail.isEmpty() & rs.validEmail(newEmail) ) {
                 original.setEmail(newEmail);
             }
         }
 
         String newPassword = update.getPassword();
         if ( newPassword!=null ){
-            if ( !newPassword.isEmpty() ) {
+            if ( !newPassword.isEmpty() & rs.validPassword(newPassword)) {
                 original.setPassword(newPassword);
             }
         }
 
         String newFirst = update.getFirstName();
         if ( newFirst!=null ){
-            if ( !newFirst.isEmpty() ) {
+            if ( !newFirst.isEmpty() & rs.validFirstname(newFirst) ) {
                 original.setFirstName(newFirst);
             }
         }
 
         String newLast = update.getLastName();
         if ( newLast!=null ){
-            if ( !newLast.isEmpty() ) {
+            if ( !newLast.isEmpty() & rs.validLastname(newLast) ) {
                 original.setLastName(newLast);
             }
         }

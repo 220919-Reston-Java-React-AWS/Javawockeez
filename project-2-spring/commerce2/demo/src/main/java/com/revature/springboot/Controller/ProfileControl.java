@@ -2,6 +2,7 @@ package com.revature.springboot.Controller;
 
 
 import com.revature.springboot.Service.ProfileService;
+import com.revature.springboot.exceptions.InvalidInputException;
 import com.revature.springboot.exceptions.QueryException;
 import com.revature.springboot.model.Response;
 import com.revature.springboot.model.User;
@@ -41,6 +42,9 @@ public class ProfileControl {
             return new ResponseEntity( ps.updateProfile(userId, updatedUser), HttpStatus.OK );
 
         } catch (QueryException e) {
+            return new ResponseEntity( new Response( e.getMessage() ), HttpStatus.BAD_REQUEST);
+
+        } catch (InvalidInputException e) {
             return new ResponseEntity( new Response( e.getMessage() ), HttpStatus.BAD_REQUEST);
 
         } catch (Exception e) {
