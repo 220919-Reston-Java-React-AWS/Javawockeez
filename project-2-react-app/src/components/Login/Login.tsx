@@ -6,15 +6,29 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 
 //to scroll to the top of page when loaded
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 // custom css
 import './custom.css'
 import { useAppDispatch } from '../../shared/hooks';
 import { setUser } from './UserSlicer';
 
+//setting up http cookies
+import {useCookies} from 'react-cookie';
+
 
 function Login() {
+    //setting up http cookie
+    const [cookies, setCookie, removeCookie] = useCookies(['userId','userFirstName', 'userLastName', 'userEmail', 'userRole']);
+    
+    //placing values
+    function setUserCookie(result:any){
+        setCookie('userId', result.id, { path: '/' });
+        setCookie('userFirstName', result.firstName, { path: '/' });
+        setCookie('userLastName', result.lastName, { path: '/' });
+        setCookie('userEmail', result.email, { path: '/' });
+        setCookie('userRole', result.role, { path: '/' });
+    }
 
     const dispatch = useAppDispatch();
 
@@ -69,6 +83,7 @@ function Login() {
             } else { // Success message/login
                 //localStorage.setItem("email", result.email) // **** NEEDS TO CHANGE **** //
                 console.log( result, result.id, result.data )
+                setUserCookie(result)   // http cookie
                 dispatch(setUser(result))
                 message = `Welcome back ${result.firstName}!`
             }

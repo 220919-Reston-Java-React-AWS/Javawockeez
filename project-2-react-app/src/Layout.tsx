@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import { CookiesProvider } from 'react-cookie';
+
 /* ===== Components ===== */
 import NavigationBar from "./components/NavBar/NavBar";   // Website's Navigation Bar
 import Footer from "./components/Footer/Footer";  // Website's Footer
@@ -28,32 +30,34 @@ import { OrderHistory } from "./components/Pages/OrderHistory/OrderHistory";
 
 const Layout: React.FC = () => {
   return (
-    <BrowserRouter>
-        {/* Navigation Bar is here to be persistent across website */}
-        <NavigationBar /> 
-        
-        {/* This is where setting the webpages are located */}
-        <Routes>
-          {/* Individual route within this React App */}
-          <Route path="/" element={<Main />}/>
-          <Route path="/placeholder" element={<Placeholder />}/>
-          <Route path="/about" element={<About />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/sign-up" element={<Signup />}/>
-          <Route path="/products" element={<Products />}></Route>
-          <Route path="/products/id=:id" element={<ProductPage />}/>
-          <Route path="/products/search=:keyword" element={<ProductSearch />}/>
-          <Route path="/cart" element={<Cart />}/>
-          <Route path="/profile" element={<UserProfile />}/>
-          <Route path="/checkout-success" element={<Success />} />
-          <Route path="/checkout-cancel" element={<Cancel />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/profile/order-history" element={<OrderHistory/>} />
-        </Routes>
+    <CookiesProvider>
+      <BrowserRouter>
+          {/* Navigation Bar is here to be persistent across website */}
+          <NavigationBar /> 
+          
+          {/* This is where setting the webpages are located */}
+          <Routes>
+            {/* Individual route within this React App */}
+            <Route path="/" element={<Main />}/>
+            <Route path="/placeholder" element={<Placeholder />}/>
+            <Route path="/about" element={<About />}/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/sign-up" element={<Signup />}/>
+            <Route path="/products" element={<Products />}></Route>
+            <Route path="/products/id=:id" element={<ProductPage />}/>
+            <Route path="/products/search=:keyword" element={<ProductSearch />}/>
+            <Route path="/cart" element={<Cart />}/>
+            <Route path="/profile" element={<UserProfile />}/>
+            <Route path="/checkout-success" element={<Success />} />
+            <Route path="/checkout-cancel" element={<Cancel />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/profile/order-history" element={<OrderHistory/>} />
+          </Routes>
 
-        {/* The Footer is here to be persistent across website */}
-        <Footer />
-    </BrowserRouter>
+          {/* The Footer is here to be persistent across website */}
+          <Footer />
+      </BrowserRouter>
+    </CookiesProvider>
   );
 };
 
