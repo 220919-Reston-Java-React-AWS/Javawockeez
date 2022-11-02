@@ -132,7 +132,7 @@ function Signup() {
     return(
         <main className="min-vh-100 background_register">
             <Container fluid className="d-flex text-center justify-content-center vertical-center pb-5">
-                <Card className='card-width p-5'>
+                <Card className='card-width p-5 background-form'>
                     {registering ? getForm():getMessage()}
                 </Card>
             </Container>

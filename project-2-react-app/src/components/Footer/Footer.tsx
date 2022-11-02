@@ -11,15 +11,15 @@ import "./Footer.css"   // some custom css
 function Footer() {
     return (
         <footer>
-            <Container fluid className="pt-4 bg-light">
+            <Container fluid className="pt-4 footer-color">
                 <Row className="justify-content-between">
                     {/* ===== Account Menu ===== */}
                     <Col xs={6} md={3} className="text-center p-3 pb-5">
                         <Row><h5>Account</h5></Row>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item className="bg-light"><Link to={'/login'} className="LinkStyle">Login</Link></ListGroup.Item>
-                            <ListGroup.Item className="bg-light"><Link to={'/sign-up'} className="LinkStyle">Sign Up</Link></ListGroup.Item>
-                            <ListGroup.Item className="bg-light"><Link to={'#profile'} className="LinkStyle">Profile</Link></ListGroup.Item>
+                        <ListGroup variant="flush" >
+                            <ListGroup.Item className="footer-color"><Link to={'/login'} className="LinkStyle">Login</Link></ListGroup.Item>
+                            <ListGroup.Item className="footer-color"><Link to={'/sign-up'} className="LinkStyle">Sign Up</Link></ListGroup.Item>
+                            <ListGroup.Item className="footer-color"><Link to={'/profile'} className="LinkStyle">Profile</Link></ListGroup.Item>
                         </ListGroup>
                     </Col>
 
@@ -27,28 +27,28 @@ function Footer() {
                     <Col xs={6} md={3} className="text-center p-3 pb-5">
                         <Row><h5>Shop</h5></Row>
                         <ListGroup variant="flush">
-                            <ListGroup.Item className="bg-light"><Link to={'/'} className="LinkStyle">Home</Link></ListGroup.Item>
-                            <ListGroup.Item className="bg-light"><Link to={'/products'} className="LinkStyle">Products</Link></ListGroup.Item>
-                            <ListGroup.Item className="bg-light"><Link to={'/cart'} className="LinkStyle">Shopping Cart</Link></ListGroup.Item>
+                            <ListGroup.Item className="footer-color"><Link to={'/'} className="LinkStyle">Home</Link></ListGroup.Item>
+                            <ListGroup.Item className="footer-color"><Link to={'/products'} className="LinkStyle">Products</Link></ListGroup.Item>
+                            <ListGroup.Item className="footer-color"><Link to={'/cart'} className="LinkStyle">Shopping Cart</Link></ListGroup.Item>
                         </ListGroup>
                     </Col>
 
                     {/* ===== Company Pages ===== */}
-                    <Col xs={6} md={3} className="text-center p-3 pb-5">
+                    <Col xs={6} md={3} className="text-center p-3 pb-5 footer-color">
                         <Row><h5>Company</h5></Row>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item className="bg-light"><Link to={'/about'} className="LinkStyle">About Us</Link></ListGroup.Item>
+                        <ListGroup variant="flush" >
+                            <ListGroup.Item className="footer-color"><Link to={'/about'} className="LinkStyle">About Us</Link></ListGroup.Item>
                         </ListGroup>
                     </Col>
 
                     {/* ===== Shopping Disclaimers ===== */}
                     <Col xs={6} md={3} className="text-center p-3 pb-5">
                         <ListGroup variant="flush">
-                            <ListGroup.Item className="bg-light">
+                            <ListGroup.Item className="footer-color">
                                 <h6 className="text-uppercase">Free shipping</h6>
                                 <p className="text-muted fw-light text-sm">Free Shipping over $50</p>
                             </ListGroup.Item>
-                            <ListGroup.Item className="bg-light">
+                            <ListGroup.Item className="footer-color">
                                 <h6 className="text-uppercase">Money back guarantee</h6>
                                 <p className="text-muted fw-light text-sm mb-0">7 Days Money Back Guarantee</p>
                             </ListGroup.Item>

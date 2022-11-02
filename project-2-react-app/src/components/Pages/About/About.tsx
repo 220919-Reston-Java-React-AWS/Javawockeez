@@ -19,7 +19,7 @@ function About(){
       }, []);
 
     return (
-        <main className="min-vh-100 p-3 mb-5">
+        <main className="min-vh-100 p-3 mb-5 about-page-theme">
             {/* Our Story Section */}
             <Container fluid className="mt-5 pb-5 ps-5 pe-5">
                 <Row className='align-items-center justify-content-between text-start'>

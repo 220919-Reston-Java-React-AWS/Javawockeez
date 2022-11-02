@@ -17,7 +17,7 @@ function MainProductBox(props: productModel){
         // Bread Card 
         <Col sm="12" md="6" xl="4" className="mt-5">
             {/* <Link to={"#"} className="text-decoration-none text-dark text-left"> */}
-                <Card className="p-4">
+                <Card className="p-4 background-form">
                     <Row>
                         <Col>
                             {/* Product Image */}

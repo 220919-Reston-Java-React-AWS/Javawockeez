@@ -8,7 +8,9 @@ import { serialize } from "v8";
 
 interface buttons extends cartModel{
     onButton(infoToParent:cartModel):void,
-    updateButton(infoToParent:cartModel, count:number):void
+    updateButton(infoToParent:cartModel, count:any):void,
+    flipButton(infoToParent:cartModel):void,
+    holdButton(infoToParent:cartModel):void
 }
 
 function CartBox(props: buttons){
@@ -17,15 +19,14 @@ function CartBox(props: buttons){
     className="d-flex justify-content-between align-items-start"
     >    
         <div className="ms-2 me-auto">
-             <span> Quantity </span>
 
             <div className="fw-bold">{props.product.name}</div>              
-            <DropdownButton id="dropdown-basic-button" title={props.quantity}>
+            <DropdownButton id="dropdown-basic-button" title={props.quantity} onClick={() => {props.holdButton(props)}}>
                 <Dropdown.Item onClick={() => {props.updateButton(props, 1)}}>1</Dropdown.Item>
                 <Dropdown.Item onClick={() => {props.updateButton(props, 2)}}>2</Dropdown.Item>
                 <Dropdown.Item onClick={() => {props.updateButton(props, 3)}}>3</Dropdown.Item>
                 <Dropdown.Item onClick={() => {props.updateButton(props, 4)}}>4</Dropdown.Item>
-                <Dropdown.Item onClick={() => {props.updateButton(props, 5)}}>5</Dropdown.Item>
+                <Dropdown.Item onClick={() => {props.flipButton(props)}}>5+</Dropdown.Item>
             </DropdownButton>
             </div>
             <Badge bg="primary" pill>${props.product.price}</Badge>

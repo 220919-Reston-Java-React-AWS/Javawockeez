@@ -90,7 +90,7 @@ export function UserProfile(){
 
     // Get the form for the body
     function getForm(){
-        return <Card className='card-width p-5'>
+        return <Card className='card-width p-5 background-form'>
             <Form onSubmit={submit}>
         <h1 className="h3 mb-5 fw-normal">Update Profile</h1>
         
@@ -128,8 +128,8 @@ export function UserProfile(){
     }
 
     function getProfile(){
-        return <Container fluid className="text-center justify-content-center vertical-center-col pb-5">
-            <Card className='card-width p-5 text-left mb-3'>
+        return <Container fluid className="text-center justify-content-center vertical-center-col pb-5 ">
+            <Card className='card-width p-5 text-left mb-3 background-text'>
                 <ul className="profile-list">
                 <li>Name: {currentUser.firstName + " " + currentUser.lastName}</li>
                 <li>Email: {currentUser.email}</li>
@@ -141,7 +141,7 @@ export function UserProfile(){
 
     function getNotLoggedInMessage(){
         return <Container fluid className="text-center justify-content-center vertical-center-col pb-5">
-            <Card className='card-width p-5'>
+            <Card className='card-width p-5 background-text'>
             <h2>You must Log In to View your profile</h2>
             <Link to='/login' className="btn btn-primary">Log In</Link>
             </Card>

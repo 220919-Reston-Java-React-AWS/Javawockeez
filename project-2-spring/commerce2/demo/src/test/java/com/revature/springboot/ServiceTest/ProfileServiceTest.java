@@ -91,4 +91,51 @@ public class ProfileServiceTest {
         }
     }
 
+    @Test
+    public void mergeProfiles_INPUT_emptyExceptInvalidFirstName_EXPECT_changedEmail(){
+        User original = new User("shaferai210@gmail.com","A1dan$hafer", "Aidan", "Shafer");
+        User update = new User("", "", "Chris1", "");
+
+        try {
+            when(rs.validFirstname(update.getFirstName())).thenReturn(false);
+            ps.mergeProfiles(original, update);
+
+            Assertions.assertEquals(original, new User("shaferai210@gmail.com", "A1dan$hafer", "Aidan", "Shafer"));
+        } catch (Exception e) {
+            System.out.println( e.getMessage() );
+        }
+    }
+
+    @Test
+    public void mergeProfiles_INPUT_emptyExceptInvalidLastName_EXPECT_changedEmail(){
+        User original = new User("shaferai210@gmail.com","A1dan$hafer", "Aidan", "Shafer");
+        User update = new User("", "", "", "McMillen1");
+
+        try{
+            when(rs.validLastname(update.getLastName())).thenReturn(false);
+            ps.mergeProfiles(original, update);
+
+            Assertions.assertEquals(original, new User("shaferai210@gmail.com","A1dan$hafer", "Aidan", "Shafer"));
+        } catch (Exception e) {
+            System.out.println( e.getMessage() );
+        }
+    }
+
+    @Test
+    public void mergeProfiles_INPUT_allExceptPassword_EXPECT_allChangedExceptPassword(){
+        User original = new User("shaferai210@gmail.com","A1dan$hafer", "Aidan", "Shafer");
+        User update = new User("shaferai@gmail.com", "", "Chris", "McMillen");
+
+        try{
+            when(rs.validEmail(update.getEmail())).thenReturn(true);
+            when(rs.validFirstname(update.getFirstName())).thenReturn(true);
+            when(rs.validLastname(update.getLastName())).thenReturn(true);
+            ps.mergeProfiles(original, update);
+
+            Assertions.assertEquals(original, new User("shaferai@gmail.com","A1dan$hafer", "Chris", "McMillen"));
+        } catch (Exception e) {
+            System.out.println( e.getMessage() );
+        }
+    }
+
 }

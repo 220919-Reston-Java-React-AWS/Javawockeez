@@ -29,6 +29,11 @@
     font-size: large;
 }
 
+.background-text{
+    background-color: aliceblue;
+    color:black;
+}
+
 @media (max-width: 768px) {
     .card-width{
         width: 100%;

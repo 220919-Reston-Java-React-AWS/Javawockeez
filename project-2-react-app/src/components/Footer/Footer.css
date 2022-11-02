@@ -8,3 +8,7 @@
 .LinkStyle:hover{
     color: black;
 }
+
+.footer-color{
+    background-color: rgb(255, 255, 255);
+}
