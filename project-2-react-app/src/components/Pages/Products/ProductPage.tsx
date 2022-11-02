@@ -12,7 +12,6 @@ import ProductBox from "./ProductBox/ProductBox";
 export function ProductPage(){
 
     const {id} = useParams();
-    const [count, setCount] = useState(1)
 
     const [product, setProduct] = useState<productModel>({
         avgRating: 0,
