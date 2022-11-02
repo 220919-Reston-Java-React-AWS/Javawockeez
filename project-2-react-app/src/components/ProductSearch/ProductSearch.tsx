@@ -88,13 +88,20 @@ export function ProductSearch(){
         {displayProducts()}
     </main>
 
-        // start of add to cart
-    function handleOnClickEvent(infoFromChild: number){
-        let quantity:number = 0;
 
-        if (id == undefined){
-             alert("You need to sign in to use the cart feature.")
-        }
+
+        //add to cart implementation
+     function handleOnClickEvent(infoFromChild: number){
+
+         let quantity:number = 0
+ 
+         let productId = infoFromChild
+         
+         
+         if (id === 0){
+             return alert("You must be signed in to add items to the cart.")
+         }   
+         
             async function getCart(){
                 await fetch(`http://127.0.0.1:8080/cart/${id}`, {
                     method: "GET",
@@ -161,5 +168,4 @@ export function ProductSearch(){
         function handleProduct(infoFromChild:number){
             alert("IndividualProduct(infoFromChild)")
         }
-
     }

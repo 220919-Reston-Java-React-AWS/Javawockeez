@@ -20,8 +20,8 @@ public class AuthenticationService {
     public User login(String email, String password) throws QueryException {
         Optional<List<User>> realUser = ur.findByEmail(email);
 
-        if (realUser.isEmpty()) {
-            throw new QueryException("No users with that email exist");
+        if (realUser.isEmpty() | realUser.get().isEmpty()) {
+            throw new QueryException("There are no accounts for that email address");
         } else {
             User usr = realUser.get().get(0); //There should only be one user with the email
             if ( usr.getPassword().equals(password) ){
