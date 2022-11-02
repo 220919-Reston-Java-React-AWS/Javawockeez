@@ -11,6 +11,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 //@ts-ignore
 import ReactStars from "react-rating-stars-component";
 import "./ProductBox.css"
+import { useNavigate } from "react-router-dom";
 
 export interface Iprop extends productModel{
     count:number,
@@ -22,15 +23,19 @@ export interface Iprop extends productModel{
 
 function ProductBox(props: Iprop){
 
+    let navigate = useNavigate();
+
     let currency_format = {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 2,
     }
 
+    
+
     return <div className="box">
         <div className="product-img">
-            <img src={`/${props.imagePath}`}/>
+            <img src={`/${props.imagePath}`} onClick={()=>navigate(`/products/id=${props.id}`)} />
         </div>
         <div className="fit-content">
             <h4 className="description text-centered">{formatLength(props.name, 50)}</h4>

@@ -1,0 +1,8 @@
+.background-order-history{
+    background-image: url("https://cookthestory.com/wp-content/uploads/2022/04/buttermilk-biscuits-tall-01-lowres-660x990.jpg");
+
+    /* scale image neatly */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

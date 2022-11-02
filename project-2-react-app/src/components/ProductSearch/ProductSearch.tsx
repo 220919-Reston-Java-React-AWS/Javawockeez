@@ -85,6 +85,9 @@ export function ProductSearch(){
         {displayProducts()}
     </main>
 
+
+
+
         //add to cart implementation
      function handleOnClickEvent(infoFromChild: number){
  
@@ -126,4 +129,4 @@ export function ProductSearch(){
         function handleIncrease(infoFromChild:number){
             setCount(infoFromChild + 1)
         }
-     }
+}

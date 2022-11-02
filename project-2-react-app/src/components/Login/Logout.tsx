@@ -1,5 +1,8 @@
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
+import { useAppDispatch } from "../../shared/hooks";
 import { IUserModel } from "../models/userModel";
+import { setUser } from "./UserSlicer";
 
 export function Logout(){
     
@@ -11,8 +14,11 @@ export function Logout(){
         role:0,
     } 
     
+    const dispatch = useAppDispatch();
+
+    dispatch(setUser(emptyUser)) // **************** //
     
     return <Container>
-        
+        You have been successfully logged out.
     </Container>
 }

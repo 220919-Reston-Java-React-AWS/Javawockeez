@@ -1,0 +1,23 @@
+
+.background-product{
+    background-image: url("https://img.freepik.com/free-photo/chopping-board-frame-with-spread-flour-surrounded-bread-loaves_23-2147872687.jpg?w=740&t=st=1667348444~exp=1667349044~hmac=f8db9d5c4153d866e2c54aa737b0403a667b9ff6df9d013e82d211d09bdd29e8");
+    /* background-color: aqua; */
+
+    
+    /* scale image neatly */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.product-description{
+    padding:15px;
+    width:70vw;
+    font: "sans-serif";
+    font-size: 13;
+}
+
+.product-box{
+    width:70vw;
+}

@@ -30,8 +30,6 @@ function NavigationBar() {
     const [query, setSearchQuery] = useState("")
 
     let navigate = useNavigate();
-
-    //let query:string = "";
     
     
     
@@ -43,16 +41,48 @@ function NavigationBar() {
 
 
     function setQuery(event:React.ChangeEvent<HTMLInputElement>){
-        //query = event.target.value;
         setSearchQuery(event.target.value)
     }
 
     function search(event:React.FormEvent<HTMLFormElement>){
         event.preventDefault();
-        //alert("Searching for " + query);
         navigate(`/products/search=${query}`)
     }
+
+
+    function getAccountPages(){
+        if (user.id) {
+            return <NavDropdown title="Account" id={`offcanvasNavbarDropdown-expand-$'md'`}>
+                {getUser()}
+
+                <NavDropdown.Divider />
+                <NavDropdown.Item as={Link} to='/profile'>Profile</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to='/profile/order-history'>Order History</NavDropdown.Item>
     
+                <NavDropdown.Divider />
+                <NavDropdown.Item as={Link} to='/logout'>Logout</NavDropdown.Item>
+            </NavDropdown>  
+        } else {
+            return <NavDropdown title="Account" id={`offcanvasNavbarDropdown-expand-$'md'`}>
+                <NavDropdown.Item as={Link} to='/login'>Login</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to='/sign-up'>Signup</NavDropdown.Item>
+            </NavDropdown>  
+        }
+    }
+    
+    function getSearchBar(){
+        return <Form className="d-flex flex-grow-1 searchBarMargin" onSubmit={search}>
+                <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+                onChange={setQuery}
+                    />
+                <Button variant="outline-success" type="submit">Search</Button>
+        </Form>
+    }
+
 
     return <header>
         <Navbar key='md' bg="light" expand='md' className="mb-0">
@@ -63,19 +93,8 @@ function NavigationBar() {
                 <img src={logo} width={128} height={48} alt="..." />
             </Navbar.Brand>
 
-            {/*getUser()*/}
-
             {/* Search Bar */}
-            <Form className="d-flex flex-grow-1 searchBarMargin" onSubmit={search}>
-                <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-                onChange={setQuery}
-                    />
-                <Button variant="outline-success" type="submit">Search</Button>
-            </Form>
+            {getSearchBar()}
 
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-$'md'`} />
             <Navbar.Offcanvas id={`offcanvasNavbar-expand-$'md'`} aria-labelledby={`offcanvasNavbarLabel-expand-$'md'`} placement="end">
@@ -101,17 +120,7 @@ function NavigationBar() {
                         </NavDropdown>       
 
                         {/* Account Pages */}
-                        <NavDropdown title="Account" id={`offcanvasNavbarDropdown-expand-$'md'`}>
-                            {getUser()}
-
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item as={Link} to='/login'>Login</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to='/sign-up'>Signup</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to='/profile'>Profile</NavDropdown.Item>
-                    
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item as={Link} to='#'>Logout</NavDropdown.Item>
-                        </NavDropdown>     
+                        {getAccountPages()}
 
                         {/* About Page */}
                         <Nav.Link as={NavLink} to='/about'>About</Nav.Link>
