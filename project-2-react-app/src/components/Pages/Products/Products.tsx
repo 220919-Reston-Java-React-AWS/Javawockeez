@@ -2,14 +2,19 @@ import { useEffect, useState } from "react";
 import ProductBox from "./ProductBox/ProductBox";
 import "./Products.css"
 import { productModel } from "../../models/productModel";
-//import AddToCart from "../Cart/AddToCart";
 import { useAppSelector } from "../../../shared/hooks";
 import { selectUser } from "../../Login/UserSlicer";
+import { selectProduct } from "../Cart/CartSlicer";
+import { cartModel } from "../../models/cartModel";
+import CartBox from "../Cart/CartBox/CartBox";
 
 
 export default function Products(){
 
-    const [count, setCount] = useState(1)
+
+
+    const [cartList, setCartList] = useState<cartModel[]>([])
+
 
     const [productList, setProductList] = useState<productModel[]>([])
     const user = useAppSelector(selectUser)
@@ -39,18 +44,50 @@ export default function Products(){
     }
     
 
-    return <main className="background-search">
+    return <main className="background">
         <div className="grid">
-        {productList.map((product) => <ProductBox key={product.id} {...product} count={count} onButtonClick={handleOnClickEvent} decreaseButton={handleDecrease} increaseButton={handleIncrease}></ProductBox>)}
+        {productList.map((item) => <ProductBox key={item.id} {...item} onButtonClick={handleOnClickEvent} productButton={handleProduct} ></ProductBox>)}
     </div>
     </main>
 
     // start of add to cart
     function handleOnClickEvent(infoFromChild: number){
 
+        //get quantity of item for user in cart
+        let quantity:number = 0;
 
-        let productId = infoFromChild
+        if (id == undefined){
+             alert("You need to sign in to use the cart feature.")
+        }
+            async function getCart(){
+                await fetch(`http://127.0.0.1:8080/cart/${id}`, {
+                    method: "GET",
+                    credentials: 'same-origin',
+                })
+                .then( response => response.json())
+                .then( result => {
+                        setCartList(result)
+                    })
+                .catch( (error) => {
+                console.error(error)
+                } )
+                
+                for (let i=0; i<cartList.length; i++){
+                    if (cartList[i].product.id == infoFromChild){
+                        quantity = cartList[i].quantity
+                    }
+                }
+            }
+            getCart()
+
+            let amount = quantity + 1
         
+        
+        let updateCart = {
+            userId: id,
+            productId: infoFromChild,
+            quantity: amount
+        }
         
         if (id === 0){
             return alert("You must be signed in to add items to the cart.")
@@ -59,11 +96,15 @@ export default function Products(){
         let message: string
         
         async function cartAdd(){
-            await fetch(`http://127.0.0.1:8080/cart/${id}/${productId}`, {
+            await fetch(`http://127.0.0.1:8080/cart/`, {
+                body: JSON.stringify(updateCart),
                 method: "POST",
-                credentials: "same-origin",
-                headers: {'Content-Type': 'application/json'}
-            })
+                credentials: 'same-origin',
+
+            headers:{
+                'Content-Type': 'application/json',
+            },
+        })
             .then( response => response.json())
                 .then( result => {
                     console.log(result);
@@ -79,16 +120,10 @@ export default function Products(){
             cartAdd() 
         }
 
-        //implementing counters for quantity
+        //implementing page link to pages
 
-        function handleDecrease(infoFromChild:number){
-            setCount(infoFromChild - 1)
-
-
-        }
-
-        function handleIncrease(infoFromChild:number){
-            setCount(infoFromChild + 1)
+        function handleProduct(infoFromChild:number){
+            alert("IndividualProduct(infoFromChild)")
         }
 
     }

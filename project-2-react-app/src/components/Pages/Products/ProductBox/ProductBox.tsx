@@ -11,16 +11,19 @@ import InputGroup from 'react-bootstrap/InputGroup';
 //@ts-ignore
 import ReactStars from "react-rating-stars-component";
 import "./ProductBox.css"
+import { cartModel } from "../../../models/cartModel";
+import { useAppDispatch } from "../../../../shared/hooks";
+import { setProduct } from "../../Cart/CartSlicer";
 
-export interface Iprop extends productModel{
-    count:number,
+interface Iprop extends productModel{
     onButtonClick(infoToParent:number):void,
-    increaseButton(infoToParent:number):void,
-    decreaseButton(infoToParent:number):void,
+    productButton(infoToParent:number):void
 }
 
 
 function ProductBox(props: Iprop){
+
+    const dispatch = useAppDispatch();
 
     let currency_format = {
         style: 'currency',
@@ -30,7 +33,7 @@ function ProductBox(props: Iprop){
 
     return <div className="box">
         <div className="product-img">
-            <img src={`/${props.imagePath}`}/>
+            <img src={`/${props.imagePath}`} onClick={() => {props.productButton(props.id)}}/>
         </div>
         <div className="fit-content">
             <h4 className="description text-centered">{formatLength(props.name, 50)}</h4>
@@ -45,9 +48,9 @@ function ProductBox(props: Iprop){
             <div className="cart-button">
                 <Button variant="success"  onClick={() => {props.onButtonClick(props.id)}}>Add to Cart</Button>
             </div>
-            <div> <ButtonToolbar><ButtonGroup className="me-2" aria-label="Second group"><Button onClick={() => props.decreaseButton(props.count)}>-</Button> <InputGroup.Text id="btnGroupAddon"> {props.count} </InputGroup.Text> <Button onClick={() => props.increaseButton(props.count)}>+</Button></ButtonGroup></ButtonToolbar></div>
             </div>
             </div>
+            dispatch(setProduct(props))
 }
 
 function formatLength(description:string, length:number){

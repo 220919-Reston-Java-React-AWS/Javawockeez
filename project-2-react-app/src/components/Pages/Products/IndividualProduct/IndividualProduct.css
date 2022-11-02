@@ -1,0 +1,30 @@
+.mt-15{
+    margin-top: 15%;
+}
+
+/* vertically align class object to middle of page (eye-balling it) */
+.vertical-center {
+    padding-top: 15%;
+  }
+
+.background_product{
+    /* background-image: url("https://wallpapercave.com/wp/wp2003928.jpg"); */
+    background-image: url("https://live.staticflickr.com/65535/50868630807_dcef1c0d6e_b.jpg");
+    
+    /* scale image neatly */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* custom card responsive widths */
+.card-width{
+    width: 50%;
+}
+
+@media (max-width: 768px) {
+    .card-width{
+        width: 100%;
+    }
+    
+}

@@ -7,5 +7,5 @@ export interface productModel{
     price: number,
     name: string,  
     weight: number,
-    stripeKey: string,
+    stripeKey: string
 }

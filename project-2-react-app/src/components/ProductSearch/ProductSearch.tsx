@@ -5,12 +5,15 @@ import { useParams } from "react-router-dom";
 import { isPropertyAccessChain } from "typescript";
 import { useAppSelector } from "../../shared/hooks";
 import { selectUser } from "../Login/UserSlicer";
+import { cartModel } from "../models/cartModel";
 import { productModel } from "../models/productModel";
 import CartBox from "../Pages/Cart/CartBox/CartBox";
-import ProductBox, {Iprop} from "../Pages/Products/ProductBox/ProductBox";
+import ProductBox from "../Pages/Products/ProductBox/ProductBox";
 import "./ProductSearch.css"
 
 export function ProductSearch(){
+
+    const [cartList, setCartList] = useState<cartModel[]>([])
 
     const [count, setCount] = useState(1)
 
@@ -65,7 +68,7 @@ export function ProductSearch(){
             productList.forEach(function(product:productModel){
                 //tmp.push(<li key={product.id}> {product.brand} </li>)
                 //nested product box in card did not seem to effect layout -cm
-                tmp.push( <Card className="product-box mb-3"><ProductBox key={product.id} {...product} count = {count} onButtonClick={handleOnClickEvent} increaseButton={handleIncrease} decreaseButton={handleDecrease}></ProductBox></Card> )
+                tmp.push( <Card className="product-box mb-3"><ProductBox  key={product.id} {...product} productButton={handleProduct} onButtonClick={handleOnClickEvent}></ProductBox></Card> )
             })
 
             return <Container fluid className="d-flex text-center justify-content-center vertical-center-col pb-5">
@@ -85,45 +88,78 @@ export function ProductSearch(){
         {displayProducts()}
     </main>
 
-        //add to cart implementation
-     function handleOnClickEvent(infoFromChild: number){
- 
-         let productId = infoFromChild
-         
-         
-         if (id === 0){
-             return alert("You must be signed in to add items to the cart.")
-         }   
-         
-         let message: string
-         
-         async function cartAdd(){
-             await fetch(`http://127.0.0.1:8080/cart/${id}/${productId}`, {
-                 method: "POST",
-                 credentials: "same-origin",
-                 headers: {'Content-Type': 'application/json'}
-             })
-             .then( response => response.json())
-                 .then( result => {
-                     console.log(result);
-                     message = result.message;
-                     alert(message);
-                 } )
-                 .catch( (error) => {
-                     console.error(error)
-                     message = error.message;
-                     alert(message)
-                     } )
-                 }
-             cartAdd() 
-         }
-         function handleDecrease(infoFromChild:number){
-            setCount(infoFromChild - 1)
+        // start of add to cart
+    function handleOnClickEvent(infoFromChild: number){
+        let quantity:number = 0;
 
+        if (id == undefined){
+             alert("You need to sign in to use the cart feature.")
+        }
+            async function getCart(){
+                await fetch(`http://127.0.0.1:8080/cart/${id}`, {
+                    method: "GET",
+                    credentials: 'same-origin',
+                })
+                .then( response => response.json())
+                .then( result => {
+                        setCartList(result)
+                    })
+                .catch( (error) => {
+                console.error(error)
+                } )
+                
+                for (let i=0; i<cartList.length; i++){
+                    if (cartList[i].product.id == infoFromChild){
+                        quantity = cartList[i].quantity
+                    }
+                }
+            }
+            getCart()
 
+            let amount = quantity + 1
+        
+        
+        let updateCart = {
+            userId: id,
+            productId: infoFromChild,
+            quantity: amount
+        }
+        
+        if (id === 0){
+            return alert("You must be signed in to add items to the cart.")
+        }   
+        
+        let message: string
+        
+        async function cartAdd(){
+            await fetch(`http://127.0.0.1:8080/cart/`, {
+                body: JSON.stringify(updateCart),
+                method: "POST",
+                credentials: 'same-origin',
+
+            headers:{
+                'Content-Type': 'application/json',
+            },
+        })
+            .then( response => response.json())
+                .then( result => {
+                    console.log(result);
+                    message = result.message;
+                    alert(message);
+                } )
+                .catch( (error) => {
+                    console.error(error)
+                    message = error.message;
+                    alert(message)
+                    } )
+                }
+            cartAdd() 
         }
 
-        function handleIncrease(infoFromChild:number){
-            setCount(infoFromChild + 1)
+        //implementing page link to pages
+
+        function handleProduct(infoFromChild:number){
+            alert("IndividualProduct(infoFromChild)")
         }
-     }
+
+    }

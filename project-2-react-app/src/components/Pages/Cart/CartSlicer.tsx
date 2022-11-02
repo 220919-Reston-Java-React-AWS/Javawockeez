@@ -33,6 +33,7 @@ const cartSlice:Slice<productModel> = createSlice({
             state.price = action.payload.price;
             state.name = action.payload.name;
             state.weight = action.payload.weight;
+            state.stripeKey = action.payload.stripeKey;
         },
 
         setDefault: ( state ) => {
@@ -45,6 +46,7 @@ const cartSlice:Slice<productModel> = createSlice({
             state.price = 0;
             state.name = "";  
             state.weight = 0;
+            state.stripeKey = "";
         },
 
     },

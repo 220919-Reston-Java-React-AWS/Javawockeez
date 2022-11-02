@@ -9,6 +9,8 @@ import Badge from 'react-bootstrap/Badge';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import { idText } from "typescript";
+import { cartModel } from "../../models/cartModel";
+import ProductBox from "../Products/ProductBox/ProductBox";
 
 
 
@@ -17,13 +19,16 @@ export default function Cart(){
     useEffect(() => {
     // scroll to top on page load
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+
+        getCart();
+
         }, []); 
 
     const user = useAppSelector(selectUser);
-    const [cartList, setCartList] = useState<productModel[]>([])
-    let carTotal = 0;
+    const [cartList, setCartList] = useState<cartModel[]>([])
+    let carTotal:number = 0;
     const id = user.id;
-    if (id == undefined){
+    if (id == 0){
         return <div>
         <h3 className="error">You need to sign in to access the cart feature.</h3>
         </div>
@@ -42,27 +47,55 @@ export default function Cart(){
             } )
         }
         getCart()
+        for (let i=0; i<cartList.length; i++){
+                carTotal += (cartList[i].quantity * cartList[i].product.price)
+            }
         return <div>
             <ListGroup as="ol" numbered>
-                {cartList.map((product) => <CartBox key={product.id} {...product} onButton={handleOnButton}></CartBox>)}
+                {cartList.map((product) => <CartBox key={product.id} {...product} updateButton={handleOnClickEvent} onButton={handleRemove}></CartBox>)}
             </ListGroup>
-            <p className="total">Total = $ </p>
+            <p className="total"> Total = {currencyFormat(carTotal)} </p>
             <div className="checkout"><Button variant="success"> Checkout </Button>{' '}</div>
             </div>
 
-        function handleOnButton(infoFromChild:number){
+        function currencyFormat(num:number) {
+            return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+        }
+ 
 
-            let productId = infoFromChild
+        // start of add to cart
+    function handleOnClickEvent(infoFromChild: cartModel, count:number){
 
-            let message: string
         
-        async function cartRemove(){
-            alert("waiting for fetch to be made")
-            /*await fetch(`http://127.0.0.1:8080/cart/${id}/${productId}`, {
+        let productId = infoFromChild.product.id
+        let quantity = count
+
+        let newCart = {
+            userId: id,
+            productId: productId,
+            quantity: quantity
+        }
+    
+        if (id == 0){
+            alert("You need to sign in to use the cart feature.")
+        }
+
+        if (quantity >= 5){
+            alert("add input form")
+        }
+   
+        let message: string
+        
+        async function cartAdd(){
+            await fetch(`http://127.0.0.1:8080/cart/`, {
+                body: JSON.stringify(newCart),
                 method: "POST",
-                credentials: "same-origin",
-                headers: {'Content-Type': 'application/json'}
-            })
+                credentials: 'same-origin',
+
+            headers:{
+                'Content-Type': 'application/json',
+            },
+        })    
             .then( response => response.json())
                 .then( result => {
                     console.log(result);
@@ -74,10 +107,45 @@ export default function Cart(){
                     message = error.message;
                     alert(message)
                     } )
-                }*/  
+                }
+            cartAdd() 
         }
-        cartRemove()
+
+
+        //remove from cart
+        function handleRemove(infoFromChild:cartModel){
+
+            let productId = infoFromChild.product.id
+            let quantity = 0
+
+            let updateCart = {
+                userId: id,
+                productId: productId,
+                quantity: quantity
+            }
+        
+
+        async function deleteItem(){
+            await fetch(`http://127.0.0.1:8080/cart/`, {
+                body: JSON.stringify(updateCart),
+                method: "DELETE",
+                credentials: 'same-origin',
+
+            headers:{
+                'Content-Type': 'application/json',
+            },
+        })
+            .then( response => response.json())
+            .then( result => {
+                    alert(result.message)
+                })
+            .catch( (error) => {
+            console.error(error)
+                alert(error.message)
+            } )
         }
+        deleteItem()
+    }
     }
 
     
