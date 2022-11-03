@@ -4,17 +4,19 @@
     background-size: 100%;
   }
   .checkout {
-    margin-top: 10px;
+    margin-top: 1rem;
     margin-left: 3rem;
+    margin-bottom: 2rem;
     text-align: right;
-    size-adjust: 300%;
 }
 .error{
+    margin-top: 1rem;
     text-align: center;
     color: rgb(32, 32, 32);
 }
 .total{
-    margin-top: 16px;
+    font-size: large;
+    margin-top: 2rem;
     margin-left: 1rem;
     text-align: center;
 }
@@ -26,10 +28,12 @@
     border: 2px solid black;
     border-radius: 5px;
     box-shadow: rgba(248, 241, 241, 0.35) 15px 20px 10px;
-    width: 18vw;
+    background-color: white;
+    width: 15vw;
     height: 4rem;
     margin-top: 1rem;
     margin-left: 70%;
+    padding-top: 10px;
 }
 .box3{
     border: 2px solid black;
@@ -38,7 +42,7 @@
     background-color: white;
     width: 40rem;
     height: 5rem;
-    margin-left: 27rem;
+    margin-left: 33%;
 }
 .errorSpace{
     padding-top: 15rem;
