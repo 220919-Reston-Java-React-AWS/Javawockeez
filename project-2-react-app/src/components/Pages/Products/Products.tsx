@@ -44,7 +44,7 @@ export default function Products(){
     }
     
 
-    return <main className="background">
+    return <main className="background min-vh-100">
         <div className="grid">
         {productList.map((item) => <ProductBox key={item.id} {...item} onButtonClick={handleOnClickEvent} productButton={handleProduct} ></ProductBox>)}
     </div>

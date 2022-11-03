@@ -105,7 +105,7 @@ export function ProductPage(){
         cartAdd() 
     }
 
-    return <main className="background-product">
+    return <main className="background-product min-vh-100">
         <Container>
             {displayProduct()}
         </Container>
