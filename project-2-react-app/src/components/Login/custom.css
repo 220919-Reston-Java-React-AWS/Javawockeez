@@ -17,6 +17,15 @@
     background-size: cover;
 }
 
+.background-logout{
+    background-image: url("https://image.shutterstock.com/image-photo/bread-on-table-wood-landscape-600w-222460030.jpg");
+    
+    /* scale image neatly */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* custom card responsive widths */
 .card-width{
     width: 50%;

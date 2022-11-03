@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import { useAppDispatch } from "../../shared/hooks";
 import { IUserModel } from "../models/userModel";
 import { setUser } from "./UserSlicer";
 
 //setting up http cookies
 import {useCookies} from 'react-cookie';
+import { useNavigate } from "react-router-dom";
 
 export function Logout(){
     
@@ -17,6 +18,7 @@ export function Logout(){
         role:0,
     } 
     
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     dispatch(setUser(emptyUser)) // **************** //
@@ -28,11 +30,18 @@ export function Logout(){
     removeCookie('userLastName');
     removeCookie('userEmail');
     removeCookie('userRole');
+
+
+    setTimeout( () => {
+        navigate( '/' )
+    }, 5000)
     
     return (
-    <main className="min-vh-100">
-        <Container className="d-flex text-center justify-content-center">
-            <h1>You have been successfully logged out.</h1>
+    <main className="min-vh-100 background-logout justify-content-center d-flex flex-column">
+        <Container>
+            <Card className="text-center p-5 pt-15 pb-40 background-form">
+                <h1>You have been successfully logged out.</h1>
+            </Card>
         </Container>
     </main>
     );
