@@ -14,6 +14,7 @@ import ProductBox from "../Products/ProductBox/ProductBox";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/esm/Modal";
 import { render } from "@testing-library/react";
+import { mainModule } from "process";
 
 
 
@@ -54,10 +55,11 @@ export default function Cart(){
     /***************** page if not logged in  ******************/
     if (id == 0){
         return (
-        <main className="min-vh-100">
-            <div>
-                <h3 className="error">You need to sign in to access the cart feature.</h3>
-            </div>
+        <main className="background">
+<div className="errorSpace">
+        <div className="box3">
+        <h3 className="error">You need to sign in to access the cart feature.</h3>
+        </div></div>
         </main>
         )
     }
@@ -84,15 +86,15 @@ export default function Cart(){
 
     /***************** page if logged in  ******************/
     return (
-        <main className="min-vh-100">
-            <ListGroup as="ol" numbered>
+        <main className="background">
+           <div className="space">
+            <ListGroup as="ol" numbered className="group">
                 {cartList.map((item) => <CartBox key={item.id} {...item} updateButton={handleOnClickEvent} onButton={handleRemove} flipButton={handleShow} holdButton={setValues}></CartBox>)}
             </ListGroup>
-            <p className="total"> Total = {currencyFormat(carTotal)} </p>
-            
+            <div className="box"><span className="total"> Total = {currencyFormat(carTotal)}</span>
             <div className="checkout">
                 <Button variant="success" onClick={() => { stripeCheckout() }}> Checkout </Button>
-            </div>
+            </div></div>
 
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
@@ -115,16 +117,16 @@ export default function Cart(){
                         Save Changes
                     </Button>
                 </Modal.Footer>
-            </Modal>
+            </Modal></div>
         </main>
     );
         
     /******************* functions for page  ****************/
-    function setValues(infoFromChild:cartModel){
-        let update:string = infoFromChild.product.id.toString()
-        setProductId(update)
-        alert(productId)
-    }
+
+        function setValues(infoFromChild:cartModel){
+            let update:string = infoFromChild.product.id.toString()
+            setProductId(update)
+        }
 
     function currencyFormat(num:number) {
         return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
@@ -182,26 +184,36 @@ export default function Cart(){
     // start of large cart
     function largeCart(){
 
-        let amount:number = parseInt(quantity, 10)
-        alert(amount)
+        let total:number = parseInt(quantity, 10)
 
-        let product:number = parseInt(productId, 10)
-        alert(product)
+        let item:number = parseInt(productId, 10)
 
-        updateCart.productId = product
+        updateCart.productId = item
 
 
-        if(amount == NaN || amount == null || amount == undefined || amount > 100 || amount < 1){
+        if(total == NaN || total == null || total == undefined || total > 100 || total < 1){
             alert("You must enter a valid number")
         }
 
-        updateCart.quantity = amount
+        updateCart.quantity = total
 
-        if (id == 0){
-            alert("You need to sign in to use the cart feature.")
-        }
+            let amount:number = parseInt(quantity, 10)
 
-        alert(JSON.stringify(updateCart))
+            let product:number = parseInt(productId, 10)
+
+            updateCart.productId = product
+    
+    
+            if(amount == NaN || amount == null || amount == undefined || amount > 100 || amount < 1){
+                alert("You must enter a valid number")
+            }
+    
+            updateCart.quantity = amount
+    
+            if (id == 0){
+                alert("You need to sign in to use the cart feature.")
+            }
+
     
         let message: string
         
