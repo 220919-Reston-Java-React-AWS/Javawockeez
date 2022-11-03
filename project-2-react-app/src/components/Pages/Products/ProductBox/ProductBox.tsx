@@ -1,14 +1,14 @@
 import { productModel } from "../../../models/productModel";
-import "./ProductBox.css";
+import { useNavigate } from "react-router-dom";
 
 //bootstrap
 import Button from 'react-bootstrap/Button';
 
-
 //@ts-ignore
 import ReactStars from "react-rating-stars-component";
+
+
 import "./ProductBox.css"
-import { useNavigate } from "react-router-dom";
 
 interface Iprop extends productModel{
     onButtonClick(infoToParent:number):void,
