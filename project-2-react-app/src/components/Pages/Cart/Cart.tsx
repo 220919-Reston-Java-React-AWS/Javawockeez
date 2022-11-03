@@ -92,9 +92,9 @@ export default function Cart(){
                 {cartList.map((item) => <CartBox key={item.id} {...item} updateButton={handleOnClickEvent} onButton={handleRemove} flipButton={handleShow} holdButton={setValues}></CartBox>)}
             </ListGroup>
             <div className="box-cart1"><span className="total"> Total = {currencyFormat(carTotal)}</span>
-            <div className="checkout">
+            <span className="checkout">
                 <Button variant="success" onClick={() => { stripeCheckout() }}> Checkout </Button>
-            </div></div>
+            </span></div>
 
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>

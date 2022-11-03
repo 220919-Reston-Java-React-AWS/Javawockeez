@@ -1,9 +1,4 @@
-  .product-box{
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .background-search{
+.background-search{
     background-image: url("https://bakerynouveau.com/wp-content/uploads/2015/11/pastry-0491.jpg");
   
     /* scale image neatly */
@@ -30,7 +25,7 @@
   }
   .pill{
     margin-top: 5px;
-    margin-right: 16rem;
+    margin-right: 22rem;
     size-adjust: 200%;
   }
   .box2{
