@@ -25,11 +25,6 @@ import { OrderHistory } from "./components/Pages/OrderHistory/OrderHistory";
 
 import "./Layout.css"
 
-// import Landing from "./Pages/Landing";
-// import Dashboard from "./Pages/Dashboard";
-// import Login from "./Pages/Login";
-// import LoadingPage from "./Pages/Loading";
-
 const Layout: React.FC = () => {
   return (
     <CookiesProvider>

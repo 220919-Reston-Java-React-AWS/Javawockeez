@@ -51,77 +51,90 @@ export default function Cart(){
 
     const id = user.id;
 
+    
+    /***************** page if not logged in  ******************/
     if (id == 0){
-        return <main className="background">
-            <div className="errorSpace">
+        return (
+        <main className="background">
+<div className="errorSpace">
         <div className="box3">
         <h3 className="error">You need to sign in to access the cart feature.</h3>
-        </div></div></main>
+        </div></div>
+        </main>
+        )
     }
-        async function getCart(){
-            await fetch(`http://127.0.0.1:8080/cart/${id}`, {
-                method: "GET",
-                credentials: 'same-origin',
-            })
-            .then( response => response.json())
-            .then( result => {
-                    setCartList(result)
-            } )
-            .catch( (error) => {
-            console.error(error)
-            } )
-        }
-        getCart()
 
-        for (let i=0; i<cartList.length; i++){
-                carTotal += (cartList[i].quantity * cartList[i].product.price)
-            }
+    /***** function to get cart *******/
+    async function getCart(){
+        await fetch(`http://127.0.0.1:8080/cart/${id}`, {
+            method: "GET",
+            credentials: 'same-origin',
+        })
+        .then( response => response.json())
+        .then( result => {
+                setCartList(result)
+        } )
+        .catch( (error) => {
+        console.error(error)
+        } )
+    }
+    // getCart()
 
-        return (<main className="background">
-            <div className="space">
+    for (let i=0; i<cartList.length; i++){
+        carTotal += (cartList[i].quantity * cartList[i].product.price)
+    }
+
+    /***************** page if logged in  ******************/
+    return (
+        <main className="background">
+           <div className="space">
             <ListGroup as="ol" numbered className="group">
                 {cartList.map((item) => <CartBox key={item.id} {...item} updateButton={handleOnClickEvent} onButton={handleRemove} flipButton={handleShow} holdButton={setValues}></CartBox>)}
             </ListGroup>
             <div className="box"><span className="total"> Total = {currencyFormat(carTotal)}</span>
-            <p><div className="checkout"><Button variant="success"> Checkout </Button>{' '}</div></p></div>
-            
+            <div className="checkout">
+                <Button variant="success" onClick={() => { stripeCheckout() }}> Checkout </Button>
+            </div></div>
 
-                <Modal show={show} onHide={handleClose} animation={false}>
-                    <Modal.Header closeButton>
+            <Modal show={show} onHide={handleClose} animation={false}>
+                <Modal.Header closeButton>
                     <Modal.Title>Update Amount</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body><form>
+                </Modal.Header>
+                <Modal.Body>
+                    <form>
                         <label> Enter Quantity for Product (Maximum is 100):
                         <input type="number" 
                         value={quantity}
                         onChange={(q) => setQuantity(q.target.value)}/>
                         </label>
-                    </form></Modal.Body>
-                    <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                Cancel
-                </Button>
-                <Button variant="primary" onClick={largeCart}>
-                Save Changes
-                </Button>
-                    </Modal.Footer>
-                </Modal>
-            </div></main>
-            );
+                    </form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Cancel
+                    </Button>
+                    <Button variant="primary" onClick={largeCart}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal></div>
+        </main>
+    );
         
+    /******************* functions for page  ****************/
 
         function setValues(infoFromChild:cartModel){
             let update:string = infoFromChild.product.id.toString()
             setProductId(update)
         }
 
-        function currencyFormat(num:number) {
-            return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-        }
+    function currencyFormat(num:number) {
+        return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    }
 
 
-        // start of add to cart
-        function handleOnClickEvent(infoFromChild:cartModel, count:number){
+    // start of add to cart
+    function handleOnClickEvent(infoFromChild:cartModel, count:number){
 
         let amount:number = count
         
@@ -153,23 +166,36 @@ export default function Cart(){
                 'Content-Type': 'application/json',
             },
         })    
-            .then( response => response.json())
-                .then( result => {
-                    console.log(result);
-                    message = result.message;
-                    alert(message);
+        .then( response => response.json())
+            .then( result => {
+                console.log(result);
+                message = result.message;
+                alert(message);
+            } )
+            .catch( (error) => {
+                console.error(error)
+                message = error.message;
+                alert(message)
                 } )
-                .catch( (error) => {
-                    console.error(error)
-                    message = error.message;
-                    alert(message)
-                    } )
-                }
-            cartAdd() 
+            }
+        cartAdd()    
+    }
+
+    // start of large cart
+    function largeCart(){
+
+        let total:number = parseInt(quantity, 10)
+
+        let item:number = parseInt(productId, 10)
+
+        updateCart.productId = item
+
+
+        if(total == NaN || total == null || total == undefined || total > 100 || total < 1){
+            alert("You must enter a valid number")
         }
 
-        // start of large cart
-        function largeCart(){
+        updateCart.quantity = total
 
             let amount:number = parseInt(quantity, 10)
 
@@ -187,47 +213,48 @@ export default function Cart(){
             if (id == 0){
                 alert("You need to sign in to use the cart feature.")
             }
-        
-            let message: string
-            
-            async function cartAdd(){
-                await fetch(`http://127.0.0.1:8080/cart/`, {
-                    body: JSON.stringify(updateCart),
-                    method: "POST",
-                    credentials: 'same-origin',
+
     
-                headers:{
-                    'Content-Type': 'application/json',
-                },
-            })    
-                .then( response => response.json())
-                    .then( result => {
-                        console.log(result);
-                        message = result.message;
-                        alert(message);
-                    } )
-                    .catch( (error) => {
-                        console.error(error)
-                        message = error.message;
-                        alert(message)
-                        } )
-                    }
-                cartAdd() 
-            }
-
-
-        //remove from cart
-        function handleRemove(infoFromChild:cartModel){
-
-            let productId = infoFromChild.product.id
-            let quantity = 0
-
-            let updateCart = {
-                userId: id,
-                productId: productId,
-                quantity: quantity
-            }
+        let message: string
         
+        async function cartAdd(){
+            await fetch(`http://127.0.0.1:8080/cart/`, {
+                body: JSON.stringify(updateCart),
+                method: "POST",
+                credentials: 'same-origin',
+
+            headers:{
+                'Content-Type': 'application/json',
+            },
+        })    
+        .then( response => response.json())
+            .then( result => {
+                console.log(result);
+                message = result.message;
+                alert(message);
+            } )
+            .catch( (error) => {
+                console.error(error)
+                message = error.message;
+                alert(message)
+                } )
+            }
+        cartAdd() 
+    }
+
+
+    //remove from cart
+    function handleRemove(infoFromChild:cartModel){
+
+        let productId = infoFromChild.product.id
+        let quantity = 0
+
+        let updateCart = {
+            userId: id,
+            productId: productId,
+            quantity: quantity
+        }
+    
 
         async function deleteItem(){
             await fetch(`http://127.0.0.1:8080/cart/`, {
@@ -250,5 +277,58 @@ export default function Cart(){
         }
         deleteItem()
     }
+
+ 
+    /*********** Stripe Functionality *************/
+    //function that make an array of products Stripe can use
+    async function stripeCheckout(){
+        const productArray:any = [];    // blank array
+
+        await fetch(`http://127.0.0.1:8080/cart/${id}`, {
+            method: "GET",
+            credentials: 'same-origin',
+        })
+        .then( response => response.json())
+        .then( result => {
+            // console.log(result);
+            for(let item = 0; item < result.length; item++){
+                const productStripeItem = {
+                    productKey: '',
+                    amount: 0
+                  };
+
+                productStripeItem.productKey = result[item].product.stripeKey;
+                productStripeItem.amount = result[item].quantity;
+                
+                productArray[item] = productStripeItem;
+            }
+        })
+        .catch( (error) => {
+            console.error(error)
+        } )
+
+        // console.log(productArray);
+        // var test = JSON.stringify(Array.from(productArray.entries()));
+        // console.log(test)
+        stripe(productArray);
     }
+
+    // the function that does the Stripe checkout session
+    async function stripe(productArray:any){
+        await fetch("http://localhost:8080/checkout", {
+            method:'POST',
+            redirect: 'follow',
+            
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productArray)
+        })
+        .then(response => {
+            response.text().then((text) =>{
+                window.location.href=text;
+            });
+        }); 
+    }
+}
     
