@@ -1,0 +1,29 @@
+
+Chris McMilen
+
+What did they do yesterday? Finished up add to cart page, and button functionalities
+	-  
+What will they do today? May make minor aesthetic changes. May need to update certain things.
+	- 
+Are they running into any challenges/issues? No
+	-
+
+
+Aidan Shafer
+
+What did they do yesterday? Minor touch ups. Worked on individual product page and dark-mode
+	- 
+	- 
+What will they do today? Small adjustments and include documentation.
+	- 
+Are they running into any challenges/issues? No
+	-
+
+
+Daniel Rivera
+
+What did they do yesterday? Added stripe functionality. Front and back end.
+	- 
+What will they do today? Start planning out presentation. Maybe some styling
+	- 
+Are they running into any challenges/issues? No
