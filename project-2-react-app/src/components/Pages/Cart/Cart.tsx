@@ -55,7 +55,7 @@ export default function Cart(){
     /***************** page if not logged in  ******************/
     if (id == 0){
         return (
-        <main className="background">
+        <main className="background min-vh-100">
 <div className="errorSpace">
         <div className="box3">
         <h3 className="error">You need to sign in to access the cart feature.</h3>
@@ -86,12 +86,12 @@ export default function Cart(){
 
     /***************** page if logged in  ******************/
     return (
-        <main className="background">
+        <main className="background min-vh-100">
            <div className="space">
             <ListGroup as="ol" numbered className="group">
                 {cartList.map((item) => <CartBox key={item.id} {...item} updateButton={handleOnClickEvent} onButton={handleRemove} flipButton={handleShow} holdButton={setValues}></CartBox>)}
             </ListGroup>
-            <div className="box"><span className="total"> Total = {currencyFormat(carTotal)}</span>
+            <div className="box-cart1"><span className="total"> Total = {currencyFormat(carTotal)}</span>
             <div className="checkout">
                 <Button variant="success" onClick={() => { stripeCheckout() }}> Checkout </Button>
             </div></div>
