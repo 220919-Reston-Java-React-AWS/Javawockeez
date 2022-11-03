@@ -11,6 +11,7 @@ target/
 *.iws
 *.iml
 *.ipr
+project-2-spring/commerce2/demo/src/main/resources/application.properties
 
 ### Eclipse ###
 .apt_generated
