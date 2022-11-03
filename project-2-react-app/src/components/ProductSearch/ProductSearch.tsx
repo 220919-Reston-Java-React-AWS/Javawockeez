@@ -68,7 +68,7 @@ export function ProductSearch(){
             productList.forEach(function(product:productModel){
                 //tmp.push(<li key={product.id}> {product.brand} </li>)
                 //nested product box in card did not seem to effect layout -cm
-                tmp.push( <Card className="product-box mb-3"><ProductBox  key={product.id} {...product} productButton={handleProduct} onButtonClick={handleOnClickEvent}></ProductBox></Card> )
+                tmp.push( <Card className="product-box mb-3"><ProductBox  key={product.id} {...product} onButtonClick={handleOnClickEvent}></ProductBox></Card> )
             })
 
             return <Container fluid className="d-flex text-center justify-content-center vertical-center-col pb-5">

@@ -56,7 +56,7 @@ export default function Cart(){
     if (id == 0){
         return (
         <main className="background min-vh-100">
-<div className="errorSpace">
+        <div className="errorSpace">
         <div className="box3">
         <h3 className="error">You need to sign in to access the cart feature.</h3>
         </div></div>
@@ -78,7 +78,7 @@ export default function Cart(){
         console.error(error)
         } )
     }
-    // getCart()
+    getCart()
 
     for (let i=0; i<cartList.length; i++){
         carTotal += (cartList[i].quantity * cartList[i].product.price)
@@ -139,12 +139,12 @@ export default function Cart(){
         let amount:number = count
         
         if(amount == NaN || amount == null || amount == undefined || amount > 100 || amount < 1){
-            alert("You must enter a valid number")
+            return alert("You must enter a valid number")
         }
 
 
         if (id == 0){
-            alert("You need to sign in to use the cart feature.")
+            return alert("You need to sign in to use the cart feature.")
         }
 
         let newCart = {
@@ -178,7 +178,7 @@ export default function Cart(){
                 alert(message)
                 } )
             }
-        cartAdd()    
+        cartAdd()
     }
 
     // start of large cart
@@ -192,7 +192,7 @@ export default function Cart(){
 
 
         if(total == NaN || total == null || total == undefined || total > 100 || total < 1){
-            alert("You must enter a valid number")
+            return alert("You must enter a valid number")
         }
 
         updateCart.quantity = total
@@ -202,16 +202,9 @@ export default function Cart(){
             let product:number = parseInt(productId, 10)
 
             updateCart.productId = product
-    
-    
-            if(amount == NaN || amount == null || amount == undefined || amount > 100 || amount < 1){
-                alert("You must enter a valid number")
-            }
-    
-            updateCart.quantity = amount
-    
+
             if (id == 0){
-                alert("You need to sign in to use the cart feature.")
+                return alert("You need to sign in to use the cart feature.")
             }
 
     
@@ -239,7 +232,7 @@ export default function Cart(){
                 alert(message)
                 } )
             }
-        cartAdd() 
+        cartAdd()
     }
 
 

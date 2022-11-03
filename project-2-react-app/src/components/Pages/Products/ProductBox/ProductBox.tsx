@@ -11,8 +11,7 @@ import ReactStars from "react-rating-stars-component";
 import "./ProductBox.css"
 
 interface Iprop extends productModel{
-    onButtonClick(infoToParent:number):void,
-    productButton(infoToParent:number):void
+    onButtonClick(infoToParent:number):void
 }
 
 

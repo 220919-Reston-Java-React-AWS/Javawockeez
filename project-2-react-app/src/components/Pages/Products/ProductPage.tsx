@@ -58,9 +58,7 @@ export function ProductPage(){
     function displayProduct(){
         console.log(product)
         return <Card className="product-box mb-3">
-                <ProductBox key={product.id} {...product} onButtonClick={handleOnClickEvent} productButton={function (infoToParent: number): void {
-                throw new Error("Function not implemented.");
-            } } />
+                <ProductBox key={product.id} {...product} onButtonClick={handleOnClickEvent}/>
                 <Container className="product-description">
                         Weight: {product.weight} oz
                         <br/>

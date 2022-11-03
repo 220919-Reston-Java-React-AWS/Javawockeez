@@ -46,7 +46,7 @@ export default function Products(){
 
     return <main className="background min-vh-100">
         <div className="grid">
-        {productList.map((item) => <ProductBox key={item.id} {...item} onButtonClick={handleOnClickEvent} productButton={handleProduct} ></ProductBox>)}
+        {productList.map((item) => <ProductBox key={item.id} {...item} onButtonClick={handleOnClickEvent} ></ProductBox>)}
     </div>
     </main>
 
@@ -54,10 +54,10 @@ export default function Products(){
     function handleOnClickEvent(infoFromChild: number){
 
         //get quantity of item for user in cart
-        let quantity:number = 0;
+        let quantity:number = 0
 
         if (id == undefined){
-             alert("You need to sign in to use the cart feature.")
+            return alert("You need to sign in to use the cart feature.")
         }
             async function getCart(){
                 await fetch(`http://127.0.0.1:8080/cart/${id}`, {
@@ -67,18 +67,22 @@ export default function Products(){
                 .then( response => response.json())
                 .then( result => {
                         setCartList(result)
-                    })
+                })
                 .catch( (error) => {
                 console.error(error)
-                } )
-                
-                for (let i=0; i<cartList.length; i++){
-                    if (cartList[i].product.id == infoFromChild){
-                        quantity = cartList[i].quantity
-                    }
-                }
+                } )    
             }
+            
             getCart()
+
+            alert("before for loop")
+            alert(cartList)
+            for (let i=0; i<cartList.length; i++){
+                alert("in for loop")
+                if (cartList[i].product.id == infoFromChild){
+                    quantity += cartList[i].quantity}
+                }
+            alert(quantity)
 
             let amount = quantity + 1
         
