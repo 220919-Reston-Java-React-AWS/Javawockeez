@@ -152,7 +152,7 @@ export function ProductSearch(){
                 .then( result => {
                     console.log(result);
                     message = result.message;
-                    alert(message);
+                    alert("Product Added to Cart");
                 } )
                 .catch( (error) => {
                     console.error(error)

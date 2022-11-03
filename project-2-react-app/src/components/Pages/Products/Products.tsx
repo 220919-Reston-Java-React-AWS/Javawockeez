@@ -75,14 +75,10 @@ export default function Products(){
             
             getCart()
 
-            alert("before for loop")
-            alert(cartList)
             for (let i=0; i<cartList.length; i++){
-                alert("in for loop")
                 if (cartList[i].product.id == infoFromChild){
                     quantity += cartList[i].quantity}
                 }
-            alert(quantity)
 
             let amount = quantity + 1
         
@@ -113,7 +109,7 @@ export default function Products(){
                 .then( result => {
                     console.log(result);
                     message = result.message;
-                    alert(message);
+                    alert("Product Added to Cart");
                 } )
                 .catch( (error) => {
                     console.error(error)
@@ -122,12 +118,6 @@ export default function Products(){
                     } )
                 }
             cartAdd() 
-        }
-
-        //implementing page link to pages
-
-        function handleProduct(infoFromChild:number){
-            alert("IndividualProduct(infoFromChild)")
         }
 
     }

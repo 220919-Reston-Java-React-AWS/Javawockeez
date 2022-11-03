@@ -4,9 +4,8 @@
     background-size: 100%;
   }
   .checkout {
-    margin-top: 1rem;
-    margin-left: 3rem;
-    margin-bottom: 2rem;
+    margin-left: 1rem;
+    margin-bottom: 3rem;
     text-align: right;
 }
 .error{
@@ -29,7 +28,7 @@
     border-radius: 5px;
     box-shadow: rgba(248, 241, 241, 0.35) 15px 20px 10px;
     background-color: white;
-    width: 15vw;
+    width: 20vw;
     height: 4rem;
     margin-top: 1rem;
     margin-left: 70%;

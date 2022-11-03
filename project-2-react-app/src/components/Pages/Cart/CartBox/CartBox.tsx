@@ -5,6 +5,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { cartModel } from "../../../models/cartModel";
 import { Button, ButtonGroup, ButtonToolbar, Dropdown, DropdownButton } from "react-bootstrap";
 import { serialize } from "v8";
+import { useNavigate } from "react-router-dom";
 
 interface buttons extends cartModel{
     onButton(infoToParent:cartModel):void,
@@ -14,13 +15,14 @@ interface buttons extends cartModel{
 }
 
 function CartBox(props: buttons){
+    let navigate = useNavigate();
      return <div className="space"><div className="box2"><ListGroup.Item
     as="li"
     className="d-flex justify-content-between align-items-start"
     >    
         <div className="ms-2 me-auto">
 
-            <div className="fw-bold">{props.product.name}</div>              
+            <div className="fw-bold" onClick={()=>navigate(`/products/id=${props.id}`)}>{props.product.name}</div>              
             <DropdownButton id="dropdown-basic-button" title={props.quantity} onClick={() => {props.holdButton(props)}}>
                 <Dropdown.Item onClick={() => {props.updateButton(props, 1)}}>1</Dropdown.Item>
                 <Dropdown.Item onClick={() => {props.updateButton(props, 2)}}>2</Dropdown.Item>

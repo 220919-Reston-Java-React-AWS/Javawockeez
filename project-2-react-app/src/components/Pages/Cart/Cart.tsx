@@ -170,7 +170,7 @@ export default function Cart(){
             .then( result => {
                 console.log(result);
                 message = result.message;
-                alert(message);
+                alert("Cart Successfully Up[dated");
             } )
             .catch( (error) => {
                 console.error(error)
@@ -224,7 +224,7 @@ export default function Cart(){
             .then( result => {
                 console.log(result);
                 message = result.message;
-                alert(message);
+                alert("Cart Successfully Up[dated")
             } )
             .catch( (error) => {
                 console.error(error)
@@ -261,7 +261,7 @@ export default function Cart(){
         })
             .then( response => response.json())
             .then( result => {
-                    alert(result.message)
+                alert("Item successfully removed")
                 })
             .catch( (error) => {
             console.error(error)
