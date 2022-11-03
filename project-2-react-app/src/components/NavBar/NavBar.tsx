@@ -116,7 +116,7 @@ function NavigationBar() {
                             <NavDropdown.Item as={Link} to='/products'>Products</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to='/cart'>Shopping Cart</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item as={Link} to='#'>Checkout</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/cart'>Checkout</NavDropdown.Item>
                         </NavDropdown>       
 
                         {/* Account Pages */}

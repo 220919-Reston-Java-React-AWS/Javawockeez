@@ -73,7 +73,7 @@ export function OrderHistory(){
     useEffect( ()=>{getProducts()}, [] )
     
 
-    return <main className="background-order-history">
+    return <main className="background-order-history min-vh-100">
         {displayProducts()}
     </main>
 }

@@ -38,7 +38,7 @@ export default function IndividualProduct(productId:number){
         } )
     }
 
-    return <main className="background_product">
+    return <main className="background_product min-vh-100">
         <div className="grid">
     </div>
     </main>
