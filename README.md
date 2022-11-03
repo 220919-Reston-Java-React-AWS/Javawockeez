@@ -47,4 +47,6 @@ The set up is then:
 
 1. Run in the terminal ```npm install``` so **npm** can install and stored the library modules in the ***node_modules*** folder
 
-2. Now you should be able to run the application using ```npm start``` in the terminal
+2. Afterward, install the react star dependency with ```npm i react-rating-stars-component```
+
+3. Now you should be able to run the application using ```npm start``` in the terminal
