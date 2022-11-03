@@ -3,9 +3,6 @@ import "./ProductBox.css";
 
 //bootstrap
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
-import InputGroup from 'react-bootstrap/InputGroup';
 
 
 //@ts-ignore
