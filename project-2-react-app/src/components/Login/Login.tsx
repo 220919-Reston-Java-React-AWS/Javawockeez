@@ -15,11 +15,14 @@ import { setUser } from './UserSlicer';
 
 //setting up http cookies
 import {useCookies} from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
     //setting up http cookie
     const [cookies, setCookie, removeCookie] = useCookies(['userId','userFirstName', 'userLastName', 'userEmail', 'userRole']);
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     
     //placing values
     function setUserCookie(result:any){
@@ -29,8 +32,6 @@ function Login() {
         setCookie('userEmail', result.email, { path: '/' });
         setCookie('userRole', result.role, { path: '/' });
     }
-
-    const dispatch = useAppDispatch();
 
     // The user logging in. Fills out as the form does.
     let newUser = {
@@ -81,8 +82,6 @@ function Login() {
                 message = result.message
 
             } else { // Success message/login
-                //localStorage.setItem("email", result.email) // **** NEEDS TO CHANGE **** //
-                console.log( result, result.id, result.data )
                 setUserCookie(result)   // http cookie
                 dispatch(setUser(result))
                 message = `Welcome back ${result.firstName}!`
@@ -122,6 +121,12 @@ function Login() {
             {loginMessage}
             <Button type="submit" className='w-100 btn-lg btn-success' onClick={()=>setLoggingIn(true)}>Go Back</Button>
         </p>
+    }
+
+    if (loginMessage.length > 10 && loginMessage.substring(0, 7)=="Welcome"){
+        setTimeout( () => {
+            navigate( '/' )
+        }, 5000)
     }
 
     // Displays the amazing art, and either the form or response afterward
