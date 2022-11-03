@@ -14,6 +14,7 @@ import ProductBox from "../Products/ProductBox/ProductBox";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/esm/Modal";
 import { render } from "@testing-library/react";
+import { mainModule } from "process";
 
 
 
@@ -51,9 +52,11 @@ export default function Cart(){
     const id = user.id;
 
     if (id == 0){
-        return <div>
+        return <main className="background">
+            <div className="errorSpace">
+        <div className="box3">
         <h3 className="error">You need to sign in to access the cart feature.</h3>
-        </div>
+        </div></div></main>
     }
         async function getCart(){
             await fetch(`http://127.0.0.1:8080/cart/${id}`, {
@@ -74,12 +77,14 @@ export default function Cart(){
                 carTotal += (cartList[i].quantity * cartList[i].product.price)
             }
 
-        return (<div>
-            <ListGroup as="ol" numbered>
+        return (<main className="background">
+            <div className="space">
+            <ListGroup as="ol" numbered className="group">
                 {cartList.map((item) => <CartBox key={item.id} {...item} updateButton={handleOnClickEvent} onButton={handleRemove} flipButton={handleShow} holdButton={setValues}></CartBox>)}
             </ListGroup>
-            <p className="total"> Total = {currencyFormat(carTotal)} </p>
-            <div className="checkout"><Button variant="success"> Checkout </Button>{' '}</div>
+            <div className="box"><span className="total"> Total = {currencyFormat(carTotal)}</span>
+            <p><div className="checkout"><Button variant="success"> Checkout </Button>{' '}</div></p></div>
+            
 
                 <Modal show={show} onHide={handleClose} animation={false}>
                     <Modal.Header closeButton>
@@ -101,14 +106,13 @@ export default function Cart(){
                 </Button>
                     </Modal.Footer>
                 </Modal>
-            </div>
+            </div></main>
             );
         
 
         function setValues(infoFromChild:cartModel){
             let update:string = infoFromChild.product.id.toString()
             setProductId(update)
-            alert(productId)
         }
 
         function currencyFormat(num:number) {
@@ -168,10 +172,8 @@ export default function Cart(){
         function largeCart(){
 
             let amount:number = parseInt(quantity, 10)
-            alert(amount)
 
             let product:number = parseInt(productId, 10)
-            alert(product)
 
             updateCart.productId = product
     
@@ -185,8 +187,6 @@ export default function Cart(){
             if (id == 0){
                 alert("You need to sign in to use the cart feature.")
             }
-
-            alert(JSON.stringify(updateCart))
         
             let message: string
             

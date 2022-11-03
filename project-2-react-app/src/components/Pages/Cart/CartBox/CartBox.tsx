@@ -14,7 +14,7 @@ interface buttons extends cartModel{
 }
 
 function CartBox(props: buttons){
-     return <ListGroup.Item
+     return <div className="space"><div className="box2"><ListGroup.Item
     as="li"
     className="d-flex justify-content-between align-items-start"
     >    
@@ -29,8 +29,8 @@ function CartBox(props: buttons){
                 <Dropdown.Item onClick={() => {props.flipButton(props)}}>5+</Dropdown.Item>
             </DropdownButton>
             </div>
-            <Badge bg="primary" pill>${props.product.price}</Badge>
-            <Button variant="warning" onClick={() => {props.onButton(props)}}> Remove from Cart </Button>
+            <div className="pill"><Badge bg="primary" pill >${props.product.price}</Badge></div>   
         </ListGroup.Item>
+        <p><Button variant="warning" onClick={() => {props.onButton(props)}} className="remove"> Remove from Cart </Button></p></div></div>
 }
 export default CartBox;
