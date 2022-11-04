@@ -126,7 +126,7 @@ function Login() {
     if (loginMessage.length > 10 && loginMessage.substring(0, 7)=="Welcome"){
         setTimeout( () => {
             navigate( '/' )
-        }, 5000)
+        }, 3000)
     }
 
     // Displays the amazing art, and either the form or response afterward

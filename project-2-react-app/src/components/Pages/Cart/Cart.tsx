@@ -283,6 +283,10 @@ export default function Cart(){
         })
         .then( response => response.json())
         .then( result => {
+            if(result.length == 0){
+                alert("No items in cart")
+            }
+
             // console.log(result);
             for(let item = 0; item < result.length; item++){
                 const productStripeItem = {
@@ -303,7 +307,10 @@ export default function Cart(){
         // console.log(productArray);
         // var test = JSON.stringify(Array.from(productArray.entries()));
         // console.log(test)
-        stripe(productArray);
+
+        if(productArray.length != 0){            
+            stripe(productArray);
+        }
     }
 
     // the function that does the Stripe checkout session
@@ -318,10 +325,15 @@ export default function Cart(){
             body: JSON.stringify(productArray)
         })
         .then(response => {
-            response.text().then((text) =>{
+            response.text().then((text) =>{ 
+
                 window.location.href=text;
             });
-        }); 
+        })
+        .catch( (error) => {
+            console.error(error)
+            window.location.href="http://localhost:8080/";
+        }) 
     }
 }
     
